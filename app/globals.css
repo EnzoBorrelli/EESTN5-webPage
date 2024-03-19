@@ -2,32 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    /*background colors*/
+    --color-bg100: 250 250 255;
+    --color-bg200: 227 227 229;
+    --color-bg300: 192 192 194;
+
+    /*text colors*/
+    --color-text100: 0 0 5;
+    --color-text200: 70 70 75;
+    --color-text300: 120 120 125;
+
+    /*tone colors*/
+    --color-tone100: 38 46 191;
+    --color-tone200: 28 53 156;
+    --color-tone300: 26 40 115;
+
+    /*accent colors*/
+    --color-accent1: 191 130 17;
+    --color-accent2: 217 170 30;
+  }
+  :root[data-theme="dark"] {
+    /*background colors*/
+    --color-bg100: 5 10 38;
+    --color-bg200: 18 25 64;
+    --color-bg300: 50 60 89;
+
+    /*text colors*/
+    --color-text100: 230 230 235;
+    --color-text200: 170 170 175;
+    --color-text300: 120 120 125;
+
+    /*tone colors*/
+    --color-tone100: 26 40 115;
+    --color-tone200: 28 53 156;
+    --color-tone300: 38 46 191;
+    
+    /*accent colors*/
+    --color-accent1: 217 170 30;
+    --color-accent2: 191 130 17;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+* {
+  @apply transition-colors duration-300 ease-in;
 }
