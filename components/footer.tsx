@@ -13,6 +13,8 @@ import ScrollTopBtn from "./footer/scrollTopBtn";
 export default function Footer() {
   return (
     <footer className="flex flex-col w-full gap-8 pt-4 divide-y-2 divide-bg-300 bg-bg-200 h-fit">
+
+      {/* seccion top | logo | nombre | contacto */}
       <section className="flex items-center justify-center gap-4 -mb-4 md:gap-20">
         <ScrollTopBtn />
         <div className="flex items-center gap-2">
@@ -35,6 +37,8 @@ export default function Footer() {
           </h2>
         </Link>
       </section>
+
+      {/* seccion mid | secciones y subsecciones */}
       <section className="grid grid-cols-2 grid-rows-2 gap-2 pt-4 md:px-20 justify-items-center md:grid-cols-4 md:grid-rows-1">
         <nav>
           <h2 className="text-lg font-bold uppercase">Conócenos</h2>
@@ -89,6 +93,8 @@ export default function Footer() {
           </ul>
         </nav>
       </section>
+
+      {/* seccion bot | copyright | redes sociales */}
       <section className="flex items-center justify-center px-4 py-2 md:px-0">
         <h3 className="text-center">
           © 2024 E.E.S.T Nº5 "2 de Abril" Todos los derechos reservados
