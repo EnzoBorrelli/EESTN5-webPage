@@ -1,11 +1,6 @@
-import {
-  FaInstagram,
-  FaSquareFacebook,
-  FaXTwitter,
-  FaLinkedin,
-} from "react-icons/fa6";
+import { FaInstagram, FaSquareFacebook, FaXTwitter } from "react-icons/fa6";
 
-export const Nosotros = [
+export const Conocenos = [
   {
     name: "Institución",
     href: "#",
@@ -30,6 +25,10 @@ export const Nosotros = [
 
 export const Especialidades = [
   {
+    name: "Ciclo Básico",
+    href: "#",
+  },
+  {
     name: "Electrónica",
     href: "#",
   },
@@ -53,6 +52,10 @@ export const Comunidad = [
     href: "#",
   },
   {
+    name: "Recursos",
+    href: "#",
+  },
+  {
     name: "Testimonios",
     href: "#",
   },
@@ -71,30 +74,25 @@ export const Novedades = [
 export const RedesSociales = [
   {
     key: "instagram",
-    href: "#",
+    href: "https://www.instagram.com/industrialdetemperleyoficial/",
     symbol: <FaInstagram />,
   },
   {
     key: "facebook",
-    href: "#",
+    href: "https://www.facebook.com/industrialdetemperleyoficial",
     symbol: <FaSquareFacebook />,
   },
   {
     key: "twitter",
-    href: "#",
+    href: "https://twitter.com/VespertinoTec5",
     symbol: <FaXTwitter />,
-  },
-  {
-    key: "linkedin",
-    href: "#",
-    symbol: <FaLinkedin />,
   },
 ];
 
 export const navLinks = [
   {
-    key: "nosotros",
-    name: "Nosotros",
+    key: "conocer",
+    name: "Conócenos",
   },
   {
     key: "especial",

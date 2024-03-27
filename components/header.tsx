@@ -9,21 +9,23 @@ import {
   IoIosArrowDropleft,
 } from "react-icons/io";
 import { GiHamburgerMenu, GiTireIronCross } from "react-icons/gi";
-import Link from "next/link";
+import { MdPhone } from "react-icons/md";
 import SubNavMobile from "./header/subNav/subNavMobile";
+import SubNavPC from "./header/subNav/subNavPC";
+import Link from "next/link";
 
 export default function Header() {
-  const [selectedMenu, setSelectedMenu] = useState("nosotros");
-  const [prevSelectedMenu, setPrevSelectedMenu] = useState("nosotros");
-  const [menu, setMenu] = useState(true);
-  const [navMenu, setNavMenu] = useState(true);
+  const [selectedMenu, setSelectedMenu] = useState("conocer"); // manejar estado de que menu se seleccionó
+  const [prevSelectedMenu, setPrevSelectedMenu] = useState("conocer"); //guardar estado anterior para logica de funcion
+  const [menu, setMenu] = useState(true); // abrir cerrar submenu
+  const [navMenu, setNavMenu] = useState(true); // abrir cerrar menu hamburguesa de movil
 
   function setActiveMenu(menuKey: string) {
-    setSelectedMenu(menuKey);
+    setSelectedMenu(menuKey); //setear valor de menu al menu actual
     if (prevSelectedMenu !== menuKey) {
-      setPrevSelectedMenu(selectedMenu);
+      setPrevSelectedMenu(selectedMenu); //si el menu anterior no es igual al menu entrante, guardar estado
     } else if (prevSelectedMenu === menuKey) {
-      setMenu(!menu);
+      setMenu(!menu); //si lo es, entonces invertir estado de menu
     }
   }
 
@@ -32,10 +34,10 @@ export default function Header() {
       <h1 className="ml-4 text-lg font-bold">LOGO</h1>
       <nav className="flex flex-col items-center gap-2 w-fit h-fit md:flex-row">
         <button
-          onClick={() => setNavMenu(!navMenu)}
+          onClick={() => setNavMenu(!navMenu)} // abrir cerrar menu
           className="text-text-100 size-fit md:hidden"
         >
-          {navMenu ? (
+          {navMenu ? ( // si el menu esta abierto, mostrara la X, sino, mostrara la hamburguesa
             <GiTireIronCross size={24} />
           ) : (
             <GiHamburgerMenu size={24} />
@@ -43,60 +45,86 @@ export default function Header() {
         </button>
         <ul
           className={`flex flex-col gap-8 p-4 md:hidden absolute left-0 top-12 w-full bg-bg-200 transition-all duration-150 ease-out ${
-            navMenu
+            navMenu // cambio de estilo condicional
               ? "h-screen opacity-100 pointer-events-auto"
               : "pointer-events-none h-0 opacity-0"
           }`}
         >
-          {navLinks.map((link) => (
-            <li key={link.key}>
-              <button
-                onClick={() => setActiveMenu(link.key)}
-                className="flex items-center"
-              >
-                {menu && selectedMenu === link.key ? (
-                  <IoIosArrowDropleft />
-                ) : (
-                  <IoIosArrowDropright />
-                )}
-                <h2 className="text-lg font-bold">{link.name}</h2>
-              </button>
-            </li>
-          ))}
-          <ul className="flex flex-col gap-4 px-2 size-fit">
-            {RedesSociales.map((social) => (
-              <li className="text-4xl" key={social.key}>
-                <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >{social.symbol}</a>
+          {navLinks.map(
+            (
+              link //mapeamos los links de la constante
+            ) => (
+              <li key={link.key}>
+                <button
+                  onClick={() => setActiveMenu(link.key)}
+                  className="flex items-center"
+                >
+                  {menu && selectedMenu === link.key ? ( // si el menu esta abierto y el menu seleccionado es el de la key, entonces se cambia el icono
+                    <IoIosArrowDropleft />
+                  ) : (
+                    <IoIosArrowDropright />
+                  )}
+                  <h2 className="text-lg font-bold">{link.name}</h2>
+                </button>
               </li>
-            ))}
+            )
+          )}
+          <ul className="flex flex-col gap-4 px-2 size-fit">
+            {RedesSociales.map(
+              (
+                social // mapeamos las redes sociales
+              ) => (
+                <li className="text-4xl" key={social.key}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {social.symbol}
+                  </a>
+                </li>
+              )
+            )}
           </ul>
+          <Link className="flex items-center text-lg font-bold" href="#">
+            <MdPhone size={20}/>
+            Contáctanos
+          </Link>
         </ul>
         {/* links PC*/}
-        <ul className="hidden gap-4 md:flex">
+        <ul className="items-center hidden gap-4 md:flex">
           {navLinks.map((link) => (
             <li key={link.key}>
               <button
                 onClick={() => setActiveMenu(link.key)}
-                className="flex items-center"
+                className="flex items-center group"
               >
                 {menu && selectedMenu === link.key ? (
-                  <IoIosArrowUp />
+                  <i className="group-hover:animate-bounce">
+                    <IoIosArrowUp />
+                  </i>
                 ) : (
-                  <IoIosArrowDown />
+                  <i className="group-hover:animate-bounce">
+                    <IoIosArrowDown />
+                  </i>
                 )}
-                <h2 className="text-lg font-bold">{link.name}</h2>
+                <h2 className="text-lg font-bold relative w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-tone-200 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-right">
+                  {link.name}
+                </h2>
               </button>
             </li>
           ))}
+          <Link className="flex items-center justify-center group" href="#">
+          <i className="transition-transform duration-200 group-hover:rotate-90"><MdPhone size={20}/></i>
+            <h2 className="text-lg font-bold relative w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-tone-200 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-right">
+              Contáctanos
+            </h2>
+          </Link>
         </ul>
       </nav>
       <div
         className={`absolute top-16 right-4 bg-bg-300 size-fit md:hidden flex p-4 transition-all duration-100 ease-out ${
-          navMenu && menu
+          navMenu && menu // para version movil, si el menu hamburguesa esta desplegado y el submenu esta abierto, aplicar estos estilos
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
@@ -104,18 +132,14 @@ export default function Header() {
         <SubNavMobile menu={selectedMenu} />
       </div>
       <div
-        className={`absolute top-10 bg-bg-200 w-full hidden md:flex p-4 transition-all duration-200 ease-in ${
-          selectedMenu === "nosotros" && menu
-            ? "h-screen opacity-100 pointer-events-auto"
-            : "h-0 opacity-0 pointer-events-none"
+        className={`absolute top-14 bg-bg-200 w-full hidden md:flex p-4 transition-all duration-200 ease-in ${
+          menu // si el submenu esta activo, aplicar estos estilos
+            ? "h-24 opacity-100 pointer-events-auto"
+            : "h-6 opacity-0 pointer-events-none"
         }`}
       >
-        nos menu
+        <SubNavPC menu={selectedMenu} />
       </div>
-
-      {/*<div className={`absolute ${selectedMenu==='especial'?'bg-accent-1':'bg-tone-100'}`}>nos menu</div>
-      <div className={`absolute ${selectedMenu==='comunidad'?'bg-accent-1':'bg-tone-100'}`}>nos menu</div>
-          <div className={`absolute ${selectedMenu==='novedades'?'bg-accent-1':'bg-tone-100'}`}>nos menu</div>*/}
       <div className="mr-4">
         <ThemeBtn />
       </div>

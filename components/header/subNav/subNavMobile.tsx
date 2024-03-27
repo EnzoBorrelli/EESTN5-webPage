@@ -1,5 +1,5 @@
 import React from "react";
-import { Nosotros, Especialidades, Comunidad, Novedades } from "../navLinks";
+import { Conocenos, Especialidades, Comunidad, Novedades } from "../navLinks";
 import Link from "next/link";
 
 export default function SubNavMobile({ menu }: { menu: string }) {
@@ -7,11 +7,11 @@ export default function SubNavMobile({ menu }: { menu: string }) {
     <nav>
       {(() => {
         switch (menu) {
-          case "nosotros":
+          case "conocer":
             return (
               <ul className="flex flex-col items-center gap-10 font-semibold text-text-200 text-md">
-                {Nosotros.map((link) => (
-                  <li>
+                {Conocenos.map((link) => (
+                  <li key={link.name}>
                     <Link href={link.href}>{link.name}</Link>
                   </li>
                 ))}
@@ -21,7 +21,7 @@ export default function SubNavMobile({ menu }: { menu: string }) {
             return (
               <ul className="flex flex-col items-center gap-10 font-semibold text-text-200 text-md">
                 {Especialidades.map((link) => (
-                  <li>
+                  <li key={link.name}>
                     <Link href={link.href}>{link.name}</Link>
                   </li>
                 ))}
@@ -31,7 +31,7 @@ export default function SubNavMobile({ menu }: { menu: string }) {
             return (
               <ul className="flex flex-col items-center gap-10 font-semibold text-text-200 text-md">
                 {Comunidad.map((link) => (
-                  <li>
+                  <li key={link.name}>
                     <Link href={link.href}>{link.name}</Link>
                   </li>
                 ))}
@@ -41,7 +41,7 @@ export default function SubNavMobile({ menu }: { menu: string }) {
             return (
               <ul className="flex flex-col items-center gap-10 font-semibold text-text-200 text-md">
                 {Novedades.map((link) => (
-                  <li>
+                  <li key={link.name}>
                     <Link href={link.href}>{link.name}</Link>
                   </li>
                 ))}
