@@ -28,7 +28,7 @@ export default function Footer() {
             <span className="font-semibold">"2 de Abril"</span>
           </p>
         </div>
-        <Link className="flex items-center justify-center group" href="#">
+        <Link className="flex items-center justify-center group" href="/contacto">
           <i className="transition-transform duration-200 group-hover:rotate-90">
             <MdPhone size={20} />
           </i>

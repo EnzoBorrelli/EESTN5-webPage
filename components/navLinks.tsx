@@ -3,71 +3,71 @@ import { FaInstagram, FaSquareFacebook, FaXTwitter } from "react-icons/fa6";
 export const Conocenos = [
   {
     name: "Institución",
-    href: "#",
+    href: "/institucion",
   },
   {
     name: "Autoridades",
-    href: "#",
+    href: "/autoridades",
   },
   {
     name: "Profesores",
-    href: "#",
+    href: "/profesores",
   },
   {
     name: "Pasantías",
-    href: "#",
+    href: "/pasantias",
   },
   {
     name: "Cooperadora",
-    href: "#",
+    href: "/cooperadora",
   },
 ];
 
 export const Especialidades = [
   {
     name: "Ciclo Básico",
-    href: "#",
+    href: "/ciclo-basico",
   },
   {
     name: "Electrónica",
-    href: "#",
+    href: "/electronica",
   },
   {
     name: "Electromecanica",
-    href: "#",
+    href: "/electromecanica",
   },
   {
     name: "Automotor",
-    href: "#",
+    href: "/automotor",
   },
 ];
 
 export const Comunidad = [
   {
     name: "Actividades",
-    href: "#",
+    href: "/actividades",
   },
   {
     name: "Proyectos",
-    href: "#",
+    href: "/proyectos",
   },
   {
     name: "Recursos",
-    href: "#",
+    href: "/recursos",
   },
   {
     name: "Testimonios",
-    href: "#",
+    href: "/testimonios",
   },
 ];
 export const Novedades = [
   {
     name: "Calendario",
-    href: "#",
+    href: "/calendario",
   },
   {
     name: "Avisos",
-    href: "#",
+    href: "/avisos",
   },
 ];
 

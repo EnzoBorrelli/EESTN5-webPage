@@ -10,6 +10,7 @@ import {
 } from "react-icons/io";
 import { GiHamburgerMenu, GiTireIronCross } from "react-icons/gi";
 import { MdPhone } from "react-icons/md";
+import { TiHome } from "react-icons/ti";
 import SubNavMobile from "./header/subNav/subNavMobile";
 import SubNavPC from "./header/subNav/subNavPC";
 import Link from "next/link";
@@ -32,7 +33,13 @@ export default function Header() {
   return (
     <header className="relative flex items-center justify-between w-full py-4 shadow-sm shadow-bg-200 h-fit">
       <h1 className="ml-4 text-lg font-bold">LOGO</h1>
-      <nav className="flex flex-col items-center gap-2 w-fit h-fit md:flex-row">
+      <nav className="flex flex-col items-center gap-4 w-fit h-fit md:flex-row">
+        <Link
+          className="hidden md:flex text-3xl transition-all duration-100 ease-in hover:text-tone-200 hover:scale-110"
+          href="/"
+        >
+          <TiHome/>
+        </Link>
         <button
           onClick={() => setNavMenu(!navMenu)} // abrir cerrar menu
           className="text-text-100 size-fit md:hidden"
@@ -50,6 +57,12 @@ export default function Header() {
               : "pointer-events-none h-0 opacity-0"
           }`}
         >
+          <Link
+          className="text-3xl -mb-4"
+          href="/"
+        >
+          <TiHome/>
+        </Link>
           {navLinks.map(
             (
               link //mapeamos los links de la constante
@@ -86,8 +99,11 @@ export default function Header() {
               )
             )}
           </ul>
-          <Link className="flex items-center text-lg font-bold" href="#">
-            <MdPhone size={20}/>
+          <Link
+            className="flex items-center text-lg font-bold"
+            href="/contacto"
+          >
+            <MdPhone size={20} />
             Contáctanos
           </Link>
         </ul>
@@ -114,8 +130,13 @@ export default function Header() {
               </button>
             </li>
           ))}
-          <Link className="flex items-center justify-center group" href="#">
-          <i className="transition-transform duration-200 group-hover:rotate-90"><MdPhone size={20}/></i>
+          <Link
+            className="flex items-center justify-center group"
+            href="/contacto"
+          >
+            <i className="transition-transform duration-200 group-hover:rotate-90">
+              <MdPhone size={20} />
+            </i>
             <h2 className="text-lg font-bold relative w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-tone-200 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-right">
               Contáctanos
             </h2>
