@@ -5,7 +5,7 @@ import {
   Comunidad,
   Novedades,
   RedesSociales,
-} from "../navLinks";
+} from "../../navLinks";
 import Link from "next/link";
 
 export default function SubNavPC({ menu }: { menu: string }) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Conocenos, Especialidades, Comunidad, Novedades } from "../navLinks";
+import { Conocenos, Especialidades, Comunidad, Novedades } from "../../navLinks";
 import Link from "next/link";
 
 export default function SubNavMobile({ menu }: { menu: string }) {

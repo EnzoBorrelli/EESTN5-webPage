@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import ThemeBtn from "./header/themeSwitch";
-import { navLinks, RedesSociales } from "./header/navLinks";
+import { navLinks, RedesSociales } from "./navLinks";
 import {
   IoIosArrowDown,
   IoIosArrowUp,
@@ -15,10 +15,10 @@ import SubNavPC from "./header/subNav/subNavPC";
 import Link from "next/link";
 
 export default function Header() {
-  const [selectedMenu, setSelectedMenu] = useState("conocer"); // manejar estado de que menu se seleccionó
-  const [prevSelectedMenu, setPrevSelectedMenu] = useState("conocer"); //guardar estado anterior para logica de funcion
-  const [menu, setMenu] = useState(true); // abrir cerrar submenu
-  const [navMenu, setNavMenu] = useState(true); // abrir cerrar menu hamburguesa de movil
+  const [selectedMenu, setSelectedMenu] = useState(""); // manejar estado de que menu se seleccionó
+  const [prevSelectedMenu, setPrevSelectedMenu] = useState(""); //guardar estado anterior para logica de funcion
+  const [menu, setMenu] = useState(false); // abrir cerrar submenu
+  const [navMenu, setNavMenu] = useState(false); // abrir cerrar menu hamburguesa de movil
 
   function setActiveMenu(menuKey: string) {
     setSelectedMenu(menuKey); //setear valor de menu al menu actual
@@ -30,7 +30,7 @@ export default function Header() {
   }
 
   return (
-    <header className="relative flex items-center justify-between w-full py-4 h-fit">
+    <header className="relative flex items-center justify-between w-full py-4 shadow-sm shadow-bg-200 h-fit">
       <h1 className="ml-4 text-lg font-bold">LOGO</h1>
       <nav className="flex flex-col items-center gap-2 w-fit h-fit md:flex-row">
         <button
