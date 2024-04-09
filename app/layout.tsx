@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={`${fontType.className} h-screen w-full bg-bg-100 flex flex-col`}>
+      <body className={`${fontType.className} size-full bg-bg-100 flex flex-col`}>
         <Providers>
           <Header />
           {children}
