@@ -20,11 +20,11 @@ export default function Profesores() {
   }
   profesores.sort(comparadorAleatorio);
   return (
-    <main className="px-10 py-4 size-full">
+    <main className="sm:px-5 md:px-10 py-4 size-full">
       <h2 className="my-4 text-2xl font-bold text-center uppercase">
         profesores
       </h2>
-      <section className="grid grid-cols-5 px-40 gap-y-6 justify-items-center">
+      <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 md:px-40 gap-y-2 sm:gap-y-6 justify-items-center">
         {profesores.map((profesor) => (
           <div
             className="flex flex-col items-center justify-between p-2 rounded-lg bg-bg-200 w-44"
