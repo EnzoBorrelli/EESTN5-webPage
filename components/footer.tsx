@@ -21,11 +21,11 @@ export default function Footer() {
           <h2>logo</h2>
           <p className="hidden text-center md:block">
             Escuela de Educación <br /> Secundaria Técnica N°5 <br />
-            <span className="font-semibold">&quot2 de Abril&quot</span>
+            <span className="font-semibold">&quot;2 de Abril&quot;</span>
           </p>
           <p className="text-center md:hidden">
             E.E.S.T N°5 <br />
-            <span className="font-semibold">&quot2 de Abril&quot</span>
+            <span className="font-semibold">&quot;2 de Abril&quot;</span>
           </p>
         </div>
         <Link className="flex items-center justify-center group" href="/contacto">
@@ -97,7 +97,7 @@ export default function Footer() {
       {/* seccion bot | copyright | redes sociales */}
       <section className="flex items-center justify-center px-4 py-2 md:px-0">
         <h3 className="text-center">
-          © 2024 E.E.S.T Nº5 &quot2 de Abril&quot Todos los derechos reservados
+          © 2024 E.E.S.T Nº5 &quot;2 de Abril&quot; Todos los derechos reservados
         </h3>
         <ul className="flex gap-2 px-4 size-fit">
           {RedesSociales.map((social) => (
