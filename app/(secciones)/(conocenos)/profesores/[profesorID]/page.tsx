@@ -5,8 +5,10 @@ import {
   profesoresElectronica,
 } from "@/components/secciones/conocenos/profesores/profesores";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FaLinkedin } from "react-icons/fa6";
+import { HiArrowLeftOnRectangle } from "react-icons/hi2";
 import { IoArrowRedo } from "react-icons/io5";
 import { MdMail } from "react-icons/md";
 
@@ -33,15 +35,24 @@ export default function Profesor({
     (profesor) => profesor.nombre === params.profesorID.replace(/%20/g, " ")
   );
   return (
-    <main className="px-4 md:px-10 py-4 size-full">
-      <section className="size-full flex justify-center">
+    <main className="px-4 py-4 md:px-10 size-full">
+      <section className="flex flex-col items-center justify-center gap-4 md:gap-0 md:items-start size-full md:flex-row">
+        <Link
+          className="relative flex items-center w-48 px-2 py-1 mx-4 rounded-lg shadow-sm md:rounded-none shadow-accent-1 md:rounded-s-lg group"
+          href="/profesores"
+        >
+          Volver a <strong>&nbsp;Profesores</strong>
+          <i className="absolute w-6 transition-all duration-300 ease-in-out right-1 group-hover:w-44 group-hover:right-2 top-1 bg-bg-100 ring-1 ring-bg-100">
+            <HiArrowLeftOnRectangle size={24} />
+          </i>
+        </Link>
         {profesor.map((profe) => (
           <article
-            className="grid gap-4 overflow-hidden shadow-md shadow-bg-300 w-full md:w-2/3 divide-y-2 px-4 lg:px-8 divide-bg-200 grid-rows-2 grid-cols-1 justify-items-center"
+            className="grid w-full grid-cols-1 grid-rows-2 gap-4 px-4 overflow-hidden divide-y-2 shadow shadow-accent-2 md:w-2/3 lg:px-8 divide-bg-200 justify-items-center"
             key={profe.nombre}
           >
-            <div className="flex flex-col md:flex-row gap-4 items-center pt-4 justify-center">
-              <span className="flex flex-col ring-2 ring-bg-300 bg-bg-200 rounded-md p-2 md:p-1 items-center">
+            <div className="flex flex-col items-center justify-center gap-4 pt-4 md:flex-row">
+              <span className="flex flex-col items-center p-2 rounded-md md:w-1/4 ring-2 ring-bg-300 bg-bg-200 md:p-1">
                 <Image
                   className="rounded-md"
                   src={profe.img}
@@ -56,40 +67,48 @@ export default function Profesor({
                   {profe.carrera}
                 </h4>
               </span>
-              <p className="md:w-2/3 text-center md:text-left">{profe.descripcion}</p>
+              <p className="text-center md:w-2/3 md:text-left">
+                {profe.descripcion}
+              </p>
             </div>
-            <div className="w-full flex flex-col gap-2 items-start pt-4">
-              <h3 className="text-center w-full text-lg md:text-xl font-bold">INFORMACIÓN DE CONTACTO</h3>
+            <div className="flex flex-col items-start w-full gap-2 pt-4">
+              <h3 className="w-full text-lg font-bold text-center md:text-xl">
+                INFORMACIÓN DE CONTACTO
+              </h3>
               <span>
                 <h4 className="flex items-center gap-1">
                   <FaLinkedin size={24} />:
-                {profe.linkedin!=='nulo'?
-                  <a
-                    className="flex items-center gap-1 group font-bold text-tone-200"
-                    href={profe.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {profe.nombre}{" "}
-                    <i className="group-hover:translate-x-2 transition-transform duration-150 ease-in">
-                      <IoArrowRedo />
-                    </i>
-                  </a>
-                  :"No posee o no se pudo ubicar"}
+                  {profe.linkedin !== "nulo" ? (
+                    <a
+                      className="flex items-center gap-1 font-bold group text-tone-300 hover:text-accent-2"
+                      href={profe.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {profe.nombre}{" "}
+                      <i className="transition-transform duration-150 ease-in group-hover:translate-x-2">
+                        <IoArrowRedo />
+                      </i>
+                    </a>
+                  ) : (
+                    "No posee o no se pudo ubicar"
+                  )}
                 </h4>
-                <h4 className="flex w-full items-center gap-1">
+                <h4 className="flex items-center w-full gap-1">
                   <MdMail size={24} />:
-                  {profe.contacto!=='nulo'?
-                  <a
-                    className="flex items-center gap-1 group font-bold text-tone-200"
-                    href={`mailto:${profe.contacto}`}
-                  >
-                    {profe.contacto}{" "}
-                    <i className="group-hover:translate-x-2 transition-transform duration-150 ease-in">
-                      <IoArrowRedo />
-                    </i>
-                  </a>
-                  :"No posee o no se pudo ubicar"}
+                  {profe.contacto !== "nulo" ? (
+                    <a
+                      className="flex items-center gap-1 font-bold group text-tone-300 hover:text-accent-2"
+                      href={`mailto:${profe.contacto}`}
+                    >
+                      {profe.contacto}{" "}
+                      <i className="transition-transform duration-150 ease-in group-hover:translate-x-2">
+                        <IoArrowRedo />
+                      </i>
+                    </a>
+                  ) : (
+                    "No posee o no se pudo ubicar"
+                  )}
                 </h4>
               </span>
             </div>
