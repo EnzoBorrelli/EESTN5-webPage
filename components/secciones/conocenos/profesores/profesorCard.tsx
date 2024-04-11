@@ -21,7 +21,7 @@ export default function ProfesorCards({
 }) {
   
   return (
-    <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 md:px-40 gap-y-2 sm:gap-y-6 justify-items-center">
+    <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 xl:px-32 gap-y-2 sm:gap-y-6 justify-items-center">
       {profesores.map((profesor) => (
         <div
           className="flex flex-col items-center justify-between p-2 rounded-lg bg-bg-200 w-44"
