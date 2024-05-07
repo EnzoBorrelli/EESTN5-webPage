@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { Suspense } from "react";
 import ProfesorCards from "@/components/secciones/conocenos/profesores/profesorCard";
 import {
   profesoresAutomotor,
@@ -64,6 +64,7 @@ export default function ProfesoresList() {
           basico
         </Link>
       </div>
+      <Suspense fallback={<h1>Cargando...</h1>}>
       {(() => {
         switch (profesores) {
           case "electronica": {
@@ -88,6 +89,7 @@ export default function ProfesoresList() {
           }
         }
       })()}
+      </Suspense>
     </>
   );
 }
