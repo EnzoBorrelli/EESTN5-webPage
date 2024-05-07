@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense } from "react";
+import React from "react";
 import ProfesorCards from "@/components/secciones/conocenos/profesores/profesorCard";
 import {
   profesoresAutomotor,
@@ -17,7 +17,6 @@ export default function ProfesoresList() {
 
   return (
     <>
-    <Suspense>
       <div className="grid w-full grid-cols-2 gap-2 px-4 my-4 font-bold md:px-0 md:justify-center md:flex text-md sm:text-lg md:text-xl">
         <Link
         href={'/profesores?profesores=todos'}
@@ -89,7 +88,6 @@ export default function ProfesoresList() {
           }
         }
       })()}
-      </Suspense>
     </>
   );
 }
