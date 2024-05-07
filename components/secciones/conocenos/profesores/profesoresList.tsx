@@ -17,7 +17,7 @@ export default function ProfesoresList() {
 
   return (
     <>
-    <Suspense fallback={<h1>Cargando...</h1>}>
+    <Suspense>
       <div className="grid w-full grid-cols-2 gap-2 px-4 my-4 font-bold md:px-0 md:justify-center md:flex text-md sm:text-lg md:text-xl">
         <Link
         href={'/profesores?profesores=todos'}
