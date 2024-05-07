@@ -39,7 +39,7 @@ export default function Profesor({
       <section className="flex flex-col items-center justify-center gap-4 md:gap-0 md:items-start size-full md:flex-row">
         <Link
           className="relative flex items-center w-48 px-2 py-1 mx-4 rounded-lg shadow-sm md:rounded-none shadow-accent-1 md:rounded-s-lg group"
-          href="/profesores"
+          href="/profesores?profesores=todos"
         >
           Volver a <strong>&nbsp;Profesores</strong>
           <i className="absolute w-6 transition-all duration-300 ease-in-out right-1 group-hover:w-44 group-hover:right-2 top-1 bg-bg-100 ring-1 ring-bg-100">

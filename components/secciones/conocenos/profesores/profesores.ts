@@ -126,8 +126,8 @@ export const profesoresBasico = [
     contacto: "profesoraciclobasico@example.com",
   },
 ];
-export const todosLosProfesores = profesoresAutomotor.concat(
-  profesoresBasico,
+export const todosLosProfesores = profesoresBasico.concat(
+  profesoresElectronica,
   profesoresElectromecanica,
-  profesoresElectronica
+  profesoresAutomotor
   );

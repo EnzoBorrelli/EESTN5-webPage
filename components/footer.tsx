@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import {
   Comunidad,
@@ -9,8 +10,13 @@ import {
 import Link from "next/link";
 import { MdPhone } from "react-icons/md";
 import ScrollTopBtn from "./footer/scrollTopBtn";
+import Image from "next/image";
+import { useTheme } from "next-themes";
+import logoColor from "./logo-color.svg"
+import logoInvert from "./logo-invert.svg"
 
 export default function Footer() {
+  const {theme} = useTheme();
   return (
     <footer className="flex flex-col w-full gap-8 pt-4 divide-y-2 divide-bg-300 bg-bg-200 h-fit">
 
@@ -18,7 +24,7 @@ export default function Footer() {
       <section className="flex items-center justify-center gap-4 -mb-4 md:gap-20">
         <ScrollTopBtn />
         <div className="flex items-center gap-2">
-          <h2>logo</h2>
+        <Image className="ml-4 -my-2" src={theme==="light"?logoColor:logoInvert} height={40} width={40} alt="LOGO"/>
           <p className="hidden text-center md:block">
             Escuela de Educación <br /> Secundaria Técnica N°5 <br />
             <span className="font-semibold">&quot;2 de Abril&quot;</span>
