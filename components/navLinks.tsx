@@ -44,6 +44,10 @@ export const Especialidades = [
 
 export const Comunidad = [
   {
+    name: "Radio: LaCincoFm",
+    href: "/actividades",
+  },
+  {
     name: "Actividades",
     href: "/actividades",
   },

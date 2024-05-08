@@ -20,6 +20,7 @@ import logoInvert from "./logo-invert.svg"
 import { useTheme } from "next-themes";
 
 export default function Header() {
+  // optimizar esta pendejada que anda lenta
   const [selectedMenu, setSelectedMenu] = useState(""); // manejar estado de que menu se seleccionó
   const [prevSelectedMenu, setPrevSelectedMenu] = useState(""); //guardar estado anterior para logica de funcion
   const [menu, setMenu] = useState(false); // abrir cerrar submenu
@@ -37,7 +38,7 @@ export default function Header() {
 
   return (
     <header className="relative flex items-center justify-between w-full py-4 shadow-sm shadow-bg-200 h-fit">
-      <Image className="ml-4 -my-2" src={theme==="light"?logoColor:logoInvert} height={40} width={40} alt="LOGO"/>
+      <Image className="ml-4 -my-4" src={theme==="light"?logoColor:logoInvert} height={50} width={50} alt="LOGO"/>
       <nav className="flex flex-col items-center gap-4 w-fit h-fit md:flex-row">
         <Link
           className="hidden md:flex text-3xl transition-all duration-100 ease-in hover:text-tone-200 hover:scale-110"

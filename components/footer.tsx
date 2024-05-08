@@ -73,7 +73,7 @@ export default function Footer() {
           </ul>
         </nav>
         <nav>
-          <h2 className="text-lg font-bold uppercase">Comunidad</h2>
+          <h2 className="text-lg font-bold text-center uppercase">Comunidad</h2>
           <ul className="flex flex-col items-center">
             {Comunidad.map((link) => (
               <li
