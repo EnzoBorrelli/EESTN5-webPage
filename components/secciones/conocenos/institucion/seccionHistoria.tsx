@@ -16,7 +16,7 @@ export default function SeccionHistoria() {
         <h2 className="text-lg font-semibold text-center">Historia</h2>
         <p className="p-2 overflow-y-scroll ">
           La Escuela Nacional de Educación Técnica de Témperley, también
-          conocida como "El Industrial de Temperley", tuvo sus inicios el 1° de
+          conocida como &quot;El Industrial de Temperley&quot;, tuvo sus inicios el 1° de
           junio de 1953, durante la segunda presidencia de Perón. Surgió para
           satisfacer la creciente demanda de educación técnica en la zona sur de
           Buenos Aires, donde escaseaban este tipo de instituciones. Inició sus
@@ -34,9 +34,9 @@ export default function SeccionHistoria() {
           <br /> A lo largo de los años, la escuela experimentó diversas mejoras
           edilicias, incluyendo la construcción de talleres, aulas, laboratorios
           y otros espacios necesarios para su funcionamiento. Se destacan la
-          inauguración de la Biblioteca "Fray Luis Beltrán" y el Salón de Usos
+          inauguración de la Biblioteca &quot;Fray Luis Beltrán&quot; y el Salón de Usos
           Múltiples en 1985, así como la creación del Laboratorio de Ensayos de
-          Materiales "Ing. Vicente Luquín" en 1995.
+          Materiales &quot;Ing. Vicente Luquín&quot; en 1995.
           <br />
           <br /> La institución se adaptó a los cambios en la educación técnica
           a lo largo de los años, desde los primeros planes de estudio en 1953
@@ -53,7 +53,7 @@ export default function SeccionHistoria() {
           aquellos que han ocupado cargos directivos y jerárquicos.
           <br />
           <br /> En 1982, en medio del conflicto por las Islas Malvinas, la
-          escuela cambió su nombre a "2 de Abril" en homenaje a la fecha del
+          escuela cambió su nombre a &quot;2 de Abril&quot; en homenaje a la fecha del
           intento de recuperación de las mismas. Este cambio se realizó en un
           emotivo acto presidido por el Ministro de Educación, en el que se
           destacó el patriotismo y el sentido de pertenencia a la patria.
