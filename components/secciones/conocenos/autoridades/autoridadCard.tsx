@@ -24,3 +24,7 @@ export default function AutoridadCard({
     </div>
   );
 }
+/*este componente es el encargado de mostrar las tarjetas de cada autoridad, reciebiendo desde la page los datos:
+src=ubicacion de la imagen en carpetas locales o url 
+nombre=nombre de la autoridad en cuestion
+cargo= cargo que ejerce dicha persona*/

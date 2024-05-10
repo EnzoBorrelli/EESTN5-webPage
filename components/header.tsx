@@ -29,11 +29,12 @@ export default function Header() {
 
   function setActiveMenu(menuKey: string) {
     setSelectedMenu(menuKey); //setear valor de menu al menu actual
-    if (prevSelectedMenu !== menuKey) {
-      setPrevSelectedMenu(selectedMenu); //si el menu anterior no es igual al menu entrante, guardar estado
-    } else if (prevSelectedMenu === menuKey) {
-      setMenu(!menu); //si lo es, entonces invertir estado de menu
+    if (prevSelectedMenu !== menuKey || !selectedMenu) { // si el menu anterior es diferente al menu actual o no hay menu actual, se abrira el menu
+      setMenu(true)
+    } else {
+      setMenu(!menu); //cualquier caso diferente, se invierte el estado de menu 
     }
+    setPrevSelectedMenu(selectedMenu); // se guarda el valor del menu en menuAnterior
   }
 
   return (
@@ -41,7 +42,7 @@ export default function Header() {
       <Image className="ml-4 -my-4" src={theme==="dark"?logoInvert:logoColor} height={50} width={50} alt="LOGO"/>
       <nav className="flex flex-col items-center gap-4 w-fit h-fit md:flex-row">
         <Link
-          className="hidden md:flex text-3xl transition-all duration-100 ease-in hover:text-tone-200 hover:scale-110"
+          className="hidden text-3xl transition-all duration-100 ease-in md:flex hover:text-tone-200 hover:scale-110"
           href="/"
         >
           <TiHome/>
@@ -64,7 +65,7 @@ export default function Header() {
           }`}
         >
           <Link
-          className="text-3xl -mb-4"
+          className="-mb-4 text-3xl"
           href="/"
         >
           <TiHome/>

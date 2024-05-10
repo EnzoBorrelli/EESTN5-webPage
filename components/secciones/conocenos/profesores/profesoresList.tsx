@@ -12,8 +12,11 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 export default function ProfesoresList() {
-  const searchParams = useSearchParams();
-  const profesores = searchParams.get("profesores");
+  const searchParams = useSearchParams(); //se utiliza para buscar parametros en la url
+  const profesores = searchParams.get("profesores"); //de la url se buscara el parametro profesores
+  /*la url se vera asi: "...../profesores?profesores=valor"
+  dependiendo del valor de este parametro, sera el componente que se mostrara (revisar switch case)
+  los botones son links que definiran el valor del parametro*/ 
 
   return (
     <>

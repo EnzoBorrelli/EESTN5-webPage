@@ -12,7 +12,7 @@ interface Profesor {
   descripcion: string;
   contacto: string;
 }
-
+//interfaz que recibe los datos del objeto profesor, proveniente del array pasado en profesoresList.tsx
 
 export default function ProfesorCards({
   profesores,
