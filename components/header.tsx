@@ -38,7 +38,7 @@ export default function Header() {
 
   return (
     <header className="relative flex items-center justify-between w-full py-4 shadow-sm shadow-bg-200 h-fit">
-      <Image className="ml-4 -my-4" src={theme==="light"?logoColor:logoInvert} height={50} width={50} alt="LOGO"/>
+      <Image className="ml-4 -my-4" src={theme==="dark"?logoInvert:logoColor} height={50} width={50} alt="LOGO"/>
       <nav className="flex flex-col items-center gap-4 w-fit h-fit md:flex-row">
         <Link
           className="hidden md:flex text-3xl transition-all duration-100 ease-in hover:text-tone-200 hover:scale-110"
