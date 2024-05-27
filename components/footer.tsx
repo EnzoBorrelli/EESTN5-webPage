@@ -24,7 +24,7 @@ export default function Footer() {
       <section className="flex items-center justify-center gap-4 -mb-4 md:gap-20">
         <ScrollTopBtn />
         <div className="flex items-center gap-2">
-        <Image className="ml-4 -my-2" src={theme==="light"?logoColor:logoInvert} height={40} width={40} alt="LOGO"/>
+        <Image className="ml-4 -my-2" src={theme==="dark"?logoInvert:logoColor} height={40} width={40} alt="LOGO"/>
           <p className="hidden text-center md:block">
             Escuela de Educación <br /> Secundaria Técnica N°5 <br />
             <span className="font-semibold">&quot;2 de Abril&quot;</span>
