@@ -18,6 +18,7 @@ import Image from "next/image";
 import logoColor from "./logo-color.svg"
 import logoInvert from "./logo-invert.svg"
 import { useTheme } from "next-themes";
+import AuthBtn from "./header/authBtn";
 
 export default function Header() {
   // optimizar esta pendejada que anda lenta
@@ -169,6 +170,7 @@ export default function Header() {
         <SubNavPC menu={selectedMenu} />
       </div>
       <div className="mr-4">
+        <AuthBtn/>
         <ThemeBtn />
       </div>
     </header>
