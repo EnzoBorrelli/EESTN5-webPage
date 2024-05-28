@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# EESTN5 Web Page
 
-## Getting Started
+## Introduction
+This project is the official website for Escuela Secundaria Técnica N°5. It is built using Next.js and aims to provide information and resources for students, parents, and staff.
 
-First, run the development server:
+## Table of Contents
+- [Introduction](#introduction)
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Dependencies](#dependencies)
+- [Configuration](#configuration)
+- [Documentation](#documentation)
+- [Examples](#examples)
+- [Troubleshooting](#troubleshooting)
+- [Contributors](#contributors)
+- [License](#license)
 
+## Installation
+To set up the project locally, follow these steps:
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/EnzoBorrelli/EESTN5-webPage.git
+    cd EESTN5-webPage
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+## Usage
+To run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Features
+- Homepage with school information
+- Sections for news, events, and announcements
+- Contact form for inquiries
 
-To learn more about Next.js, take a look at the following resources:
+## Dependencies
+- [Next.js](https://nextjs.org/) : React framework for server-rendered or statically-exported React applications
+- [Tailwind CSS](https://tailwindcss.com/): Utility-first CSS framework for styling
+- [TypeScript](https://www.typescriptlang.org/) : Typed superset of JavaScript
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Configuration
+This project uses a variety of configuration files:
+- next.config.mjs: Next.js configuration
+- .eslintrc.json: ESLint configuration
+- tsconfig.json: TypeScript configuration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+##Documentation
 
-## Deploy on Vercel
+https://i.redd.it/47g2dfxj3jf71.jpg
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+##Examples
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+You cand find examples of the project in action at [eestn-5-web-page.vercel.app.](https://eestn-5-web-page.vercel.app/)
+
+##Troubleshooting
+If you encounter any issues:
+1. Ensure all dependencies are installed correctly.
+2. Check for any configuration errors.
+3. Refer to the Next.js and Tailwind CSS documentation.
+
+##Contributors
+
+[Enzo Borrelli](https://github.com/EnzoBorrelli)
+
+##License
+
+This project is licenced under the MIT License
+
