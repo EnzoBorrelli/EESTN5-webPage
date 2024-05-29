@@ -1,3 +1,4 @@
+import ToNextPage from "@/components/ui/linkButtons/toNextPage";
 import React from "react";
 import { MdGroups } from "react-icons/md";
 
@@ -83,6 +84,7 @@ export default function Cooperadora() {
           </p>
         </article>
       </section>
+      <ToNextPage label="Ver Ciclo Básico" href="/ciclo-basico"/>
     </main>
   );
 }

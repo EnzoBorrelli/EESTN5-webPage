@@ -1,3 +1,4 @@
+import ToNextPage from "@/components/ui/linkButtons/toNextPage";
 import Image from "next/image";
 import React from "react";
 import { FaSchool } from "react-icons/fa6";
@@ -170,6 +171,7 @@ export default function CicloBasico() {
           </p>
         </article>
       </section>
+      <ToNextPage label="Ver Electrónica" href="/electronica" />
     </main>
   );
 }

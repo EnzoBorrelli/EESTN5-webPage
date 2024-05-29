@@ -1,4 +1,5 @@
 import { RedesSociales } from "@/components/navLinks";
+import ToNextPage from "@/components/ui/linkButtons/toNextPage";
 import Link from "next/link";
 import React from "react";
 import { MdWorkHistory } from "react-icons/md";
@@ -115,6 +116,7 @@ export default function Pasantia() {
           </ul>
         </article>
       </section>
+      <ToNextPage label="Conoce a nuestra Cooperadora" href="/cooperadora"/>
     </main>
   );
 }

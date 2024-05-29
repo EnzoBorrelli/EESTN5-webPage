@@ -1,7 +1,7 @@
 import AutoridadCard from "@/components/secciones/conocenos/autoridades/autoridadCard";
-import Link from "next/link";
+import ToNextPage from "@/components/ui/linkButtons/toNextPage";
 import React from "react";
-import { FaPersonWalkingArrowRight, FaUserTie } from "react-icons/fa6";
+import { FaUserTie } from "react-icons/fa6";
 
 export default function Autoridades() {
   return (
@@ -58,15 +58,7 @@ export default function Autoridades() {
           cargo="Automotor"
         />
       </section>
-      <Link
-        className="flex items-center justify-center gap-2 my-8 text-lg font-bold underline text-tone-200 md:text-xl group hover:text-accent-2"
-        href="/profesores"
-      >
-        Conoce a nuestros profesores
-        <i className="transition-transform duration-200 ease-in group-hover:translate-x-2">
-          <FaPersonWalkingArrowRight size={30} />
-        </i>
-      </Link>
+      <ToNextPage label="Conoce a nuestros profesores" href="/profesores"/>
     </main>
   );
 }

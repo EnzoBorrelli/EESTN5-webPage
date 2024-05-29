@@ -1,4 +1,5 @@
 import ProfesoresList from "@/components/secciones/conocenos/profesores/profesoresList";
+import ToNextPage from "@/components/ui/linkButtons/toNextPage";
 import React, { Suspense } from "react";
 
 export default function Profesores() {
@@ -11,6 +12,7 @@ export default function Profesores() {
       <Suspense>
       <ProfesoresList/>
       </Suspense>
+      <ToNextPage label="Aprende sobre nuestras pasantias" href="/pasantias" />
     </main>
   );
 }

@@ -6,7 +6,7 @@ import {
   Novedades,
   RedesSociales,
 } from "../../navLinks";
-import Link from "next/link";
+import ListLink from "@/components/ui/linkButtons/listLink";
 
 export default function SubNavPC({ menu }: { menu: string }) {
   return (
@@ -17,12 +17,7 @@ export default function SubNavPC({ menu }: { menu: string }) {
             return (
               <ul className="flex items-center gap-10 pl-4 text-xl font-semibold uppercase hover:text-text-300 text-text-200">
                 {Conocenos.map((link) => (
-                  <li
-                    key={link.name}
-                    className="relative w-fit hover:text-text-100 hover:font-bold after:block after:content-[''] after:absolute after:h-[3px] after:bg-accent-2 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
-                  >
-                    <Link href={link.href}>{link.name}</Link>
-                  </li>
+                  <ListLink link={link}/>
                 ))}
               </ul>
             );
@@ -30,12 +25,7 @@ export default function SubNavPC({ menu }: { menu: string }) {
             return (
               <ul className="flex items-center gap-10 pl-4 text-xl font-semibold uppercase text-text-200">
                 {Especialidades.map((link) => (
-                  <li
-                    key={link.name}
-                    className="relative w-fit hover:text-text-100 hover:font-bold after:block after:content-[''] after:absolute after:h-[3px] after:bg-accent-2 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
-                  >
-                    <Link href={link.href}>{link.name}</Link>
-                  </li>
+                  <ListLink link={link}/>
                 ))}
               </ul>
             );
@@ -43,12 +33,7 @@ export default function SubNavPC({ menu }: { menu: string }) {
             return (
               <ul className="flex items-center gap-10 pl-4 text-xl font-semibold uppercase text-text-200">
                 {Comunidad.map((link) => (
-                  <li
-                    key={link.name}
-                    className="relative w-fit hover:text-text-100 hover:font-bold after:block after:content-[''] after:absolute after:h-[3px] after:bg-accent-2 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
-                  >
-                    <Link href={link.href}>{link.name}</Link>
-                  </li>
+                  <ListLink link={link}/>
                 ))}
               </ul>
             );
@@ -56,12 +41,7 @@ export default function SubNavPC({ menu }: { menu: string }) {
             return (
               <ul className="flex items-center gap-10 pl-4 text-xl font-semibold uppercase text-text-200">
                 {Novedades.map((link) => (
-                  <li
-                    key={link.name}
-                    className="relative w-fit hover:text-text-100 hover:font-bold after:block after:content-[''] after:absolute after:h-[3px] after:bg-accent-2 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
-                  >
-                    <Link href={link.href}>{link.name}</Link>
-                  </li>
+                  <ListLink link={link}/>
                 ))}
               </ul>
             );
