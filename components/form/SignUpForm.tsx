@@ -70,14 +70,14 @@ const SignUpForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full md:w-1/3 bg-bg-200 p-4 rounded-md">
         <div className="space-y-2">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Nombre</FormLabel>
+                <FormLabel className="font-bold">Nombre</FormLabel>
                 <FormControl>
                   <Input placeholder="nombre de usuario" {...field} />
                 </FormControl>
@@ -90,7 +90,7 @@ const SignUpForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Correo</FormLabel>
+                <FormLabel className="font-bold">Correo</FormLabel>
                 <FormControl>
                   <Input placeholder="correo@ejemplo.com" {...field} />
                 </FormControl>
@@ -103,7 +103,7 @@ const SignUpForm = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Contraseña</FormLabel>
+                <FormLabel className="font-bold">Contraseña</FormLabel>
                 <FormControl>
                   <Input
                     type="password"
@@ -120,7 +120,7 @@ const SignUpForm = () => {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Confirmar contraseña</FormLabel>
+                <FormLabel className="font-bold">Confirmar contraseña</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Re-ingrese su contraseña"
@@ -133,7 +133,7 @@ const SignUpForm = () => {
             )}
           />
         </div>
-        <Button className="w-full mt-6" type="submit">
+        <Button className="w-full mt-6 bg-accent-2 font-bold hover:bg-tone-100" type="submit">
           Registrarse
         </Button>
       </form>
