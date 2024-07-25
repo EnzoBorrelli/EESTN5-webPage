@@ -14,26 +14,27 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import GoogleSignInButton from "../GoogleSignInForm";
 import { useRouter } from "next/navigation";
+import { useToast } from "../ui/use-toast";
 
 const FormSchema = z
   .object({
-    name: z.string().min(1, "Username is required").max(100),
-    email: z.string().min(1, "Email is required").email("Invalid email"),
+    name: z.string().min(1, "El nombre es obligatorio").max(100),
+    email: z.string().min(1, "El correo es obligatorio").email("Correo no valido"),
     password: z
       .string()
-      .min(1, "Password is required")
-      .min(8, "Password must have than 8 characters"),
-    confirmPassword: z.string().min(1, "Password confirmation is required"),
+      .min(1, "La contraseña es obligatoria")
+      .min(8, "La contraseña debe contener almenos 8 caracteres"),
+    confirmPassword: z.string().min(1, "La confirmacion de contraseña es obligatoria"),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
-    message: "Password do not match",
+    message: "Las contraseñas no coinciden",
   });
 
 const SignUpForm = () => {
   const router = useRouter();
+  const {toast} = useToast()
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -59,7 +60,11 @@ const SignUpForm = () => {
     if (response.ok) {
       router.push("/sign-in");
     } else {
-      console.error("registration failed");
+      toast({
+        title: "Error de registro",
+        description: "Ha ocurrido un error, intente nuevamente",
+        variant: 'destructive'
+      });
     }
   };
 
@@ -72,9 +77,9 @@ const SignUpForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Nombre</FormLabel>
                 <FormControl>
-                  <Input placeholder="johndoe" {...field} />
+                  <Input placeholder="nombre de usuario" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -85,9 +90,9 @@ const SignUpForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Correo</FormLabel>
                 <FormControl>
-                  <Input placeholder="mail@example.com" {...field} />
+                  <Input placeholder="correo@ejemplo.com" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -98,11 +103,11 @@ const SignUpForm = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>Contraseña</FormLabel>
                 <FormControl>
                   <Input
                     type="password"
-                    placeholder="Enter your password"
+                    placeholder="Ingrese una contraseña"
                     {...field}
                   />
                 </FormControl>
@@ -115,10 +120,10 @@ const SignUpForm = () => {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Re-Enter your password</FormLabel>
+                <FormLabel>Confirmar contraseña</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Re-Enter your password"
+                    placeholder="Re-ingrese su contraseña"
                     type="password"
                     {...field}
                   />
@@ -129,17 +134,13 @@ const SignUpForm = () => {
           />
         </div>
         <Button className="w-full mt-6" type="submit">
-          Sign up
+          Registrarse
         </Button>
       </form>
-      <div className="mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400">
-        or
-      </div>
-      <GoogleSignInButton>Sign up with Google</GoogleSignInButton>
       <p className="text-center text-sm text-gray-600 mt-2">
-        If you don&apos;t have an account, please&nbsp;
+        Si ya posee una cuenta, Porfavor&nbsp;
         <Link className="text-blue-500 hover:underline" href="/sign-in">
-          Sign in
+          Iniciar sesión
         </Link>
       </p>
     </Form>

@@ -4,6 +4,7 @@ import "./globals.css";
 import Providers from "@/providers";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { Toaster } from "@/components/ui/toaster";
 
 const fontType = Open_Sans({ weight: "400", subsets: ["latin"] });
 
@@ -22,11 +23,14 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body className={`${fontType.className} size-full bg-bg-100 flex flex-col`}>
+        <main>
         <Providers>
           <Header />
           {children}
           <Footer />
         </Providers>
+        </main>
+        <Toaster/>
       </body>
     </html>
   );
