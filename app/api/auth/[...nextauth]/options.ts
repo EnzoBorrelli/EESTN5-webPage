@@ -11,7 +11,7 @@ export const options: NextAuthOptions = {
     strategy: "jwt",
   },
   pages: {
-    signIn: "sign-in",
+    signIn: "/sign-in",
   },
   providers: [
     CredentialsProvider({
@@ -57,12 +57,22 @@ export const options: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       // hacemos que el rol del usuario persista mediante cookies
-      if (user) token.role = user.role;
+      if (user){
+        return{
+          ...token,
+          role:user.role
+        }
+      }
       return token;
     },
     async session({ session, token }) {
-      if (session?.user) session.user.role = token.role;
-      return session;
+      return{
+        ...session,
+        user:{
+          ...session.user,
+          role:token.role
+        }
+      }
     },
   },
 };

@@ -1,9 +1,9 @@
-"use client"; //borrar
-import { useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
 import React from "react";
+import { options } from "./api/auth/[...nextauth]/options";
 
-export default function Home() {
-  const { data: session } = useSession();
+export default async function Home() {
+  const session = await getServerSession(options);
   const user = session?.user;
   return (
     <main className="flex flex-col items-center justify-center gap-2 size-full">
