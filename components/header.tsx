@@ -9,16 +9,14 @@ import {
   IoIosArrowDropleft,
 } from "react-icons/io";
 import { GiHamburgerMenu, GiTireIronCross } from "react-icons/gi";
-import { MdPhone } from "react-icons/md";
 import { TiHome } from "react-icons/ti";
 import SubNavMobile from "./header/subNav/subNavMobile";
 import SubNavPC from "./header/subNav/subNavPC";
 import Link from "next/link";
-import Image from "next/image";
-import logoColor from "./logo-color.svg"
-import logoInvert from "./logo-invert.svg"
-import { useTheme } from "next-themes";
 import AuthBtn from "./header/authBtn";
+import ContactLink from "./ui/linkButtons/contactLink";
+import NavLabel from "./ui/linkButtons/navLabel";
+import Logo from "./ui/logoImg/logo";
 
 export default function Header() {
   // optimizar esta pendejada que anda lenta
@@ -26,7 +24,6 @@ export default function Header() {
   const [prevSelectedMenu, setPrevSelectedMenu] = useState(""); //guardar estado anterior para logica de funcion
   const [menu, setMenu] = useState(false); // abrir cerrar submenu
   const [navMenu, setNavMenu] = useState(false); // abrir cerrar menu hamburguesa de movil
-  const {theme} = useTheme();
 
   function setActiveMenu(menuKey: string) {
     setSelectedMenu(menuKey); //setear valor de menu al menu actual
@@ -40,7 +37,7 @@ export default function Header() {
 
   return (
     <header className="relative flex items-center justify-between w-full py-4 shadow-sm shadow-bg-200 h-fit">
-      <Image className="ml-4 -my-4" src={theme==="dark"?logoInvert:logoColor} height={50} width={50} alt="LOGO"/>
+      <Logo size={50}/>
       <nav className="flex flex-col items-center gap-4 w-fit h-fit md:flex-row">
         <Link
           className="hidden text-3xl transition-all duration-100 ease-in md:flex hover:text-tone-200 hover:scale-110"
@@ -107,13 +104,7 @@ export default function Header() {
               )
             )}
           </ul>
-          <Link
-            className="flex items-center text-lg font-bold"
-            href="/contacto"
-          >
-            <MdPhone size={20} />
-            Contáctanos
-          </Link>
+          <ContactLink/>
         </ul>
         {/* links PC*/}
         <ul className="items-center hidden gap-4 md:flex">
@@ -132,23 +123,11 @@ export default function Header() {
                     <IoIosArrowDown />
                   </i>
                 )}
-                <h2 className="text-lg font-bold relative w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-tone-200 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-right">
-                  {link.name}
-                </h2>
+                <NavLabel label={link.name}/>
               </button>
             </li>
           ))}
-          <Link
-            className="flex items-center justify-center group"
-            href="/contacto"
-          >
-            <i className="transition-transform duration-200 group-hover:rotate-90">
-              <MdPhone size={20} />
-            </i>
-            <h2 className="text-lg font-bold relative w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-tone-200 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-right">
-              Contáctanos
-            </h2>
-          </Link>
+          <ContactLink/>
         </ul>
       </nav>
       <div

@@ -7,16 +7,12 @@ import {
   Novedades,
   RedesSociales,
 } from "./navLinks";
-import Link from "next/link";
-import { MdPhone } from "react-icons/md";
 import ScrollTopBtn from "./footer/scrollTopBtn";
-import Image from "next/image";
-import { useTheme } from "next-themes";
-import logoColor from "./logo-color.svg"
-import logoInvert from "./logo-invert.svg"
+import ListLink from "./ui/linkButtons/listLink";
+import ContactLink from "./ui/linkButtons/contactLink";
+import Logo from "./ui/logoImg/logo";
 
 export default function Footer() {
-  const {theme} = useTheme();
   return (
     <footer className="flex flex-col w-full gap-8 pt-4 divide-y-2 divide-bg-300 bg-bg-200 h-fit">
 
@@ -24,7 +20,7 @@ export default function Footer() {
       <section className="flex items-center justify-center gap-4 -mb-4 md:gap-20">
         <ScrollTopBtn />
         <div className="flex items-center gap-2">
-        <Image className="ml-4 -my-2" src={theme==="dark"?logoInvert:logoColor} height={40} width={40} alt="LOGO"/>
+        <Logo size={40}/>
           <p className="hidden text-center md:block">
             Escuela de Educación <br /> Secundaria Técnica N°5 <br />
             <span className="font-semibold">&quot;2 de Abril&quot;</span>
@@ -34,14 +30,7 @@ export default function Footer() {
             <span className="font-semibold">&quot;2 de Abril&quot;</span>
           </p>
         </div>
-        <Link className="flex items-center justify-center group" href="/contacto">
-          <i className="transition-transform duration-200 group-hover:rotate-90">
-            <MdPhone size={20} />
-          </i>
-          <h2 className="text-lg font-bold relative w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-tone-200 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-right">
-            Contáctanos
-          </h2>
-        </Link>
+        <ContactLink/>
       </section>
 
       {/* seccion mid | secciones y subsecciones */}
@@ -50,12 +39,7 @@ export default function Footer() {
           <h2 className="text-lg font-bold uppercase">Conócenos</h2>
           <ul className="flex flex-col items-center">
             {Conocenos.map((link) => (
-              <li
-                key={link.name}
-                className="relative w-fit hover:text-text-100 hover:font-bold after:block after:content-[''] after:absolute after:h-[3px] after:bg-accent-2 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
-              >
-                <Link href={link.href}>{link.name}</Link>
-              </li>
+              <ListLink link={link}/>
             ))}
           </ul>
         </nav>
@@ -63,12 +47,7 @@ export default function Footer() {
           <h2 className="text-lg font-bold uppercase">Especialidades</h2>
           <ul className="flex flex-col items-center">
             {Especialidades.map((link) => (
-              <li
-                key={link.name}
-                className="relative w-fit hover:text-text-100 hover:font-bold after:block after:content-[''] after:absolute after:h-[3px] after:bg-accent-2 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
-              >
-                <Link href={link.href}>{link.name}</Link>
-              </li>
+              <ListLink link={link}/>
             ))}
           </ul>
         </nav>
@@ -76,12 +55,7 @@ export default function Footer() {
           <h2 className="text-lg font-bold text-center uppercase">Comunidad</h2>
           <ul className="flex flex-col items-center">
             {Comunidad.map((link) => (
-              <li
-                key={link.name}
-                className="relative w-fit hover:text-text-100 hover:font-bold after:block after:content-[''] after:absolute after:h-[3px] after:bg-accent-2 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
-              >
-                <Link href={link.href}>{link.name}</Link>
-              </li>
+              <ListLink link={link}/>
             ))}
           </ul>
         </nav>
@@ -89,12 +63,7 @@ export default function Footer() {
           <h2 className="text-lg font-bold uppercase">Novedades</h2>
           <ul className="flex flex-col items-center">
             {Novedades.map((link) => (
-              <li
-                key={link.name}
-                className="relative w-fit hover:text-text-100 hover:font-bold after:block after:content-[''] after:absolute after:h-[3px] after:bg-accent-2 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
-              >
-                <Link href={link.href}>{link.name}</Link>
-              </li>
+              <ListLink link={link}/>
             ))}
           </ul>
         </nav>
