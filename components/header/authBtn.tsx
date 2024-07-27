@@ -8,9 +8,9 @@ export default function AuthBtn() {
   return (
     <>
       {session ? (
-        <button onClick={() => signOut()}>salir</button>
+        <button onClick={() => signOut()}>Cerrar sesión</button>
       ) : (
-        <button onClick={() => signIn()}>entrar</button>
+        <button onClick={() => signIn()}>Iniciar sesión</button>
       )}
     </>
   );

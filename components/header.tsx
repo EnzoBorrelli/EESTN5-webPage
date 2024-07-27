@@ -13,10 +13,10 @@ import { TiHome } from "react-icons/ti";
 import SubNavMobile from "./header/subNav/subNavMobile";
 import SubNavPC from "./header/subNav/subNavPC";
 import Link from "next/link";
-import AuthBtn from "./header/authBtn";
 import ContactLink from "./ui/linkButtons/contactLink";
 import NavLabel from "./ui/linkButtons/navLabel";
 import Logo from "./ui/logoImg/logo";
+import UserBtn from "./header/userBtn";
 
 export default function Header() {
   // optimizar esta pendejada que anda lenta
@@ -148,8 +148,8 @@ export default function Header() {
       >
         <SubNavPC menu={selectedMenu} />
       </div>
-      <div className="mr-4">
-        <AuthBtn/>
+      <div className="mr-4 md:-ml-8 md:mr-8 flex gap-4 justify-center">
+        <UserBtn/>
         <ThemeBtn />
       </div>
     </header>
