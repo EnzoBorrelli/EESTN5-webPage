@@ -1,96 +1,74 @@
 "use client";
-import React from "react";
-import ProfesorCards from "@/components/secciones/conocenos/profesores/profesorCard";
-import {
-  profesoresAutomotor,
-  profesoresBasico,
-  profesoresElectromecanica,
-  profesoresElectronica,
-  todosLosProfesores,
-} from "./profesores";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
+import React, { useState } from "react";
+import ProfesorCard from "@/components/secciones/conocenos/profesores/profesorCard";
+import { Profesor } from "@/types/profesor";
 
-export default function ProfesoresList() {
-  const searchParams = useSearchParams(); //se utiliza para buscar parametros en la url
-  const profesores = searchParams.get("profesores"); //de la url se buscara el parametro profesores
-  /*la url se vera asi: "...../profesores?profesores=valor"
-  dependiendo del valor de este parametro, sera el componente que se mostrara (revisar switch case)
-  los botones son links que definiran el valor del parametro*/ 
+export default function ProfesoresList({
+  profesores,
+}: {
+  profesores: Profesor[];
+}) {
+  const [filtro, setFiltro] = useState(profesores);
+  const [especialidad, setEspecialidad] = useState('todos');
 
+  function filtroProfesores(especialidad: string) {
+    if (especialidad !== "todos") {
+      setFiltro(
+        profesores.filter(
+          (profesor) => profesor.specialization === especialidad
+        )
+      );
+      setEspecialidad(especialidad);
+    } else {
+      setFiltro(profesores);
+      setEspecialidad('todos');
+    }
+  }
   return (
     <>
       <div className="grid w-full grid-cols-2 gap-2 px-4 my-4 font-bold md:px-0 md:justify-center md:flex text-md sm:text-lg md:text-xl">
-        <Link
-        href={'/profesores?profesores=todos'}
+        <button
+        onClick={()=>filtroProfesores('todos')}
           className={`px-4 py-2 transition-all duration-150 ease-in-out text-bg-100 rounded-ss-xl md:rounded-s-xl hover:rounded-xl ${
-            profesores === "todos" ? "bg-accent-2" : "bg-accent-1"
+            especialidad === "todos" ? "bg-accent-2" : "bg-accent-1"
           } `}
-          
         >
           todos
-        </Link>
-        <Link
-        href={'/profesores?profesores=electronica'}
+        </button>
+        <button
+        onClick={()=>filtroProfesores('electronica')}
           className={`px-4 py-2 transition-all duration-150 ease-in-out text-bg-100 rounded-se-xl md:rounded-se-none hover:rounded-xl ${
-            profesores === "electronica" ? "bg-accent-2" : "bg-accent-1"
+            especialidad === "electronica" ? "bg-accent-2" : "bg-accent-1"
           }`}
-          
         >
           electronica
-        </Link>
-        <Link
-        href={'/profesores?profesores=electromecanica'}
+        </button>
+        <button
+        onClick={()=>filtroProfesores('electromecanica')}
           className={`px-4 py-2 transition-all duration-150 ease-in-out text-bg-100 hover:rounded-xl ${
-            profesores === "electromecanica" ? "bg-accent-2" : "bg-accent-1"
+            especialidad === "electromecanica" ? "bg-accent-2" : "bg-accent-1"
           }`}
-          
         >
           electromecanica
-        </Link>
-        <Link
-        href={'/profesores?profesores=automotor'}
+        </button>
+        <button
+        onClick={()=>filtroProfesores('automotor')}
           className={`px-4 py-2 transition-all duration-150 ease-in-out text-bg-100 hover:rounded-xl ${
-            profesores === "automotor" ? "bg-accent-2" : "bg-accent-1"
+            especialidad === "automotor" ? "bg-accent-2" : "bg-accent-1"
           }`}
-          
         >
           automotor
-        </Link>
-        <Link
-        href={'/profesores?profesores=basico'}
+        </button>
+        <button
+        onClick={()=>filtroProfesores('basico')}
           className={`px-4 py-2 col-span-2 transition-all duration-150 ease-in-out text-bg-100 rounded-b-xl md:rounded-l-none md:rounded-e-xl hover:rounded-xl ${
-            profesores === "basico" ? "bg-accent-2" : "bg-accent-1"
+            especialidad === "basico" ? "bg-accent-2" : "bg-accent-1"
           }`}
-          
         >
           basico
-        </Link>
+        </button>
       </div>
-      {(() => {
-        switch (profesores) {
-          case "electronica": {
-            return <ProfesorCards profesores={profesoresElectronica} />;
-            break;
-          }
-          case "electromecanica": {
-            return <ProfesorCards profesores={profesoresElectromecanica} />;
-            break;
-          }
-          case "automotor": {
-            return <ProfesorCards profesores={profesoresAutomotor} />;
-            break;
-          }
-          case "basico": {
-            return <ProfesorCards profesores={profesoresBasico} />;
-            break;
-          }
-          default: {
-            return <ProfesorCards profesores={todosLosProfesores} />;
-            break;
-          }
-        }
-      })()}
+      <ProfesorCard profesores={filtro} />
     </>
   );
 }

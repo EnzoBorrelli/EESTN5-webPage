@@ -21,7 +21,9 @@ export default function UserBtn() {
     <div className="flex mr-4 -ml-4">
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <Avatar className="ring-text-200 ring-1 size-8">
+          <Avatar
+            className="ring-text-200 bg-bg-200 ring-2 size-8"
+          >
             <AvatarImage
               src={user?.name || "/imgs/userDefault.png"}
               alt={user?.name || "na"}
@@ -45,6 +47,13 @@ export default function UserBtn() {
                 <DropdownMenuItem>
                   <Link href="/recordatorios">Recordatorios</Link>
                 </DropdownMenuItem>
+                {user?.role === "admin" ? (
+                  <DropdownMenuItem>
+                    <Link href="/dashboard">Panel de control</Link>
+                  </DropdownMenuItem>
+                ) : (
+                  ""
+                )}
               </DropdownMenuGroup>
             </>
           ) : (

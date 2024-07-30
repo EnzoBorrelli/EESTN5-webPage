@@ -1,38 +1,20 @@
-import {
-  profesoresAutomotor,
-  profesoresBasico,
-  profesoresElectromecanica,
-  profesoresElectronica,
-} from "@/components/secciones/conocenos/profesores/profesores";
+import { db } from "@/lib/db";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaLinkedin } from "react-icons/fa6";
 import { HiArrowLeftOnRectangle } from "react-icons/hi2";
 import { IoArrowRedo } from "react-icons/io5";
 import { MdMail } from "react-icons/md";
 
-interface Profesor {
-  nombre: string;
-  img: string;
-  carrera: string;
-  linkedin: string;
-  descripcion: string;
-  contacto: string;
-}
 
-export default function Profesor({
+export default async function Profesor({
   params,
 }: {
   params: { profesorID: string };
 }) {
-  const profesores = profesoresAutomotor.concat(
-    profesoresBasico,
-    profesoresElectromecanica,
-    profesoresElectronica
-  );
+  const profesores = await db.teacher.findMany();
   const profesor = profesores.filter(
-    (profesor) => profesor.nombre === params.profesorID.replace(/%20/g, " ")
+    (profesor) => profesor.name === params.profesorID.replace(/%20/g, " ")
   );
   return (
     <main className="px-4 py-4 md:px-10 size-full">
@@ -49,59 +31,40 @@ export default function Profesor({
         {profesor.map((profe) => (
           <article
             className="grid w-full grid-cols-1 grid-rows-2 gap-4 px-4 overflow-hidden divide-y-2 shadow shadow-accent-2 md:w-2/3 lg:px-8 divide-bg-200 justify-items-center"
-            key={profe.nombre}
+            key={profe.name}
           >
             <div className="flex flex-col items-center justify-center gap-4 pt-4 md:flex-row">
               <span className="flex flex-col items-center p-2 rounded-md md:w-1/4 ring-2 ring-bg-300 bg-bg-200 md:p-1">
                 <Image
                   className="rounded-md"
-                  src={profe.img}
-                  alt={profe.nombre}
+                  src='/imgs/teacherDefault.jpg'
+                  alt={profe.name}
                   width={150}
                   height={150}
                 />
                 <h3 className="text-lg font-semibold text-center text-text-200">
-                  {profe.nombre}
+                  {profe.name}
                 </h3>
                 <h4 className="text-center text-md text-text-200">
-                  {profe.carrera}
+                  {profe.career}
                 </h4>
               </span>
               <p className="text-center md:w-2/3 md:text-left">
-                {profe.descripcion}
+                {profe.description}
               </p>
             </div>
             <div className="flex flex-col items-start w-full gap-2 pt-4">
               <h3 className="w-full text-lg font-bold text-center md:text-xl">
                 INFORMACIÓN DE CONTACTO
               </h3>
-              <span>
-                <h4 className="flex items-center gap-1">
-                  <FaLinkedin size={24} />:
-                  {profe.linkedin !== "nulo" ? (
-                    <a
-                      className="flex items-center gap-1 font-bold group text-tone-300 hover:text-accent-2"
-                      href={profe.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {profe.nombre}{" "}
-                      <i className="transition-transform duration-150 ease-in group-hover:translate-x-2">
-                        <IoArrowRedo />
-                      </i>
-                    </a>
-                  ) : (
-                    "No posee o no se pudo ubicar"
-                  )}
-                </h4>
                 <h4 className="flex items-center w-full gap-1">
                   <MdMail size={24} />:
-                  {profe.contacto !== "nulo" ? (
+                  {profe.contact !== "nulo" ? (
                     <a
                       className="flex items-center gap-1 font-bold group text-tone-300 hover:text-accent-2"
-                      href={`mailto:${profe.contacto}`}
+                      href={`mailto:${profe.contact}`}
                     >
-                      {profe.contacto}{" "}
+                      {profe.contact}{" "}
                       <i className="transition-transform duration-150 ease-in group-hover:translate-x-2">
                         <IoArrowRedo />
                       </i>
@@ -110,7 +73,6 @@ export default function Profesor({
                     "No posee o no se pudo ubicar"
                   )}
                 </h4>
-              </span>
             </div>
           </article>
         ))}

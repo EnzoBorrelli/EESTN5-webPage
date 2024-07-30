@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, {useState } from "react";
 import ThemeBtn from "./header/themeSwitch";
 import { navLinks, RedesSociales } from "./navLinks";
 import {
@@ -27,23 +27,24 @@ export default function Header() {
 
   function setActiveMenu(menuKey: string) {
     setSelectedMenu(menuKey); //setear valor de menu al menu actual
-    if (prevSelectedMenu !== menuKey || !selectedMenu) { // si el menu anterior es diferente al menu actual o no hay menu actual, se abrira el menu
-      setMenu(true)
+    if (prevSelectedMenu !== menuKey || !selectedMenu) {
+      // si el menu anterior es diferente al menu actual o no hay menu actual, se abrira el menu
+      setMenu(true);
     } else {
-      setMenu(!menu); //cualquier caso diferente, se invierte el estado de menu 
+      setMenu(!menu); //cualquier caso diferente, se invierte el estado de menu
     }
     setPrevSelectedMenu(selectedMenu); // se guarda el valor del menu en menuAnterior
   }
 
   return (
     <header className="relative flex items-center justify-between w-full py-4 shadow-sm shadow-bg-200 h-fit">
-      <Logo size={50}/>
+      <Logo size={50} />
       <nav className="flex flex-col items-center gap-4 w-fit h-fit md:flex-row">
         <Link
           className="hidden text-3xl transition-all duration-100 ease-in md:flex hover:text-tone-200 hover:scale-110"
           href="/"
         >
-          <TiHome/>
+          <TiHome />
         </Link>
         <button
           onClick={() => setNavMenu(!navMenu)} // abrir cerrar menu
@@ -62,12 +63,9 @@ export default function Header() {
               : "pointer-events-none h-0 opacity-0"
           }`}
         >
-          <Link
-          className="-mb-4 text-3xl"
-          href="/"
-        >
-          <TiHome/>
-        </Link>
+          <Link className="-mb-4 text-3xl" href="/">
+            <TiHome />
+          </Link>
           {navLinks.map(
             (
               link //mapeamos los links de la constante
@@ -104,7 +102,7 @@ export default function Header() {
               )
             )}
           </ul>
-          <ContactLink/>
+          <ContactLink />
         </ul>
         {/* links PC*/}
         <ul className="items-center hidden gap-4 md:flex">
@@ -123,11 +121,11 @@ export default function Header() {
                     <IoIosArrowDown />
                   </i>
                 )}
-                <NavLabel label={link.name}/>
+                <NavLabel label={link.name} />
               </button>
             </li>
           ))}
-          <ContactLink/>
+          <ContactLink />
         </ul>
       </nav>
       <div
@@ -149,7 +147,7 @@ export default function Header() {
         <SubNavPC menu={selectedMenu} />
       </div>
       <div className="mr-4 md:-ml-8 md:mr-8 flex gap-4 justify-center">
-        <UserBtn/>
+        <UserBtn />
         <ThemeBtn />
       </div>
     </header>

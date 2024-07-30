@@ -48,8 +48,7 @@ export const options: NextAuthOptions = {
           id:`${existingUser.id}`,
           name: existingUser.name,
           email: existingUser.email,
-          role:existingUser.role,
-          image:existingUser.image
+          role:existingUser.role
         };
       },
     }),

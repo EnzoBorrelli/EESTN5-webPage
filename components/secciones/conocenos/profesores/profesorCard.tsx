@@ -2,19 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { FaCirclePlus } from "react-icons/fa6";
+import { Profesor } from "@/types/profesor";
 
 
-interface Profesor {
-  nombre: string;
-  img: string;
-  carrera: string;
-  linkedin: string;
-  descripcion: string;
-  contacto: string;
-}
+
 //interfaz que recibe los datos del objeto profesor, proveniente del array pasado en profesoresList.tsx
 
-export default function ProfesorCards({
+export default function ProfesorCard({
   profesores,
 }: {
   profesores: Profesor[];
@@ -25,25 +19,25 @@ export default function ProfesorCards({
       {profesores.map((profesor) => (
         <div
           className="flex flex-col items-center justify-between p-2 rounded-lg bg-bg-200 w-44"
-          key={profesor.nombre}
+          key={profesor.name}
         >
           <>
             <Image
               className="rounded-md"
-              src={profesor.img}
-              alt={profesor.nombre}
+              src='/imgs/teacherDefault.jpg'
+              alt={profesor.name}
               width={150}
               height={150}
             />
             <h3 className="text-lg font-semibold text-center text-text-200">
-              {profesor.nombre}
+              {profesor.name}
             </h3>
             <h4 className="text-center text-md text-text-200">
-              {profesor.carrera}
+              {profesor.career}
             </h4>
           </>
           <Link
-            href={`/profesores/${profesor.nombre}`}
+            href={`/profesores/${profesor.name}`}
             className="flex items-center justify-center gap-2 px-2 mt-6 rounded-md bg-bg-300 hover:bg-accent-2"
           >
             saber más

@@ -1,11 +1,10 @@
-import Image from "next/image";
+import TeacherForm from "@/components/form/TeacherForm";
 import React from "react";
-import placeholder from "./dash-placeholder.png";
 
-export default function Dashboard() {
+export default function dashboard() {
   return (
-    <main className="size-full p-4 flex justify-center items-center">
-      <Image src={placeholder} alt="" height={900} width={1720} />
-    </main>
+    <div className='w-full flex flex-col gap-4 items-center px-10 md:px-20 py-10'>
+      <TeacherForm />
+    </div>
   );
 }
