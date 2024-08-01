@@ -14,15 +14,15 @@ const teacherSchema = z.object({
       }),
     }
   ),
-  career: z.string().min(1, "Este campo es necesario").max(25),
+  asignature: z.string().min(1, "Este campo es necesario").max(100),
   description: z.string().min(1, "Este campo es necesario").max(350),
-  contact: z.string().min(1, "Este campo es necesario"),
+  contact: z.string().email('correo no valido'),
 });
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, specialization, career, description, contact } =
+    const { name, specialization, asignature, description, contact } =
       teacherSchema.parse(body);
 
     // Check if a teacher with the same name already exists
@@ -42,7 +42,7 @@ export async function POST(req: Request) {
       data: {
         name,
         specialization,
-        career,
+        asignature,
         description,
         contact,
       },

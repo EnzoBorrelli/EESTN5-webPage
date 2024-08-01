@@ -33,9 +33,9 @@ const FormSchema = z.object({
       }),
     }
   ),
-  career: z.string().min(1, "Este campo es necesario").max(25),
+  asignature: z.string().min(1, "Este campo es necesario").max(100),
   description: z.string().min(1, "Este campo es necesario").max(350),
-  contact: z.string().min(1, "Este campo es necesario"),
+  contact: z.string().email('correo no valido')
 });
 
 const TeacherForm = () => {
@@ -44,7 +44,7 @@ const TeacherForm = () => {
     resolver: zodResolver(FormSchema),
     defaultValues: {
       name: "",
-      career: "",
+      asignature: "",
       description: "",
       contact: "",
     },
@@ -59,7 +59,7 @@ const TeacherForm = () => {
       body: JSON.stringify({
         name: values.name,
         specialization: values.specialization,
-        career: values.career,
+        asignature: values.asignature,
         description: values.description,
         contact: values.contact,
       }),
@@ -115,12 +115,12 @@ const TeacherForm = () => {
           />
           <FormField
             control={form.control}
-            name="career"
+            name="asignature"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-bold">Carrera</FormLabel>
+                <FormLabel className="font-bold">Asignaturas a dictar {"(separar con comas)"}</FormLabel>
                 <FormControl>
-                  <Input placeholder="carrera" {...field} />
+                  <Input placeholder="asignaturas" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -144,9 +144,9 @@ const TeacherForm = () => {
             name="contact"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-bold">Contacto</FormLabel>
+                <FormLabel className="font-bold">Correo de contacto</FormLabel>
                 <FormControl>
-                  <Input placeholder="Ingrese correo de contacto" {...field} />
+                  <Input placeholder="Dejar vacio si no aplica" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

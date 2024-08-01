@@ -2,6 +2,12 @@ import Image from "next/image";
 import React from "react";
 import { Profesor } from "@/types/profesor";
 import ProfesorExtra from "./profesorExtra";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 //interfaz que recibe los datos del objeto profesor, proveniente del array pasado en profesoresList.tsx
 
@@ -28,11 +34,32 @@ export default function ProfesorCard({
             <h3 className="text-lg font-semibold text-center text-text-200">
               {profesor.name}
             </h3>
-            <h4 className="text-center text-md text-text-200">
-              {profesor.career}
-            </h4>
+            <h4 className="mb-2">Asignaturas:</h4>
+            <div className="grid grid-cols-2 grid-rows-2 gap-2">
+              {profesor.asignature?.split(",").map((asignature, index) => (
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <h4
+                        className="max-w-16 truncate bg-accent-2 px-1 rounded-md text-sm"
+                        key={index}
+                      >
+                        {asignature}
+                      </h4>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{asignature}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              ))}
+            </div>
           </>
-          <ProfesorExtra name={profesor.name} description={profesor.description} contact={profesor.contact}/>
+          <ProfesorExtra
+            name={profesor.name}
+            description={profesor.description}
+            contact={profesor.contact}
+          />
         </div>
       ))}
     </section>
