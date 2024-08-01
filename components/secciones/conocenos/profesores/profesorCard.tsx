@@ -37,9 +37,9 @@ export default function ProfesorCard({
             <h4 className="mb-2">Asignaturas:</h4>
             <div className="grid grid-cols-2 grid-rows-2 gap-2">
               {profesor.asignature?.split(",").map((asignature, index) => (
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger>
+                <TooltipProvider key={index}>
+                  <Tooltip key={index}>
+                    <TooltipTrigger key={index}>
                       <h4
                         className="max-w-16 truncate bg-accent-2 px-1 rounded-md text-sm"
                         key={index}
@@ -47,8 +47,8 @@ export default function ProfesorCard({
                         {asignature}
                       </h4>
                     </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{asignature}</p>
+                    <TooltipContent key={index}>
+                      <p key={index}>{asignature}</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
