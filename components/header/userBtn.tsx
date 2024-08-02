@@ -42,9 +42,6 @@ export default function UserBtn() {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  <Link href="/perfil">Perfil</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
                   <Link href="/recordatorios">Recordatorios</Link>
                 </DropdownMenuItem>
                 {user?.role === "admin" ? (

@@ -57,7 +57,7 @@ export default function ProfesorExtra({
                 </i>
               </h4>
             </AlertDialogTrigger>
-            {contact === null ? (
+            {contact === null || contact === '' ? (
               <AlertDialogContent>
                 <AlertDialogHeader>
                   <AlertDialogTitle>No disponible</AlertDialogTitle>

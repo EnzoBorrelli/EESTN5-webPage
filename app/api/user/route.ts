@@ -13,6 +13,15 @@ const userSchema = z.object({
     .min(8, "la contraseña debe ser de almenos 8 caracteres"),
 });
 
+const updateUserRoleSchema = z.object({
+  id: z.string().min(1, "ID es necesaria"),
+  role: z.enum(["admin", "user"], {
+    errorMap: () => ({
+      message: "los roles definidos son: user | admin",
+    }),
+  }),
+});
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -65,6 +74,43 @@ export async function POST(req: Request) {
   } catch (error) {
     return NextResponse.json(
       { message: "Algo salio mal, intente nuevamente" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PUT(req: Request) {
+  try {
+    const body = await req.json();
+    const { id, role } = updateUserRoleSchema.parse(body);
+
+    const ExistingUser = await db.user.findUnique({
+      where: { id: id },
+    });
+
+    if (!ExistingUser) {
+      return NextResponse.json(
+        { user: null, message: "usuario no encontrado" },
+        { status: 404 }
+      );
+    }
+    const updatedUser = await db.user.update({
+      where: { id: id },
+      data: { role },
+    });
+    return NextResponse.json(
+      { user: updatedUser, message: "User role updated successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { message: error.errors.map((e) => e.message).join(", ") },
+        { status: 400 }
+      );
+    }
+    return NextResponse.json(
+      { message: "Something went wrong, please try again" },
       { status: 500 }
     );
   }

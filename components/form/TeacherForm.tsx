@@ -35,7 +35,7 @@ const FormSchema = z.object({
   ),
   asignature: z.string().min(1, "Este campo es necesario").max(100),
   description: z.string().min(1, "Este campo es necesario").max(350),
-  contact: z.string().email('correo no valido')
+  contact: z.string().email('correo no valido').optional().or(z.literal(''))
 });
 
 const TeacherForm = () => {
