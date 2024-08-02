@@ -1,4 +1,5 @@
 import UserSelector from "@/components/dashboard/userSelector";
+import TeacherForm from "@/components/form/TeacherForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
 
@@ -19,7 +20,7 @@ export default function dashboard() {
             <TabsTrigger value="teachers">Editar profesores</TabsTrigger>
           </TabsList>
           <TabsContent value="teachers">
-            Make changes to your account here.
+            <TeacherForm/>
           </TabsContent>
           <TabsContent value="users">
             <UserSelector />

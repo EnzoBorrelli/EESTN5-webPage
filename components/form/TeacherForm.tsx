@@ -88,7 +88,7 @@ const TeacherForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full md:w-1/3 bg-bg-200 p-4 rounded-md"
+        className="w-full bg-bg-200 p-4 rounded-md"
       >
         <div className="space-y-2">
           <FormField

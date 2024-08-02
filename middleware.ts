@@ -1,22 +1,19 @@
-import { withAuth, NextRequestWithAuth } from "next-auth/middleware";
-import { NextResponse } from "next/server";
+// pages/_middleware.ts
+import { NextResponse, NextRequest } from 'next/server';
+import { getToken } from 'next-auth/jwt';
 
-export default withAuth(
-  function middleware(request: NextRequestWithAuth) {
-    /*comprobamos el rol del usuario mediante el token. Si el usuario esta en la url /dashboard , 
-    pero su rol no es 'admin', lo enviamos a la url /denegado*/
-    if (
-      request.nextUrl.pathname.startsWith("/dashboard") &&
-      request.nextauth.token?.role !== "admin"
-    ) {
-      return NextResponse.rewrite(new URL("/denegado", request.url));
+export async function middleware(req: NextRequest) {
+  const token = await getToken({ req });
+  const url = req.nextUrl.clone();
+
+  // Check if the request is for the /dashboard route
+  if (url.pathname === '/dashboard') {
+    // Check if the user is authenticated and has the admin role
+    if (token && token.role == 'admin') {
+      return NextResponse.next(); // Allow the request to proceed
     }
-  },
-  {
-    callbacks: {
-      authorized: ({ token }) => !!token,
-    },
+    // Redirect to /denegado if not an admin
+    url.pathname = '/denegado';
+    return NextResponse.redirect(url);
   }
-);
-
-export const config = { matcher: ["/dashboard"] };
+}
