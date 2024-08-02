@@ -17,6 +17,7 @@ import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useToast } from "../ui/use-toast";
+import { useState } from "react";
 
 const FormSchema = z.object({
   email: z.string().min(1, "El correo es obligatorio").email("Correo no valido"),
@@ -27,6 +28,7 @@ const FormSchema = z.object({
 });
 
 const SignInForm = () => {
+  const [loading,setLoading] = useState(false)
   const router = useRouter();
   const { toast } = useToast();
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -38,6 +40,7 @@ const SignInForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
+    setLoading(true)
     const signInData = await signIn("credentials", {
       email: values.email,
       password: values.password,
@@ -50,6 +53,7 @@ const SignInForm = () => {
         variant: 'destructive'
       });
     } else {
+      setLoading(false)
       router.push("/");
     }
   };
@@ -89,8 +93,8 @@ const SignInForm = () => {
             )}
           />
         </div>
-        <Button className="w-full mt-6 bg-accent-2 font-bold hover:bg-tone-100" type="submit">
-          Iniciar sesión
+        <Button className="w-full mt-6 bg-accent-2 font-bold hover:bg-tone-100" type="submit" disabled={loading}>
+          {loading?"Iniciando Sesión":"Iniciar Sesión"}
         </Button>
       </form>
       <p className="text-center text-sm text-gray-600 mt-2">

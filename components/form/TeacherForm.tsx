@@ -21,6 +21,7 @@ import {
   SelectContent,
   SelectItem,
 } from "@radix-ui/react-select";
+import { useState } from "react";
 
 const FormSchema = z.object({
   name: z.string().min(1, "Este campo es necesario").max(25),
@@ -39,6 +40,7 @@ const FormSchema = z.object({
 });
 
 const TeacherForm = () => {
+  const [loading,setLoading] = useState(false)
   const { toast } = useToast();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -51,6 +53,7 @@ const TeacherForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
+    setLoading(true)
     const response = await fetch("/api/teacher", {
       method: "POST",
       headers: {
@@ -65,6 +68,7 @@ const TeacherForm = () => {
       }),
     });
     if (response.ok) {
+      setLoading(false)
       form.reset();
       toast({
         title: "exito",
@@ -156,8 +160,9 @@ const TeacherForm = () => {
         <Button
           className="w-full mt-6 bg-accent-2 font-bold hover:bg-tone-100"
           type="submit"
+          disabled={loading}
         >
-          Agregar Profesor
+          {loading?"Agregando profesor":"Agregar profesor"}
         </Button>
       </form>
     </Form>

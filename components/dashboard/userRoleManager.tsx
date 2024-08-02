@@ -27,7 +27,7 @@ const RoleUpdateSchema = z.object({
 });
 
 const UserRoleManager = ({ userID }: { userID: string }) => {
-    const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
   const form = useForm<z.infer<typeof RoleUpdateSchema>>({
@@ -38,7 +38,7 @@ const UserRoleManager = ({ userID }: { userID: string }) => {
   });
 
   const onSubmit = async (values: z.infer<typeof RoleUpdateSchema>) => {
-    setLoading(true)
+    setLoading(true);
     try {
       const response = await fetch("/api/user", {
         method: "PUT",
@@ -65,8 +65,8 @@ const UserRoleManager = ({ userID }: { userID: string }) => {
         description: "algo ha salido mal",
         variant: "destructive",
       });
-    }finally{
-        setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -100,7 +100,7 @@ const UserRoleManager = ({ userID }: { userID: string }) => {
           type="submit"
           disabled={loading}
         >
-          {loading?"ACTUALIZANDO INFORMACIÓN":"GUARDAR"}
+          {loading ? "ACTUALIZANDO INFORMACIÓN" : "GUARDAR"}
         </Button>
       </form>
     </Form>

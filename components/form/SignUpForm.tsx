@@ -16,6 +16,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useToast } from "../ui/use-toast";
+import { useState } from "react";
 
 const FormSchema = z
   .object({
@@ -33,6 +34,7 @@ const FormSchema = z
   });
 
 const SignUpForm = () => {
+  const [loading,setLoading] = useState(false)
   const router = useRouter();
   const {toast} = useToast()
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -46,6 +48,7 @@ const SignUpForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
+    setLoading(true)
     const response = await fetch("/api/user", {
       method: "POST",
       headers: {
@@ -58,6 +61,7 @@ const SignUpForm = () => {
       }),
     });
     if (response.ok) {
+      setLoading(false)
       router.push("/sign-in");
     } else {
       toast({
@@ -133,8 +137,8 @@ const SignUpForm = () => {
             )}
           />
         </div>
-        <Button className="w-full mt-6 bg-accent-2 font-bold hover:bg-tone-100" type="submit">
-          Registrarse
+        <Button className="w-full mt-6 bg-accent-2 font-bold hover:bg-tone-100" type="submit" disabled={loading}>
+          {loading?"Registrando usuario":"Registrarse"}
         </Button>
       </form>
       <p className="text-center text-sm text-gray-600 mt-2">
