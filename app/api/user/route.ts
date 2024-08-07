@@ -19,7 +19,7 @@ const updateUserRoleSchema = z.object({
     errorMap: () => ({
       message: "los roles definidos son: user | admin",
     }),
-  }),
+  }), 
 });
 
 export async function POST(req: Request) {

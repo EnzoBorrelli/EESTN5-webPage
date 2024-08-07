@@ -74,7 +74,7 @@ const UserRoleManager = ({ userID }: { userID: string }) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full ring-2 ring-bg-200 ring-opacity-70 shadow-md shadow-bg-200 p-4 rounded-md"
+        className="w-full p-4 rounded-md shadow-md ring-2 ring-bg-200 ring-opacity-70 shadow-bg-200"
       >
         <div className="space-y-2">
           <FormField
@@ -82,7 +82,7 @@ const UserRoleManager = ({ userID }: { userID: string }) => {
             name="role"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-bold text-lg">Nuevo Rol</FormLabel>
+                <FormLabel className="text-lg font-bold">Nuevo Rol</FormLabel>
                 <FormControl>
                   <Input
                     className="ring-2 ring-bg-200"
@@ -96,7 +96,7 @@ const UserRoleManager = ({ userID }: { userID: string }) => {
           />
         </div>
         <Button
-          className="w-full mt-6 bg-accent-2 font-bold hover:bg-tone-100"
+          className="w-full mt-6 font-bold bg-accent-2 hover:bg-tone-100"
           type="submit"
           disabled={loading}
         >

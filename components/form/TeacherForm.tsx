@@ -14,13 +14,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useToast } from "../ui/use-toast";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@radix-ui/react-select";
 import { useState } from "react";
 
 const FormSchema = z.object({
@@ -57,7 +50,7 @@ const TeacherForm = () => {
     const response = await fetch("/api/teacher", {
       method: "POST",
       headers: {
-        "Content-Type": "application/son",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: values.name,
@@ -71,8 +64,8 @@ const TeacherForm = () => {
       setLoading(false)
       form.reset();
       toast({
-        title: "exito",
-        description: "estupendo",
+        title: "Perfil agregado",
+        description: "El nuevo perfil de profesor ha sido agregado existosamente",
         variant:"success"
       });
     } else {
@@ -92,7 +85,7 @@ const TeacherForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="max-w-6xl bg-bg-200 rounded ring-2 ring-bg-300 ring-opacity-70 shadow-md shadow-bg-300 p-4"
+        className="max-w-6xl p-4 rounded shadow-md bg-bg-200 ring-2 ring-bg-300 ring-opacity-70 shadow-bg-300"
       >
         <div className="space-y-2">
           <FormField
@@ -115,7 +108,7 @@ const TeacherForm = () => {
               <FormItem>
                 <FormLabel className="font-bold">Especialidad</FormLabel>
                 <FormControl>
-                  <Input placeholder="nombre completo" {...field} />
+                  <Input placeholder="especialidad" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -162,7 +155,7 @@ const TeacherForm = () => {
           />
         </div>
         <Button
-          className="w-full mt-6 bg-accent-2 font-bold hover:bg-accent-1"
+          className="w-full mt-6 font-bold bg-accent-2 hover:bg-accent-1"
           type="submit"
           disabled={loading}
         >
