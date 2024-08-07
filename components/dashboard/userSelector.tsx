@@ -20,7 +20,7 @@ export default async function UserSelector() {
     <section className="flex flex-col items-center gap-4">
       <p className="my-2 text-center">
         Edita los roles de los usuarios. Brindale permisos de administrador a
-        una persona... o quitaselos
+        una persona... o quitaselos.
       </p>
       <ScrollArea className="w-full h-60 md:w-1/2 bg-bg-100 rounded ring-1 ring-bg-200 ring-opacity-50 shadow-md shadow-bg-200 p-2">
         {users

@@ -1,29 +1,36 @@
+import TeacherManager from "@/components/dashboard/teacherManager";
 import UserSelector from "@/components/dashboard/userSelector";
 import TeacherForm from "@/components/form/TeacherForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
+import { db } from "@/lib/db";
 
-export default function dashboard() {
+export default async function dashboard() {
+  const teachers = await db.teacher.findMany();
   return (
-    <main className="w-full flex flex-col gap-4 items-center px-10 md:px-20 py-10">
-      <article className="flex flex-col items-center gap-4">
-        <h1 className="font-bold text-xl text-center md:text-2xl uppercase underline">
+    <main className="flex flex-col items-center w-full gap-4 p-5 md:p-10 md:px-20">
+      <article className="flex flex-col items-center w-full gap-4">
+        <h1 className="text-xl font-bold text-center underline uppercase md:text-2xl">
           Bienvenid@ al panel de control
         </h1>
-        <h2 className="font-semibold text-center text-lg">
+        <h2 className="font-semibold text-center text-md md:text-lg">
           En este lugar podras editar informacion de profesores, asignar roles a
           usuarios y más
         </h2>
-        <Tabs defaultValue="users" className="flex flex-col items-center">
-          <TabsList>
+        <Tabs defaultValue="users" className="flex flex-col items-center w-full">
+          <TabsList className="flex flex-col h-full md:flex-row md:h-10">
             <TabsTrigger value="users">Editar usuarios</TabsTrigger>
-            <TabsTrigger value="teachers">Editar profesores</TabsTrigger>
+            <TabsTrigger value="addTeachers">Agregar profesores</TabsTrigger>
+            <TabsTrigger value="editTeachers">Editar profesores</TabsTrigger>
           </TabsList>
-          <TabsContent value="teachers">
-            <TeacherForm/>
-          </TabsContent>
           <TabsContent value="users">
             <UserSelector />
+          </TabsContent>
+          <TabsContent value="addTeachers">
+            <TeacherForm />
+          </TabsContent>
+          <TabsContent value="editTeachers">
+            <TeacherManager teachers={teachers}/>
           </TabsContent>
         </Tabs>
       </article>

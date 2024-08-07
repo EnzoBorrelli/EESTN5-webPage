@@ -85,10 +85,14 @@ const TeacherForm = () => {
   };
 
   return (
+    <section className="flex flex-col items-center gap-4">
+      <p className="my-2 text-center">
+        Agrega perfiles de profesores rellenando este formulario.
+      </p>
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full bg-bg-200 p-4 rounded-md"
+        className="max-w-6xl bg-bg-200 rounded ring-2 ring-bg-300 ring-opacity-70 shadow-md shadow-bg-300 p-4"
       >
         <div className="space-y-2">
           <FormField
@@ -158,7 +162,7 @@ const TeacherForm = () => {
           />
         </div>
         <Button
-          className="w-full mt-6 bg-accent-2 font-bold hover:bg-tone-100"
+          className="w-full mt-6 bg-accent-2 font-bold hover:bg-accent-1"
           type="submit"
           disabled={loading}
         >
@@ -166,6 +170,7 @@ const TeacherForm = () => {
         </Button>
       </form>
     </Form>
+    </section>
   );
 };
 
