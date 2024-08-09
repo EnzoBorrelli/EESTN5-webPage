@@ -64,16 +64,6 @@ export const Comunidad = [
     href: "/testimonios",
   },
 ];
-export const Novedades = [
-  {
-    name: "Calendario",
-    href: "/calendario",
-  },
-  {
-    name: "Avisos",
-    href: "/avisos",
-  },
-];
 
 export const RedesSociales = [
   {
@@ -105,9 +95,5 @@ export const navLinks = [
   {
     key: "comunidad",
     name: "Comunidad",
-  },
-  {
-    key: "novedades",
-    name: "Novedades",
   },
 ];

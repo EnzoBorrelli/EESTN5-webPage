@@ -4,13 +4,13 @@ import {
   Comunidad,
   Conocenos,
   Especialidades,
-  Novedades,
   RedesSociales,
 } from "./navLinks";
 import ScrollTopBtn from "./footer/scrollTopBtn";
 import ListLink from "./ui/linkButtons/listLink";
 import ContactLink from "./ui/linkButtons/contactLink";
 import Logo from "./ui/logoImg/logo";
+import CalendarLink from "./ui/linkButtons/CalendarLink";
 
 export default function Footer() {
   return (
@@ -29,12 +29,15 @@ export default function Footer() {
             <span className="font-semibold">&quot;2 de Abril&quot;</span>
           </p>
         </div>
+        <div className="flex flex-col md:gap-2">
+        <CalendarLink/>
         <ContactLink />
+        </div>
       </section>
 
       {/* seccion mid | secciones y subsecciones */}
-      <section className="grid grid-cols-2 grid-rows-2 gap-2 pt-4 md:px-20 justify-items-center md:grid-cols-4 md:grid-rows-1">
-        <nav>
+      <section className="grid grid-cols-2 grid-rows-2 gap-2 pt-4 md:px-20 justify-items-center md:grid-cols-3 md:grid-rows-1">
+        <nav className="col-span-2 md:col-span-1">
           <h2 className="text-lg font-bold uppercase">Conócenos</h2>
           <ul className="flex flex-col items-center">
             {Conocenos.map((link) => (
@@ -58,16 +61,6 @@ export default function Footer() {
           <h2 className="text-lg font-bold text-center uppercase">Comunidad</h2>
           <ul className="flex flex-col items-center">
             {Comunidad.map((link) => (
-              <div key={link.name}>
-                <ListLink link={link} />
-              </div>
-            ))}
-          </ul>
-        </nav>
-        <nav>
-          <h2 className="text-lg font-bold uppercase">Novedades</h2>
-          <ul className="flex flex-col items-center">
-            {Novedades.map((link) => (
               <div key={link.name}>
                 <ListLink link={link} />
               </div>

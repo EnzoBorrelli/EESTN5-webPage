@@ -3,7 +3,6 @@ import {
   Conocenos,
   Especialidades,
   Comunidad,
-  Novedades,
   RedesSociales,
 } from "../../navLinks";
 import ListLink from "@/components/ui/linkButtons/listLink";
@@ -37,16 +36,6 @@ export default function SubNavPC({ menu }: { menu: string }) {
             return (
               <ul className="flex items-center gap-10 pl-4 text-xl font-semibold uppercase text-text-200">
                 {Comunidad.map((link) => (
-                  <div key={link.name}>
-                    <ListLink link={link} />
-                  </div>
-                ))}
-              </ul>
-            );
-          case "novedades":
-            return (
-              <ul className="flex items-center gap-10 pl-4 text-xl font-semibold uppercase text-text-200">
-                {Novedades.map((link) => (
                   <div key={link.name}>
                     <ListLink link={link} />
                   </div>

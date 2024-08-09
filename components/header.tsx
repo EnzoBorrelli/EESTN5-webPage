@@ -17,6 +17,7 @@ import ContactLink from "./ui/linkButtons/contactLink";
 import NavLabel from "./ui/linkButtons/navLabel";
 import Logo from "./ui/logoImg/logo";
 import UserBtn from "./header/userBtn";
+import CalendarLink from "./ui/linkButtons/CalendarLink";
 
 export default function Header() {
   // optimizar esta pendejada que anda lenta
@@ -102,6 +103,7 @@ export default function Header() {
               )
             )}
           </ul>
+          <CalendarLink/>
           <ContactLink />
         </ul>
         {/* links PC*/}
@@ -125,6 +127,7 @@ export default function Header() {
               </button>
             </li>
           ))}
+          <CalendarLink/>
           <ContactLink />
         </ul>
       </nav>
@@ -146,7 +149,7 @@ export default function Header() {
       >
         <SubNavPC menu={selectedMenu} />
       </div>
-      <div className="mr-4 md:-ml-8 md:mr-8 flex gap-4 justify-center">
+      <div className="flex justify-center gap-4 mr-4 md:-ml-8 md:mr-8">
         <UserBtn />
         <ThemeBtn />
       </div>

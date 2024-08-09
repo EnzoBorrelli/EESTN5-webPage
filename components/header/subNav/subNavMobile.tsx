@@ -3,7 +3,6 @@ import {
   Conocenos,
   Especialidades,
   Comunidad,
-  Novedades,
 } from "../../navLinks";
 import ListLink from "@/components/ui/linkButtons/listLink";
 
@@ -43,15 +42,6 @@ export default function SubNavMobile({ menu }: { menu: string }) {
               </ul>
             );
           case "novedades":
-            return (
-              <ul className="flex flex-col items-center gap-10 font-semibold text-text-200 text-md">
-                {Novedades.map((link) => (
-                  <div key={link.name}>
-                    <ListLink link={link} />
-                  </div>
-                ))}
-              </ul>
-            );
           default:
             return null;
         }
