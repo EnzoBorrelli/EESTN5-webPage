@@ -14,26 +14,26 @@ import {
 import { useRouter } from "next/navigation";
 import { useToast } from "../ui/use-toast";
 
-export default function TeacherEraser({ teacherID }: { teacherID: string }) {
+export default function TeacherEraser({ teacherID }: { teacherID: string }) { //se recibe la id del profesor
   const router = useRouter();
   const { toast } = useToast();
 
-  const deleteTeacher = async (ID : string) => {
-    const response = await fetch("/api/teacher", {
+  const deleteTeacher = async (ID : string) => { //funcion para borrar el profesor
+    const response = await fetch("/api/teacher", { //se busca el metodo DELETE de la api
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ id: ID }),
     });
-    if (response.ok) {
-      router.refresh();
+    if (response.ok) { // si todo sale bien, ->
+      router.refresh(); //se refresca la pagina
       toast({
         title: "perfil eliminado",
         description: "el perfil de profesor se elimino exitosamente",
         variant: "success",
       });
-    } else {
+    } else { //sino, ->
         const errorData = await response.json();
       toast({
         title: "Error inesperado",

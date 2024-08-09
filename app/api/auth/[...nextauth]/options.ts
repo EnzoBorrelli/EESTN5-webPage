@@ -5,15 +5,15 @@ import { db } from "@/lib/db";
 import { compare } from "bcrypt";
 
 export const options: NextAuthOptions = {
-  adapter: PrismaAdapter(db),
-  secret:process.env.NEXTAUTH_SECRET,
+  adapter: PrismaAdapter(db), //adapatador para user nexthAuth con prisma
+  secret:process.env.NEXTAUTH_SECRET, //.env variable
   session: {
     strategy: "jwt",
   },
   pages: {
-    signIn: "/sign-in",
+    signIn: "/sign-in", //pagina personalizada para inicio de sesion
   },
-  providers: [
+  providers: [ //proveedores, actualmente unicamente se utilzia credenciales
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -28,23 +28,23 @@ export const options: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) {
+        if (!credentials?.email || !credentials.password) { // si no existen estos valores, se retorna null
           return null;
         }
         const existingUser = await db.user.findUnique({
-          where: { email: credentials?.email },
+          where: { email: credentials?.email }, // se verifica que exista el usuario a partir de su email
         });
         if (!existingUser) {
           return null;
         }
-        const passwordMatch = await compare(
+        const passwordMatch = await compare( // se compara la contrasena introducida con la de la base datos
           credentials.password,
           existingUser.password
         );
         if (!passwordMatch) {
           return null;
         }
-        return {
+        return { //si todo es correcto se retornan los siguientes datos
           id:`${existingUser.id}`,
           name: existingUser.name,
           email: existingUser.email,
