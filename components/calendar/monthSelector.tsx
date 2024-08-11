@@ -2,12 +2,7 @@
 import React from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { useCalendar } from "@/providers/calendarProvider";
-
-// array de meses
-const months = [
-  'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
-  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-];
+import { months } from "./calendarConst";
 
 export default function MonthSelector() {
   const { displayMonth, displayYear, handleNextMonth, handlePreviousMonth } =
