@@ -85,7 +85,7 @@ const TeacherForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="max-w-6xl p-4 rounded shadow-md bg-bg-200 ring-2 ring-bg-300 ring-opacity-70 shadow-bg-300"
+        className="max-w-6xl p-4 rounded shadow-md bg-bg-200 dark:bg-bg-500 ring-2 ring-bg-300 dark:ring-bg-400 ring-opacity-70 shadow-bg-300 dark:shadow-bg-400"
       >
         <div className="space-y-2">
           <FormField
@@ -155,7 +155,7 @@ const TeacherForm = () => {
           />
         </div>
         <Button
-          className="w-full mt-6 font-bold bg-accent-2 hover:bg-accent-1"
+          className="w-full mt-6 font-bold bg-blue-500 text-text-100 hover:bg-amber-500"
           type="submit"
           disabled={loading}
         >

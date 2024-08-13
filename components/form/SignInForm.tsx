@@ -60,7 +60,7 @@ const SignInForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full md:w-1/3 bg-bg-200 p-4 rounded-md">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full p-4 rounded-md md:w-1/3 bg-bg-200 dark:bg-bg-500">
         <div className="space-y-2">
           <FormField
             control={form.control}
@@ -93,13 +93,13 @@ const SignInForm = () => {
             )}
           />
         </div>
-        <Button className="w-full mt-6 bg-accent-2 font-bold hover:bg-tone-100" type="submit" disabled={loading}>
+        <Button className="w-full mt-6 font-bold bg-amber-600 hover:bg-blue-600" type="submit" disabled={loading}>
           {loading?"Iniciando Sesión":"Iniciar Sesión"}
         </Button>
       </form>
-      <p className="text-center text-sm text-gray-600 mt-2">
+      <p className="mt-2 text-sm text-center text-text-400 dark:text-text-300">
         Si no posee aun una cuenta, Porfavor&nbsp;
-        <Link className="text-blue-400 hover:underline" href="/sign-up">
+        <Link className="text-blue-500 hover:underline" href="/sign-up">
           Registrarse
         </Link>
       </p>

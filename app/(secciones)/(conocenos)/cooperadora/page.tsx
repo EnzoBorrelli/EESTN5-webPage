@@ -23,9 +23,9 @@ export default function Cooperadora() {
           </p>
         </article>
       </section>
-      <hr className="my-4 border-t-2 border-bg-200" />
+      <hr className="my-4 border-t-2 border-bg-200 dark:bg-500" />
       <section className="flex flex-col gap-4 px-2 mt-4">
-        <h2 className="text-lg font-semibold text-center text-text-200">
+        <h2 className="text-lg font-semibold text-center text-text-500 dark:text-text-200">
           Su historia
         </h2>
         <article className="flex flex-col gap-2 indent-2">
@@ -52,9 +52,9 @@ export default function Cooperadora() {
           </p>
         </article>
       </section>
-      <hr className="my-4 border-t-2 border-bg-200" />
+      <hr className="my-4 border-t-2 border-bg-200 dark:border-bg-500" />
       <section className="flex flex-col gap-4 px-2 mt-4">
-        <h2 className="text-lg font-semibold text-center text-text-200">
+        <h2 className="text-lg font-semibold text-center text-text-500 dark:text-text-200">
           ¿Como abonar?
         </h2>
         <article className="flex flex-col gap-2 indent-2">

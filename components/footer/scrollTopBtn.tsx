@@ -31,7 +31,7 @@ export default function ScrollTopBtn() {
   }
   return (
     <button
-      className={`fixed bottom-4 hidden md:block text-text-200 right-4 hover:opacity-80 hover:scale-125 ${
+      className={`fixed bottom-4 hidden md:block text-text-500 dark:text-text-200 right-4 hover:opacity-80 hover:scale-125 ${
         scrolled
           ? "opacity-50 pointer-events-auto"
           : "opacity-0 pointer-events-none"

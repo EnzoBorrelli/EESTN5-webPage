@@ -34,7 +34,7 @@ export default function CicloBasico() {
             esenciales en el campo de la tecnología y la ingeniería.
           </p>
         </article>
-        <hr className="my-4 border-t-2 border-bg-200" />
+        <hr className="my-4 border-t-2 border-bg-200 dark:border-bg-500" />
         <article className="flex flex-col gap-2 divide-y-2 indent-2 divide-bg-300">
           <div className="flex flex-col items-center gap-2 mb-4">
             <p className="text-center">
@@ -115,7 +115,7 @@ export default function CicloBasico() {
             </div>
           </div>
         </article>
-        <hr className="mt-4 border-t-2 border-bg-200" />
+        <hr className="mt-4 border-t-2 border-bg-200 dark:border-bg-500" />
       </section>
       <section className="p-2">
         <h2 className="mb-4 text-lg font-semibold text-center">
@@ -149,7 +149,7 @@ export default function CicloBasico() {
             </ul>
           </div>
         </article>
-        <hr className="my-4 border-t-2 border-bg-200" />
+        <hr className="my-4 border-t-2 border-bg-200 dark:border-bg-500" />
       </section>
       <section className="p-2">
         <h2 className="mb-4 text-lg font-semibold text-center">

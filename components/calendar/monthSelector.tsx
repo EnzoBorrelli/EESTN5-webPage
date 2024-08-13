@@ -9,7 +9,7 @@ export default function MonthSelector() {
     useCalendar();
 
   return (
-    <div className="flex items-center justify-between gap-2 w-60 text-text-100">
+    <div className="flex items-center justify-between gap-2 w-60 text-text-600 dark:text-text-100">
       <button className="hover:animate-hop-left" onClick={handlePreviousMonth}>
         <FaAngleLeft size={24} />
       </button>

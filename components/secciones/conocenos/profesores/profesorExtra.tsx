@@ -37,7 +37,7 @@ export default function ProfesorExtra({
 }) {
   return (
     <Drawer>
-      <DrawerTrigger className="flex items-center justify-center gap-2 px-2 mt-4 rounded-md bg-bg-300 hover:bg-accent-2">
+      <DrawerTrigger className="flex items-center justify-center gap-2 px-2 mt-4 rounded-md bg-bg-300 dark:bg-bg-400 hover:bg-amber-500 dark:hover:bg-amber-600">
         saber más
         <FaCirclePlus />
       </DrawerTrigger>
@@ -49,7 +49,7 @@ export default function ProfesorExtra({
         <DrawerFooter>
           <AlertDialog>
             <AlertDialogTrigger className="flex items-center w-full gap-1">
-              <h4 className="flex items-center gap-1 font-bold group text-tone-300 hover:text-accent-2">
+              <h4 className="flex items-center gap-1 font-bold text-blue-400 group hover:text-amber-500">
                 <MdMail size={24} />
                 enviar correo
                 <i className="transition-transform duration-150 ease-in group-hover:translate-x-2">
@@ -66,7 +66,7 @@ export default function ProfesorExtra({
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel className="bg-bg-100 hover:bg-accent-2">
+                  <AlertDialogCancel className="bg-bg-100 dark:bg-bg-600 hover:bg-blue-400 dark:hover:bg-amber-500">
                     Regresar
                   </AlertDialogCancel>
                 </AlertDialogFooter>
@@ -81,7 +81,7 @@ export default function ProfesorExtra({
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel className="bg-bg-100 hover:bg-accent-2">
+                  <AlertDialogCancel className="bg-bg-100 dark:bg-bg-600 hover:bg-blue-400 dark:hover:bg-amber-500">
                     Cancelar
                   </AlertDialogCancel>
                   <AlertDialogAction>
@@ -89,7 +89,7 @@ export default function ProfesorExtra({
                       className="flex items-center w-full gap-1"
                       href={`mailto:${contact}`}
                     >
-                      <h4 className="flex items-center gap-1 font-bold group text-tone-300 hover:text-accent-2">
+                      <h4 className="flex items-center gap-1 font-bold group hover:text-blue-400 dark:hover:text-amber-500">
                         <MdMail size={24} />
                         Continuar
                         <i className="transition-transform duration-150 ease-in group-hover:translate-x-2">
@@ -104,7 +104,7 @@ export default function ProfesorExtra({
           </AlertDialog>
 
           <DrawerClose>
-            <Button className="bg-bg-100 hover:bg-accent-2" variant="outline">
+            <Button className="bg-bg-100 dark:bg-bg-600 hover:bg-blue-400 dark:hover:bg-amber-500" variant="outline">
               Cerrar
             </Button>
           </DrawerClose>

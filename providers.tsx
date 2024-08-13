@@ -5,5 +5,11 @@ import { SessionProvider } from "next-auth/react";
 import { CalendarProvider } from "./providers/calendarProvider";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  return <SessionProvider><ThemeProvider><CalendarProvider>{children}</CalendarProvider></ThemeProvider></SessionProvider>;
+  return (
+    <SessionProvider>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <CalendarProvider>{children}</CalendarProvider>
+      </ThemeProvider>
+    </SessionProvider>
+  );
 }

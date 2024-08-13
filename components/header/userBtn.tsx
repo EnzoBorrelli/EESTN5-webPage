@@ -22,7 +22,7 @@ export default function UserBtn() {
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Avatar
-            className="ring-text-200 bg-bg-200 ring-2 size-8"
+            className="ring-bg-400 bg-bg-200 dark:ring-bg-200 dark:bg-bg-500 ring-2 size-8"
           >
             <AvatarImage
               src={user?.name || "/imgs/userDefault.png"}
@@ -33,7 +33,7 @@ export default function UserBtn() {
             </AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="bg-bg-100 text-text-100">
+        <DropdownMenuContent className="bg-bg-100 dark:bg-bg-600 text-text-600 dark:text-text-100">
           <DropdownMenuLabel>
             {user?.name ? user.name : "usuario"}
           </DropdownMenuLabel>

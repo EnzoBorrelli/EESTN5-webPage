@@ -22,7 +22,7 @@ export default async function UserSelector() {
         Edita los roles de los usuarios. Brindale permisos de administrador a
         una persona... o quitaselos.
       </p>
-      <ScrollArea className="w-full h-60 md:w-1/2 bg-bg-100 rounded ring-1 ring-bg-200 ring-opacity-50 shadow-md shadow-bg-200 p-2">
+      <ScrollArea className="w-full p-2 rounded shadow-md h-60 md:w-1/2 bg-bg-100 dark:bg-bg-600 ring-1 ring-bg-200 dark:ring-bg-500 ring-opacity-50 shadow-bg-200 dark:shadow-bg-500">
         {users
           .slice() //reordena los usuarios para colocar a los admin en la cima
           .sort((a, b) => {
@@ -32,14 +32,14 @@ export default async function UserSelector() {
           })
           .map((user) => (
             <div className="my-2" key={user.id}>
-              <span className="flex justify-between items-center gap-2 px-2">
+              <span className="flex items-center justify-between gap-2 px-2">
                 <h2>{user.name}</h2>
-                <div className="flex gap-4 items-center">
+                <div className="flex items-center gap-4">
                   <h3
                     className={`text-sm flex items-center justify-center rounded ${
                       user.role === "admin"
-                        ? "bg-accent-2 ring-accent-1 shadow-accent-1"
-                        : "bg-bg-200 ring-bg-300 shadow-bg-300"
+                        ? "dark:bg-amber-600 bg-amber-400 dark:ring-amber-400 ring-amber-600 shadow-amber-600 dark:shadow-amber-400"
+                        : "bg-bg-200 dark:bg-bg-500 dark:ring-bg-400 dark:shadow-bg-400 ring-bg-300 shadow-bg-300"
                     } ring-1  ring-opacity-50 shadow-md  px-2 py-0`}
                   >
                     {user.role}
@@ -47,7 +47,7 @@ export default async function UserSelector() {
                   <Dialog>
                     <DialogTrigger className="group">
                       <FaGear
-                        className="text-text-100 group-hover:text-accent-2"
+                        className="text-text-600 dark:text-text-100 hover:text-blue-400 dark:hover:text-amber-500"
                         size={20}
                       />
                     </DialogTrigger>
@@ -55,7 +55,8 @@ export default async function UserSelector() {
                       <DialogHeader>
                         <DialogTitle>Editar rol de {user.name}</DialogTitle>
                         <DialogDescription>
-                          No se preocupe, este campo podra ser editado nuevamente más adelante
+                          No se preocupe, este campo podra ser editado
+                          nuevamente más adelante
                         </DialogDescription>
                       </DialogHeader>
                       <UserRoleManager userID={user.id} />

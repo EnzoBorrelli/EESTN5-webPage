@@ -8,39 +8,19 @@
     --color-bg200: 227 227 229;
     --color-bg300: 192 192 194;
 
-    /*text colors*/
-    --color-text100: 0 0 5;
-    --color-text200: 70 70 75;
-    --color-text300: 120 120 125;
-
-    /*tone colors*/
-    --color-tone100: 46 95 210;
-    --color-tone200: 34 60 164;
-    --color-tone300: 26 40 115;
-
-    /*accent colors*/
-    --color-accent1: 191 130 17;
-    --color-accent2: 217 170 30;
-  }
-  :root[data-theme="dark"] {
-    /*background colors*/
-    --color-bg100: 5 10 38;
-    --color-bg200: 18 25 64;
-    --color-bg300: 50 60 89;
+    --color-bg600: 5 10 38;
+    --color-bg500: 18 25 64;
+    --color-bg400: 50 60 89;
 
     /*text colors*/
     --color-text100: 230 230 235;
     --color-text200: 170 170 175;
     --color-text300: 120 120 125;
 
-    /*tone colors*/
-    --color-tone100: 26 40 115;
-    --color-tone200: 34 60 164;
-    --color-tone300: 46 95 210;
-    
-    /*accent colors*/
-    --color-accent1: 217 170 30;
-    --color-accent2: 191 130 17;
+    --color-text600: 0 0 5;
+    --color-text500: 70 70 75;
+    --color-text400: 120 120 125;
+
   }
 }
 

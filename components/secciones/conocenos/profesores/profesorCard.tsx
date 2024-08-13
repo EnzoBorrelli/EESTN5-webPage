@@ -20,7 +20,7 @@ export default function ProfesorCard({
     <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 xl:px-32 gap-y-2 sm:gap-y-6 justify-items-center">
       {profesores.map((profesor) => (
         <div
-          className="flex flex-col items-center justify-between p-2 rounded-lg bg-bg-200 w-44"
+          className="flex flex-col items-center justify-between p-2 rounded-lg bg-bg-200 dark:bg-bg-500 w-44"
           key={profesor.name}
         >
           <>
@@ -31,7 +31,7 @@ export default function ProfesorCard({
               width={150}
               height={150}
             />
-            <h3 className="text-lg font-semibold text-center text-text-200">
+            <h3 className="text-lg font-semibold text-center text-text-500 dark:text-text-200">
               {profesor.name}
             </h3>
             <h4 className="mb-2">Asignaturas:</h4>
@@ -41,7 +41,7 @@ export default function ProfesorCard({
                   <Tooltip key={index}>
                     <TooltipTrigger key={index}>
                       <h4
-                        className="max-w-16 truncate bg-accent-2 px-1 rounded-md text-sm"
+                        className="px-1 text-sm truncate rounded-md max-w-16 bg-amber-400 dark:bg-amber-600"
                         key={index}
                       >
                         {asignature}

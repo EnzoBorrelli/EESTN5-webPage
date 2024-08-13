@@ -5,7 +5,7 @@ import { FaPersonWalkingArrowRight } from "react-icons/fa6";
 export default function ToNextPage({ label,href }: { label: string,href:string }) {
   return (
     <Link
-      className="flex items-center justify-center gap-2 my-8 text-lg font-bold underline text-tone-200 md:text-xl group hover:text-accent-2"
+      className="flex items-center justify-center gap-2 my-8 text-lg font-bold underline text-blue-600 md:text-xl group hover:text-amber-600"
       href={href}
     >
       {label}

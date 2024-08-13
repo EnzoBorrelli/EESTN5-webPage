@@ -6,16 +6,16 @@ import { MdWorkHistory } from "react-icons/md";
 
 export default function Pasantia() {
   return (
-    <main className="size-full p-4">
-      <h1 className="flex justify-center items-center text-2xl gap-2 uppercase font-bold">
+    <main className="p-4 size-full">
+      <h1 className="flex items-center justify-center gap-2 text-2xl font-bold uppercase">
         Sobre las pasantías
         <MdWorkHistory size={30} />
       </h1>
-      <section className="mt-4 flex flex-col gap-4 px-2">
-        <h2 className="text-center text-lg font-semibold text-text-200">
+      <section className="flex flex-col gap-4 px-2 mt-4">
+        <h2 className="text-lg font-semibold text-center text-text-500 dark:text-text-200">
           ¿Que son las pasantías?
         </h2>
-        <article className="indent-2 flex flex-col gap-2">
+        <article className="flex flex-col gap-2 indent-2">
           <p>
             En nuestra institución, las <strong>Pasantias</strong>, formalmente
             conocidas como <strong>practicas profesionalizantes</strong>,
@@ -47,11 +47,11 @@ export default function Pasantia() {
         </article>
       </section>
       <hr className="my-4 border-t-2 border-bg-200" />
-      <section className="mt-4 flex flex-col gap-4 px-2">
-        <h2 className="text-center text-lg font-semibold text-text-200">
+      <section className="flex flex-col gap-4 px-2 mt-4">
+        <h2 className="text-lg font-semibold text-center text-text-500 dark:text-text-200">
           Información importante
         </h2>
-        <article className="indent-2 flex flex-col gap-2">
+        <article className="flex flex-col gap-2 indent-2">
           <p>
             Para brindar Información mas detallada, contamos con una charla
             informativa dentro de la institución. Esta se desarolla antes del
@@ -61,7 +61,7 @@ export default function Pasantia() {
           <p>
             Para estar al tanto de su realización, puede revisar el{" "}
             <Link
-              className="font-semibold text-tone-200 underline hover:text-accent-1"
+              className="font-semibold text-blue-400 underline hover:text-amber-500"
               href="/calendario"
             >
               Calendario
@@ -69,7 +69,7 @@ export default function Pasantia() {
             y activar el recordatorio. Tambien puede encontrar información en la
             pestaña{" "}
             <Link
-              className="font-semibold text-tone-200 underline hover:text-accent-1"
+              className="font-semibold text-blue-400 underline hover:text-amber-500"
               href="/avisos"
             >
               Avisos
@@ -79,7 +79,7 @@ export default function Pasantia() {
           <ul className="flex justify-center gap-2 px-4">
             {RedesSociales.map((social) => (
               <li
-                className="p-1 text-2xl transition-all duration-200 ease-in bg-transparent rounded-md hover:text-bg-100 hover:bg-text-100"
+                className="p-1 text-2xl transition-all duration-200 ease-in bg-transparent rounded-md hover:text-text-100 hover:bg-bg-600 dark:hover:text-text-600 dark:hover:bg-bg-100"
                 key={social.key}
               >
                 <a href={social.href} target="_blank" rel="noopener noreferrer">
@@ -90,9 +90,9 @@ export default function Pasantia() {
           </ul>
         </article>
       </section>
-      <hr className="my-4 border-t-2 border-bg-200" />
-      <section className="mt-4 flex flex-col gap-4 px-2">
-        <h2 className="text-center text-lg font-semibold text-text-200">
+      <hr className="my-4 border-t-2 border-bg-200 dark:border-bg-500" />
+      <section className="flex flex-col gap-4 px-2 mt-4">
+        <h2 className="text-lg font-semibold text-center text-text-500 dark:text-text-200">
           Empresas afiliadas
         </h2>
         <article className="flex flex-col items-center gap-4">

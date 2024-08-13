@@ -7,33 +7,33 @@ import { PiNotepadFill } from "react-icons/pi";
 
 export default function SeccionStats() {
   return (
-    <section className="grid grid-cols-1 grid-rows-4 md:grid-cols-2 md:grid-rows-2 gap-4 mt-6 justify-items-center">
+    <section className="grid grid-cols-1 grid-rows-4 gap-4 mt-6 md:grid-cols-2 md:grid-rows-2 justify-items-center">
       {/*DIV: Especialidades */}
-      <div className="shadow shadow-bg-300 p-2">
-        <h3 className="flex items-center gap-1 justify-center text-lg font-semibold">
-          <i className="text-accent-2">
+      <div className="p-2 shadow shadow-bg-300 dark:shadow-bg-400">
+        <h3 className="flex items-center justify-center gap-1 text-lg font-semibold">
+          <i className="text-amber-600">
             <IoStarSharp size={20} />
           </i>
           Especialidades
         </h3>
-        <p className="text-text-200 text-center">
+        <p className="text-center text-text-200">
           Ofrecemos tres especialidades para que los jóvenes puedan seleccionar:{" "}
           <Link
-            className="font-semibold text-tone-200 underline hover:text-accent-1"
+            className="font-semibold underline text-tone-200 hover:text-accent-1"
             href="/electronica"
           >
             Electrónica
           </Link>
           ,{" "}
           <Link
-            className="font-semibold text-tone-200 underline hover:text-accent-1"
+            className="font-semibold underline text-tone-200 hover:text-accent-1"
             href="/electromecanica"
           >
             Electromecanica
           </Link>{" "}
           y{" "}
           <Link
-            className="font-semibold text-tone-200 underline hover:text-accent-1"
+            className="font-semibold underline text-tone-200 hover:text-accent-1"
             href="/automotor"
           >
             Automotor
@@ -43,17 +43,17 @@ export default function SeccionStats() {
       </div>
 
       {/*DIV: Pasantias */}
-      <div className="shadow shadow-bg-300 p-2">
-        <h3 className="flex items-center gap-1 justify-center text-lg font-semibold">
-          <i className="text-accent-2">
+      <div className="p-2 shadow shadow-bg-300 dark:shadow-bg-400">
+        <h3 className="flex items-center justify-center gap-1 text-lg font-semibold">
+          <i className="text-amber-600">
             <MdWorkHistory size={20} />
           </i>
           Pasantías
         </h3>
-        <p className="text-text-200 text-center">
+        <p className="text-center text-text-200">
           Contamos con emocionantes oportunidades de{" "}
           <Link
-            className="font-semibold text-tone-200 underline hover:text-accent-1"
+            className="font-semibold underline text-tone-200 hover:text-accent-1"
             href="/pasantias"
           >
             Pasantías
@@ -64,17 +64,17 @@ export default function SeccionStats() {
       </div>
 
       {/*DIV: Cursos de formacion profesional */}
-      <div className="shadow shadow-bg-300 p-2">
+      <div className="p-2 shadow shadow-bg-300 dark:shadow-bg-400">
         <h3 className="flex items-center justify-center gap-1 text-lg font-semibold">
-          <i className="text-accent-2">
+          <i className="text-amber-600">
             <PiNotepadFill size={20} />
           </i>
           Cursos de formación profesional
         </h3>
-        <p className="text-text-200 text-center">
+        <p className="text-center text-text-200">
           Brindamos{" "}
           <Link
-            className="font-semibold text-tone-200 underline hover:text-accent-1"
+            className="font-semibold underline text-tone-200 hover:text-accent-1"
             href="/recursos"
           >
             Cursos
@@ -84,17 +84,17 @@ export default function SeccionStats() {
       </div>
 
       {/*DIV: La Cinco Fm */}
-      <div className="shadow shadow-bg-300 p-2">
+      <div className="p-2 shadow shadow-bg-300 dark:shadow-bg-400">
         <h3 className="flex items-center justify-center gap-1 text-lg font-semibold">
-          <i className="text-accent-2">
+          <i className="text-amber-600">
             <FaRadio size={20} />
           </i>
           Radio: LaCincoFm
         </h3>
-        <p className="text-text-200 text-center">
+        <p className="text-center text-text-400 dark:text-text-300">
           Conoce y escucha nuestra radio local{" "}
           <Link
-            className="font-semibold text-tone-200 underline hover:text-accent-1"
+            className="font-semibold underline text-tone-200 hover:text-accent-1"
             href="/lacincofm"
           >
             LaCincoFm

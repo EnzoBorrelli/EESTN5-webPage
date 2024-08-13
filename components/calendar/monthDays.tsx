@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sheet";
 import { MdAddAlert } from "react-icons/md";
 import { months } from "./calendarConst";
+import EventBadge from "./eventBadge";
 
 export default function MonthDays() {
   const { displayMonth, displayYear } = useCalendar(); // se traen el mes y año del calendarProvider
@@ -20,7 +21,7 @@ export default function MonthDays() {
 
   const daysInMonth = dayjs(`${displayYear}-${displayMonth + 1}`).daysInMonth(); // se guarda la cantidad de dias que tiene el mes
 
-  const test = ["2024-8-11","2024-8-24","2024-8-1","2024-8-18","2024-8-14"];
+  const test = ["2024-8-11", "2024-8-24", "2024-8-1", "2024-8-18", "2024-8-14"];
 
   useEffect(() => {
     const daysInPrevMonth = dayjs(
@@ -66,32 +67,47 @@ export default function MonthDays() {
           <SheetTrigger
             className={`${
               test.includes(`${displayYear}-${displayMonth + 1}-${day}`)
-                ? "bg-accent-2 rounded-lg text-bg-100 hover:scale-125 transition-transform duration-150 ease-in flex items-center justify-center gap-1"
+                ? "bg-amber-400 rounded-lg text-text-100 hover:scale-125 transition-transform duration-150 ease-in flex items-center justify-center gap-1"
                 : "md:px-4"
             } w-12 md:w-16`}
-            disabled={!test.includes(`${displayYear}-${displayMonth + 1}-${day}`)}
+            disabled={
+              !test.includes(`${displayYear}-${displayMonth + 1}-${day}`)
+            }
           >
             <h4
               className={` text-center text-sm md:text-lg font-bold ${
-                  day > 1 && index < firstDayOfMonth ? "text-bg-300" : ""
-                } ${
-                    day < daysInMonth && index > firstDayOfMonth + daysInMonth - 1
-                    ? "text-bg-300"
-                    : ""
-                } `}
+                day > 1 && index < firstDayOfMonth ? "text-bg-300 dark:text-bg-400" : ""
+              } ${
+                day < daysInMonth && index > firstDayOfMonth + daysInMonth - 1
+                  ? "text-bg-300 dark:text-bg-400"
+                  : ""
+              } `}
             >
               {day === 0 ? "" : day}
             </h4>
-                <i className={`${
-                   test.includes(`${displayYear}-${displayMonth + 1}-${day}`)?'':'hidden'}`}> <MdAddAlert /></i>
+            <i
+              className={`${
+                test.includes(`${displayYear}-${displayMonth + 1}-${day}`)
+                  ? ""
+                  : "hidden"
+              }`}
+            >
+              {" "}
+              <MdAddAlert />
+            </i>
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>
               <SheetTitle>{`${day} de ${months[displayMonth]} de ${displayYear}`}</SheetTitle>
               <SheetDescription>
-                aqui irian los eventos, si hubieran
+                aqui econtraras los eventos de este dia
               </SheetDescription>
             </SheetHeader>
+            <div className="flex flex-col gap-4 pr-20 my-4">
+              {test.map((event, index) => (
+                <EventBadge key={index} event={event} />
+              ))}
+            </div>
           </SheetContent>
         </Sheet>
       ))}

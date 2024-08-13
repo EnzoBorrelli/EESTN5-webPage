@@ -9,8 +9,8 @@ export default function ThemeBtn() {
     <button
       className={`transition-none ${
         theme === "light"
-          ? "text-tone-300 hover:text-accent-2"
-          : "hover:text-tone-300 text-accent-2"
+          ? "text-blue-700 hover:text-amber-700"
+          : "hover:text-blue-500 text-amber-500"
       }`}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >

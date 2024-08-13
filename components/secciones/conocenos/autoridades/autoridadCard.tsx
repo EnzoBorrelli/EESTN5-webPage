@@ -11,7 +11,7 @@ export default function AutoridadCard({
   cargo: string;
 }) {
   return (
-    <div className="flex flex-col items-center rounded-md bg-bg-200">
+    <div className="flex flex-col items-center rounded-md bg-bg-200 dark:bg-bg-500">
       <Image
         className="rounded-t-md"
         src={src}
@@ -20,7 +20,7 @@ export default function AutoridadCard({
         width={200}
       />
       <h2 className="text-xl font-semibold">{nombre}</h2>
-      <h3 className="uppercase text-accent-2">{cargo}</h3>
+      <h3 className="uppercase text-amber-600">{cargo}</h3>
     </div>
   );
 }

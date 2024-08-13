@@ -90,7 +90,7 @@ const TeacherUpdater = ({ teacher }: { teacher: Profesor }) => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="max-w-6xl p-4 rounded shadow-md bg-bg-200 ring-2 ring-bg-300 ring-opacity-70 shadow-bg-300"
+          className="max-w-6xl p-4 rounded shadow-md dark:bg-bg-500 bg-bg-200 ring-2 dark:ring-bg-400 ring-bg-300 ring-opacity-70 dark:shadow-bg-400 shadow-bg-300"
         >
           <div className="space-y-2">
             <FormField
@@ -164,7 +164,7 @@ const TeacherUpdater = ({ teacher }: { teacher: Profesor }) => {
             />
           </div>
           <Button
-            className="w-full mt-6 font-bold bg-accent-2 hover:bg-accent-1"
+            className="w-full mt-6 font-bold bg-amber-400 dark:bg-amber-600 hover:bg-blue-400 dark:hover:bg-cyan-600"
             type="submit"
             disabled={loading}
           >

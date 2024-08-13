@@ -12,7 +12,7 @@ export default function SeccionHistoria() {
         width={500}
         height={500}
       />
-      <article className="flex flex-col w-full md:w-1/2 h-[200px] md:h-full md:ml-4 bg-bg-200 ">
+      <article className="flex flex-col w-full md:w-1/2 h-[200px] md:h-full md:ml-4 bg-bg-200 dark:bg-bg-500 ">
         <h2 className="text-lg font-semibold text-center">Historia</h2>
         <p className="p-2 overflow-y-scroll ">
           La Escuela Nacional de Educación Técnica de Témperley, también

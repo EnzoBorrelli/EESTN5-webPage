@@ -14,7 +14,7 @@ import CalendarLink from "./ui/linkButtons/CalendarLink";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col w-full gap-8 pt-4 divide-y-2 divide-bg-300 bg-bg-200 h-fit">
+    <footer className="flex flex-col w-full gap-8 pt-4 divide-y-2 divide-bg-300 dark:divide-bg-400 bg-bg-200 dark:bg-bg-500 h-fit">
       {/* seccion top | logo | nombre | contacto */}
       <section className="flex items-center justify-center gap-4 -mb-4 md:gap-20">
         <ScrollTopBtn />
@@ -78,7 +78,7 @@ export default function Footer() {
         <ul className="flex gap-2 px-4 size-fit">
           {RedesSociales.map((social) => (
             <li
-              className="p-1 text-2xl transition-all duration-200 ease-in bg-transparent rounded-md hover:text-bg-100 hover:bg-text-100"
+              className="p-1 text-2xl transition-all duration-200 ease-in bg-transparent rounded-md hover:text-text-100 hover:bg-bg-600 dark:hover:bg-bg-100 dark:hover:text-text-600"
               key={social.key}
             >
               <a href={social.href} target="_blank" rel="noopener noreferrer">

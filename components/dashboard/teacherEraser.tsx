@@ -46,7 +46,7 @@ export default function TeacherEraser({ teacherID }: { teacherID: string }) { //
     <AlertDialog>
       <AlertDialogTrigger className="group">
         <FaTrashAlt
-          className="text-text-100 group-hover:text-red-600"
+          className="text-text-600 dark:text-text-100 group-hover:text-red-600 dark:group-hover:text-red-500"
           size={20}
         />
       </AlertDialogTrigger>
@@ -59,8 +59,8 @@ export default function TeacherEraser({ teacherID }: { teacherID: string }) { //
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="hover:bg-rose-500 hover:ring-rose-800">Cancelar</AlertDialogCancel>
-          <AlertDialogAction className="hover:text-accent-2 hover:underline" onClick={() => deleteTeacher(teacherID)}>
+          <AlertDialogCancel className="hover:bg-amber-500">Cancelar</AlertDialogCancel>
+          <AlertDialogAction className="hover:text-amber-500 hover:underline" onClick={() => deleteTeacher(teacherID)}>
             Continuar
           </AlertDialogAction>
         </AlertDialogFooter>
