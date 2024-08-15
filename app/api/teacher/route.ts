@@ -162,6 +162,6 @@ export async function DELETE(req: Request) {
     return NextResponse.json(
       { message: "algo salio mal" },
       { status: 500 }
-    );
+    ); 
   }
 }

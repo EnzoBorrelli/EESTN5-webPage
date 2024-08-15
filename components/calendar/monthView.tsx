@@ -1,10 +1,13 @@
 import React from "react";
 import MonthDays from "./monthDays";
 import { days } from "./calendarConst";
+import { db } from "@/lib/db";
 
 
 
-export default function MonthView() {
+export default async function MonthView() {
+
+  const events = await db.event.findMany()
   return (
     <section className="flex flex-col gap-1 items-center md:px-6 md:py-2 size-full">
       <div className="grid grid-cols-7 grid-rows-1 gap-1">
@@ -12,7 +15,7 @@ export default function MonthView() {
             <h4 className="md:px-4 text-sm md:text-lg px-1 text-center w-12 md:w-16 font-bold" key={index}>{day.substring(0, 3)}</h4>
         ))}
       </div>
-      <MonthDays/>
+      <MonthDays events={events}/>
     </section>
   );
 }

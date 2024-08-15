@@ -29,3 +29,11 @@ model Teacher {
   description    String?
   contact        String?
 }
+
+model Event {
+  id         String @id @default(cuid())
+  title      String
+  date       String
+  startTime  String
+  finishTime String
+}

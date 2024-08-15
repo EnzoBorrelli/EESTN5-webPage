@@ -108,7 +108,7 @@ export async function PUT(req: Request) {
         { message: error.errors.map((e) => e.message).join(", ") },
         { status: 400 }
       );
-    }
+    } 
     return NextResponse.json(
       { message: "Something went wrong, please try again" },
       { status: 500 }
