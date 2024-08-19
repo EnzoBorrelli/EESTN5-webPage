@@ -8,7 +8,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <SessionProvider>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <CalendarProvider>{children}</CalendarProvider>
+        <CalendarProvider>
+          {children}
+          </CalendarProvider>
       </ThemeProvider>
     </SessionProvider>
   );

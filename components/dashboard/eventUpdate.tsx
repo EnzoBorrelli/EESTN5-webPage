@@ -16,6 +16,7 @@ import { Button } from "../ui/button";
 import { useToast } from "../ui/use-toast";
 import { useState } from "react";
 import dayjs from "dayjs";
+import { Event } from "@/types/event";
 
 //se define un esquema para verificar la fecha del evento
 const dateSchema = z
@@ -41,27 +42,28 @@ const FormSchema = z.object({
   finishTime: timeSchema,
 });
 
-const EventAdd = () => {
+const EventUpdate = ({event}:{event:Event}) => {
   const [loading,setLoading] = useState(false)
   const { toast } = useToast();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      title: "",
-      date: "",
-      startTime: "",
-      finishTime: "",
+      title: event.title,
+      date: event.date,
+      startTime: event.startTime,
+      finishTime: event.finishTime,
     },
   });
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
     setLoading(true)
     const response = await fetch("/api/event", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        id:event.id,
         title: values.title,
         date: values.date,
         startTime: values.startTime,
@@ -72,14 +74,14 @@ const EventAdd = () => {
       setLoading(false)
       form.reset();
       toast({
-        title: "Evento agregado",
-        description: "El nuevo Evento ha sido agregado al calendario",
+        title: "Evento actualizado",
+        description: "El nuevo Evento ha sido actualizado al calendario",
         variant:"success"
       });
     } else {
       toast({
         title: "Error Inesperado",
-        description: "El evento no ha podido ser agregado",
+        description: "El evento no ha podido ser actualizado",
         variant: "destructive",
       });
     }
@@ -88,7 +90,7 @@ const EventAdd = () => {
   return (
     <section className="flex flex-col items-center gap-4">
       <p className="my-2 text-center">
-        Agrega perfiles de profesores rellenando este formulario.
+        Edita Eventos rellenando este formulario.
       </p>
     <Form {...form}>
       <form
@@ -116,7 +118,7 @@ const EventAdd = () => {
               <FormItem>
                 <FormLabel className="font-bold">Fecha</FormLabel>
                 <FormControl>
-                  <Input placeholder="2024-11-20" {...field} />
+                <Input placeholder="EJ: 2024-8-19" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -129,7 +131,7 @@ const EventAdd = () => {
               <FormItem>
                 <FormLabel className="font-bold">Horario de inicio</FormLabel>
                 <FormControl>
-                  <Input placeholder="13:00" {...field} />
+                  <Input placeholder="1300" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -142,7 +144,7 @@ const EventAdd = () => {
               <FormItem>
                 <FormLabel className="font-bold">Horario de cierre</FormLabel>
                 <FormControl>
-                  <Input placeholder="14:00" {...field} />
+                  <Input placeholder="1400" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -154,7 +156,7 @@ const EventAdd = () => {
           type="submit"
           disabled={loading}
         >
-          {loading?"Guardando Evento":"Agregar Evento"}
+          {loading?"Actualizando Evento":"Actualizar Evento"}
         </Button>
       </form>
     </Form>
@@ -162,4 +164,4 @@ const EventAdd = () => {
   );
 };
 
-export default EventAdd;
+export default EventUpdate;

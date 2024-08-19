@@ -4,6 +4,8 @@ import TeacherForm from "@/components/form/TeacherForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
 import { db } from "@/lib/db";
+import EventAdd from "@/components/dashboard/eventAdd";
+import EventList from "@/components/dashboard/eventList";
 
 export default async function dashboard() {
   const teachers = await db.teacher.findMany();
@@ -22,6 +24,8 @@ export default async function dashboard() {
             <TabsTrigger value="users">Editar usuarios</TabsTrigger>
             <TabsTrigger value="addTeachers">Agregar profesores</TabsTrigger>
             <TabsTrigger value="editTeachers">Editar profesores</TabsTrigger>
+            <TabsTrigger value="addEvents">Agregar eventos</TabsTrigger>
+            <TabsTrigger value="editEvents">Editar eventos</TabsTrigger>
           </TabsList>
           <TabsContent value="users">
             <UserSelector />
@@ -31,6 +35,12 @@ export default async function dashboard() {
           </TabsContent>
           <TabsContent value="editTeachers">
             <TeacherManager teachers={teachers}/>
+          </TabsContent>
+          <TabsContent value="addEvents">
+            <EventAdd/>
+          </TabsContent>
+          <TabsContent value="editEvents">
+            <EventList/>
           </TabsContent>
         </Tabs>
       </article>
