@@ -14,11 +14,12 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(cuid())
-  name     String @unique
-  email    String @unique
+  id       String     @id @default(cuid())
+  name     String     @unique
+  email    String     @unique
   role     String
   password String
+  Reminder Reminder[]
 }
 
 model Teacher {
@@ -31,9 +32,20 @@ model Teacher {
 }
 
 model Event {
-  id         String @id @default(cuid())
+  id         String     @id @default(cuid())
   title      String
   date       String
   startTime  String
   finishTime String
+  Reminder   Reminder[]
+}
+
+model Reminder {
+  id      String @id @default(cuid())
+  userId  String
+  eventId String
+  user    User   @relation(fields: [userId], references: [id])
+  event   Event  @relation(fields: [eventId], references: [id])
+
+  @@unique([userId, eventId])
 }

@@ -15,7 +15,13 @@ import { months } from "./calendarConst";
 import EventBadge from "./eventBadge";
 import { Event } from "@/types/event";
 
-export default function MonthDays({events}:{events:Event[]}) {
+export default function MonthDays({
+  events,
+  userID,
+}: {
+  events: Event[];
+  userID: string | undefined;
+}) {
   const { displayMonth, displayYear } = useCalendar(); // se traen el mes y año del calendarProvider
   const [daysInDisplay, setDaysInDisplay] = useState<number[]>([]); // se guardan los dias a mostrar en el calendario
   const firstDayOfMonth = dayjs(`${displayYear}-${displayMonth + 1}`).day(); // se guarda un numero que equivale al dia de la semana que fue primero de ese mes
@@ -65,12 +71,18 @@ export default function MonthDays({events}:{events:Event[]}) {
         <Sheet key={index}>
           <SheetTrigger
             className={`${
-              events.some(event=> event.date === `${displayYear}-${displayMonth + 1}-${day}` )
+              events.some(
+                (event) =>
+                  event.date === `${displayYear}-${displayMonth + 1}-${day}`
+              )
                 ? "bg-amber-400 rounded-lg text-text-100 hover:scale-125 transition-transform duration-150 ease-in flex items-center justify-center gap-1"
                 : "md:px-4"
             } w-12 md:w-16`}
             disabled={
-              !events.some(event=> event.date === `${displayYear}-${displayMonth + 1}-${day}` )
+              !events.some(
+                (event) =>
+                  event.date === `${displayYear}-${displayMonth + 1}-${day}`
+              )
             }
           >
             <h4
@@ -88,7 +100,10 @@ export default function MonthDays({events}:{events:Event[]}) {
             </h4>
             <i
               className={`${
-                events.some(event=> event.date === `${displayYear}-${displayMonth + 1}-${day}` )
+                events.some(
+                  (event) =>
+                    event.date === `${displayYear}-${displayMonth + 1}-${day}`
+                )
                   ? ""
                   : "hidden"
               }`}
@@ -105,9 +120,14 @@ export default function MonthDays({events}:{events:Event[]}) {
               </SheetDescription>
             </SheetHeader>
             <div className="flex flex-col gap-4 my-4 md:pr-20">
-              {events.filter(event=> event.date === `${displayYear}-${displayMonth + 1}-${day}` ).map((event) => (
-                <EventBadge key={event.id} event={event} />
-              ))}
+              {events
+                .filter(
+                  (event) =>
+                    event.date === `${displayYear}-${displayMonth + 1}-${day}`
+                )
+                .map((event) => (
+                  <EventBadge key={event.id} event={event} userID={userID} />
+                ))}
             </div>
           </SheetContent>
         </Sheet>

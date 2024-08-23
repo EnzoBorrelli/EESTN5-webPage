@@ -8,7 +8,7 @@ TODO: update forms
 
 
 */
-export default function Calendario() {
+export default async function Calendario() {
   return (
     <main className="flex flex-col items-center w-full gap-4 p-5 md:p-10 md:px-20">
       <Calendar />
