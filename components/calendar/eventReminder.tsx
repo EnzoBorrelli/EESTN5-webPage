@@ -4,22 +4,28 @@ import { useToast } from "../ui/use-toast";
 import { FaCalendarTimes } from "react-icons/fa";
 import { FaCalendarCheck } from "react-icons/fa6";
 import { MdAddAlert } from "react-icons/md";
+import { Event } from "@/types/event";
+import { useRouter } from "next/navigation";
 
 const EventReminder = ({
   eventId,
   userId,
+  reminders,
 }: {
   eventId: string;
   userId: string | undefined;
+  reminders: Event[];
 }) => {
   const { toast } = useToast();
-  const [isSaved, setIsSaved] = useState(false);
+  const existingReminder = reminders.some(event => event.id === eventId)
+  const [isSaved, setIsSaved] = useState(existingReminder);
   const [isHovered, setIsHovered] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+  const router = useRouter()
 
   // Maneja la adición de recordatorio
   const AddReminder = async () => {
-    console.log("userId:", userId, "eventId:", eventId); 
+    console.log("userId:", userId, "eventId:", eventId);
     setIsProcessing(true);
     try {
       const response = await fetch("/api/reminder", {
@@ -37,6 +43,7 @@ const EventReminder = ({
           variant: "success",
         });
         setIsSaved(true);
+        router.refresh()
       } else {
         const errorData = await response.json();
         toast({
@@ -76,6 +83,7 @@ const EventReminder = ({
           variant: "success",
         });
         setIsSaved(false);
+        router.refresh()
       } else {
         const errorData = await response.json();
         toast({
