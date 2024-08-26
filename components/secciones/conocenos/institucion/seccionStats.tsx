@@ -16,24 +16,24 @@ export default function SeccionStats() {
           </i>
           Especialidades
         </h3>
-        <p className="text-center text-text-200">
+        <p className="text-center text-text-400 dark:text-text-300">
           Ofrecemos tres especialidades para que los jóvenes puedan seleccionar:{" "}
           <Link
-            className="font-semibold underline text-tone-200 hover:text-accent-1"
+            className="font-semibold underline text-blue-500 hover:text-amber-500"
             href="/electronica"
           >
             Electrónica
           </Link>
           ,{" "}
           <Link
-            className="font-semibold underline text-tone-200 hover:text-accent-1"
+            className="font-semibold underline text-blue-500 hover:text-amber-500"
             href="/electromecanica"
           >
             Electromecanica
           </Link>{" "}
           y{" "}
           <Link
-            className="font-semibold underline text-tone-200 hover:text-accent-1"
+            className="font-semibold underline text-blue-500 hover:text-amber-500"
             href="/automotor"
           >
             Automotor
@@ -50,10 +50,10 @@ export default function SeccionStats() {
           </i>
           Pasantías
         </h3>
-        <p className="text-center text-text-200">
+        <p className="text-center text-text-400 dark:text-text-300">
           Contamos con emocionantes oportunidades de{" "}
           <Link
-            className="font-semibold underline text-tone-200 hover:text-accent-1"
+            className="font-semibold underline text-blue-500 hover:text-amber-500"
             href="/pasantias"
           >
             Pasantías
@@ -71,11 +71,11 @@ export default function SeccionStats() {
           </i>
           Cursos de formación profesional
         </h3>
-        <p className="text-center text-text-200">
+        <p className="text-center text-text-400 dark:text-text-300">
           Brindamos{" "}
           <Link
-            className="font-semibold underline text-tone-200 hover:text-accent-1"
-            href="/recursos"
+            className="font-semibold underline text-blue-500 hover:text-amber-500"
+            href="/actividades"
           >
             Cursos
           </Link>{" "}
@@ -93,13 +93,16 @@ export default function SeccionStats() {
         </h3>
         <p className="text-center text-text-400 dark:text-text-300">
           Conoce y escucha nuestra radio local{" "}
-          <Link
-            className="font-semibold underline text-tone-200 hover:text-accent-1"
-            href="/lacincofm"
+          <a
+            href="https://www.instagram.com/lacincofm/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold underline text-blue-500 hover:text-amber-500"
           >
             LaCincoFm
-          </Link>{" "}
-          donde la creatividad y conocimiento de nuestros estudiantes se encuentra en sintonia
+          </a>{' '}
+          donde la creatividad y conocimiento de nuestros estudiantes se
+          encuentra en sintonia
         </p>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { FaInstagram, FaSquareFacebook, FaXTwitter } from "react-icons/fa6";
+import { FaRadio, FaInstagram, FaSquareFacebook, FaXTwitter } from "react-icons/fa6";
 
 export const Conocenos = [
   {
@@ -44,10 +44,6 @@ export const Especialidades = [
 
 export const Comunidad = [
   {
-    name: "Radio: LaCincoFm",
-    href: "/actividades",
-  },
-  {
     name: "Actividades",
     href: "/actividades",
   },
@@ -59,13 +55,14 @@ export const Comunidad = [
     name: "Recursos",
     href: "/recursos",
   },
-  {
-    name: "Testimonios",
-    href: "/testimonios",
-  },
 ];
 
 export const RedesSociales = [
+  {
+    key: "lacincofm",
+    href: "https://www.instagram.com/lacincofm/",
+    symbol: <FaRadio />,
+  },
   {
     key: "instagram",
     href: "https://www.instagram.com/industrialdetemperleyoficial/",
