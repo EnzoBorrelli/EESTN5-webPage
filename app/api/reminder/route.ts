@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
     const { userId, eventId } = await req.json();
 
     // Verificamos si existe el usuario y el evento
-    const existingUser = await db.user.findUnique({ where: { id: userId } });
+    const existingUser = await db.user.findUnique({ where: { email: userId } });
     const existingEvent = await db.event.findUnique({ where: { id: eventId } });
 
     if (!existingUser || !existingEvent) {
