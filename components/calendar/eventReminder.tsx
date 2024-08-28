@@ -6,17 +6,18 @@ import { FaCalendarCheck } from "react-icons/fa6";
 import { MdAddAlert } from "react-icons/md";
 import { Event } from "@/types/event";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const EventReminder = ({
   eventId,
-  userId,
   reminders,
 }: {
   eventId: string;
-  userId: string | undefined;
   reminders: Event[];
 }) => {
   const { toast } = useToast();
+  const {data:session} = useSession()
+  const userId = session?.user.email
   const existingReminder = reminders.some(event => event.id === eventId)
   const [isSaved, setIsSaved] = useState(existingReminder);
   const [isHovered, setIsHovered] = useState(false);

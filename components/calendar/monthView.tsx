@@ -7,12 +7,11 @@ import { options } from "@/app/api/auth/[...nextauth]/options";
 
 export default async function MonthView() {
   const session = await getServerSession(options);
+  const user = session?.user
+  
   const events = await db.event.findMany();
-  const user = await db.user.findUnique({
-    where: { name: session?.user.name },
-  });
   const reminders = await db.reminder.findMany({
-    where: { userId: user?.id },
+    where: { userId: user?.email },
     include: { event: true },
   });
   return (
@@ -27,7 +26,7 @@ export default async function MonthView() {
           </h4>
         ))}
       </div>
-      <MonthDays events={events} userID={user?.id} reminders={reminders.map((reminder)=>reminder.event)} />
+      <MonthDays events={events} reminders={reminders.map((reminder)=>reminder.event)} />
     </section>
   );
 }

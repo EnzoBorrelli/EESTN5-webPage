@@ -6,12 +6,10 @@ import dayjs from "dayjs";
 
 export default function EventBadge({
   event,
-  userID,
   reminders,
   showDate,
 }: {
   event: Event;
-  userID: string | undefined;
   reminders: Event[];
   showDate: boolean;
 }) {
@@ -35,7 +33,6 @@ export default function EventBadge({
         </span>
         <EventReminder
           eventId={event.id}
-          userId={userID}
           reminders={reminders}
         />
       </div>

@@ -17,11 +17,9 @@ import { Event } from "@/types/event";
 
 export default function MonthDays({
   events,
-  userID,
   reminders,
 }: {
   events: Event[];
-  userID: string | undefined;
   reminders: Event[];
 }) {
   const { displayMonth, displayYear } = useCalendar(); // se traen el mes y año del calendarProvider
@@ -128,7 +126,7 @@ export default function MonthDays({
                     event.date === `${displayYear}-${displayMonth + 1}-${day}`
                 )
                 .map((event) => (
-                  <EventBadge key={event.id} event={event} userID={userID} reminders={reminders} showDate={false} />
+                  <EventBadge key={event.id} event={event} reminders={reminders} showDate={false} />
                 ))}
             </div>
           </SheetContent>
