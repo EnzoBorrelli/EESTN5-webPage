@@ -40,7 +40,7 @@ export default function Header() {
   return (
     <header className="relative flex items-center justify-between w-full py-4 shadow-sm shadow-bg-200 dark:shadow-bg-500 h-fit">
       <Logo size={50} />
-      <nav className="flex flex-col items-center gap-4 w-fit h-fit md:flex-row">
+      <nav className="z-50 flex flex-col items-center gap-4 w-fit h-fit md:flex-row">
         <Link
           className="hidden text-3xl transition-all duration-100 ease-in md:flex hover:text-blue-500 dark:hover:text-amber-500 hover:scale-110"
           href="/"
@@ -58,7 +58,7 @@ export default function Header() {
           )}
         </button>
         <ul
-          className={`flex flex-col gap-8 p-4 md:hidden absolute left-0 top-12 w-full bg-bg-200 transition-all duration-150 ease-out ${
+          className={`flex flex-col gap-8 p-4 md:hidden absolute left-0 top-16 w-full bg-bg-200 dark:bg-bg-500 transition-all duration-150 ease-out ${
             navMenu // cambio de estilo condicional
               ? "h-screen opacity-100 pointer-events-auto"
               : "pointer-events-none h-0 opacity-0"
@@ -132,7 +132,7 @@ export default function Header() {
         </ul>
       </nav>
       <div
-        className={`absolute top-16 right-4 bg-bg-300 dark:bg-bg-400 size-fit md:hidden flex p-4 transition-all duration-100 ease-out ${
+        className={`absolute z-50 top-16 right-4 bg-bg-300 dark:bg-bg-400 size-fit md:hidden flex p-4 transition-all duration-100 ease-out ${
           navMenu && menu // para version movil, si el menu hamburguesa esta desplegado y el submenu esta abierto, aplicar estos estilos
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -141,7 +141,7 @@ export default function Header() {
         <SubNavMobile menu={selectedMenu} />
       </div>
       <div
-        className={`absolute top-14 bg-bg-200 dark:bg-bg-500 w-full hidden md:flex p-4 transition-all duration-200 ease-in ${
+        className={`absolute z-50 top-16 bg-bg-200 dark:bg-bg-500 w-full hidden md:flex p-4 transition-all duration-200 ease-in ${
           menu // si el submenu esta activo, aplicar estos estilos
             ? "h-24 opacity-100 pointer-events-auto"
             : "h-6 opacity-0 pointer-events-none"
