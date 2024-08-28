@@ -44,7 +44,7 @@ model Reminder {
   id      String @id @default(cuid())
   userId  String
   eventId String
-  user    User   @relation(fields: [userId], references: [id])
+  user    User   @relation(fields: [userId], references: [email])
   event   Event  @relation(fields: [eventId], references: [id])
 
   @@unique([userId, eventId])
