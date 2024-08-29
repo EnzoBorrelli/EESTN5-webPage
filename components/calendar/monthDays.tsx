@@ -63,7 +63,7 @@ export default function MonthDays({
     const completeCalendar = [...days, ...daysFromNextMonth];
 
     setDaysInDisplay(completeCalendar);
-  }, [displayMonth, displayYear]);
+  }, [displayMonth, displayYear,daysInMonth,firstDayOfMonth]);
 
   return (
     <div className="grid grid-cols-7 grid-rows-1 gap-1">

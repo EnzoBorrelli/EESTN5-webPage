@@ -100,7 +100,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({ event }) => {
                           ":" +
                           event.finishTime.slice(2)}
                       </li>
-                      <li>EESTN5 '2 de Abril', Temperley</li>
+                      <li>EESTN5 &apos;2 de Abril&apos;, Temperley</li>
                     </ul>
                   </td>
                 </tr>
@@ -163,7 +163,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({ event }) => {
                 marginTop: "10px",
               }}
             >
-              © 2024 EEST N°5 '2 de Abril'. Derechos reservados.
+              © 2024 EEST N°5 &apos;2 de Abril&apos;. Derechos reservados.
             </p>
           </td>
         </tr>
