@@ -1,6 +1,7 @@
 import Banner from "@/components/home/banner";
 import { bannerData } from "@/components/home/bannerData";
 import { HomeCarousel } from "@/components/home/homeCarousel";
+import Testimonial from "@/components/home/testimonial";
 import UpcomingEvents from "@/components/home/upcomingEvents";
 import { RedesSociales } from "@/components/navLinks";
 import React from "react";
@@ -49,6 +50,16 @@ export default function Home() {
           {bannerData.map((data, index) => (
             <Banner key={index} data={data} />
           ))}
+        </div>
+      </article>
+      <article className="w-full flex flex-col items-center py-6 gap-4">
+      <h2 className="text-text-600 dark:text-text-100 text-2xl font-bold">
+          Testimonios
+        </h2>
+        <div className="flex flex-col md:flex-row gap-4">
+        <Testimonial/>
+        <Testimonial/>
+        <Testimonial/>
         </div>
       </article>
     </main>
