@@ -14,7 +14,7 @@ export default function Logo({
   const { theme } = useTheme();
   return (
     <Image
-      className="ml-4 -my-4"
+      className="ml-8 -my-4"
       src={theme === "dark" ? logoInvert : logoColor}
       height={size}
       width={size}
