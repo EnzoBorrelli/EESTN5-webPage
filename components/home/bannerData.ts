@@ -13,28 +13,28 @@ import { StaticImageData } from 'next/image';
 
 export const bannerData = [
   {
-    title: "basico",
+    title: "Ciclo Básico",
     description:
       "¡Explora tus talentos! El Ciclo Básico te abre puertas hacia un futuro brillante.",
     img: basico,
     href: "/ciclo-basico",
   },
   {
-    title: "electronica",
+    title: "Electrónica",
     description:
       "Conviértete en un maestro de la tecnología: ¡la Electrónica transforma ideas en realidad!",
     img: electronica,
     href: "/electronica",
   },
   {
-    title: "electromecanica",
+    title: "Electromecanica",
     description:
       "Domina la fusión de mecánica y electrónica: ¡la Electromecánica te lleva al siguiente nivel!",
     img: electromecanica,
     href: "/electromecanica",
   },
   {
-    title: "automotor",
+    title: "Automotor",
     description:
      "Impulsa tu pasión por los motores: el Automotor te convierte en un experto en vehículos.",
     img: automotor,
