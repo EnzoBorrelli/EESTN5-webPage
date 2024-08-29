@@ -7,10 +7,12 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 
-import photo from './carouselImgs/747506.jpg'
+import photo1 from './carouselImgs/747506.jpg'
+import photo2 from './carouselImgs/20814.png'
+import photo3 from './carouselImgs/968542.png'
 import Image from "next/image"
 
-const photos = [photo,photo,photo]
+const photos = [photo1,photo2,photo3]
 
 export function HomeCarousel() {
   const plugin = useRef(
