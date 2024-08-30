@@ -14,16 +14,16 @@ export default function Electromecanica() {
         <article className="flex flex-col gap-2 indent-2">
           <p className="text-justify">
             La especialidad de Electromecánica en la Escuela Secundaria Técnica
-            &quot;2 de Abril&quot;, ubicada en Temperley, Argentina, ofrece una
-            formación integral desde el cuarto hasta el séptimo año. Este
-            programa combina teoría y práctica, brindando a los estudiantes las
-            habilidades necesarias en el diseño, mantenimiento y reparación de
-            sistemas eléctricos y mecánicos. Así, se preparan para enfrentar los
-            desafíos del mundo tecnológico actual.
+            &quot;2 de Abril&quot;, ofrece una formación integral desde el
+            cuarto hasta el séptimo año. Este programa combina teoría y
+            práctica, brindando a los estudiantes las habilidades necesarias en
+            el diseño, mantenimiento y reparación de sistemas eléctricos y
+            mecánicos. Así, se preparan para enfrentar los desafíos del mundo
+            tecnológico actual.
           </p>
         </article>
         <hr className="my-4 border-t-2 border-bg-200 dark:border-bg-500" />
-        <article className="flex flex-col gap-2 divide-y-2 indent-2 divide-bg-300">
+        <article className="flex flex-col gap-2 divide-y-2 indent-2 divide-bg-300 dark:divide-bg-500">
           <div className="flex flex-col items-center gap-2 mb-4">
             <p className="text-justify">
               Durante el ciclo de Electromecánica, los estudiantes se
@@ -81,12 +81,12 @@ export default function Electromecanica() {
               alumnos trabajan en proyectos que involucran el diseño,
               mantenimiento y reparación de sistemas eléctricos y mecánicos.
             </p>
-              <Image
-                src="/imgs/especialidades/basico/tallerElectronica.jpg"
-                alt=""
-                width={320}
-                height={180}
-              />
+            <Image
+              src="/imgs/especialidades/basico/tallerElectronica.jpg"
+              alt=""
+              width={320}
+              height={180}
+            />
           </div>
         </article>
         <hr className="mt-4 border-t-2 border-bg-200 dark:border-bg-500" />
