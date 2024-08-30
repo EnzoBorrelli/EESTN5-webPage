@@ -41,6 +41,7 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "hop-right": "hop-right 1s ease-out infinite",
         "hop-left": "hop-left 1s ease-out infinite",
+        'spin-slow': 'spin 10s linear infinite',
       },
       colors: {
         bg: {
