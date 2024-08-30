@@ -11,7 +11,7 @@ export default function Home() {
     <main className="flex flex-col items-center justify-center gap-2 size-full">
       <article className="size-full relative">
         <HomeCarousel />
-        <h2 className="mt-2 absolute -top-2 w-full text-center py-2 text-text-500 dark:text-text-200 drop-shadow-lg text-md lg:text-lg font-bold bg-bg-200 dark:bg-bg-500">
+        <h2 className="mt-2 absolute -top-2 w-full text-center py-2 text-text-500 dark:text-text-200 text-md lg:text-lg font-bold bg-bg-200 dark:bg-bg-500">
           Bienvenido a la Escuela Técnica Industrial de Temperley &apos;2 de Abril&apos;,
           donde la excelencia en la formación técnica es nuestra prioridad.
         </h2>
