@@ -12,7 +12,7 @@ export default function CicloBasico() {
       </h1>
       <section className="p-2 my-4">
         <article className="flex flex-col gap-2 indent-2">
-          <p>
+          <p className="text-justify">
             El Ciclo Básico en la Escuela Secundaria Técnica &quot;2 de Abril&quot;,
             reconocida por su excelencia educativa en Temperley, Argentina,
             ofrece una experiencia formativa única que combina rigurosidad
@@ -37,7 +37,7 @@ export default function CicloBasico() {
         <hr className="my-4 border-t-2 border-bg-200 dark:border-bg-500" />
         <article className="flex flex-col gap-2 divide-y-2 indent-2 divide-bg-300">
           <div className="flex flex-col items-center gap-2 mb-4">
-            <p className="text-center">
+            <p className="text-justify">
               Durante el primer año, los estudiantes se familiarizan con
               conceptos básicos en <strong>Carpintería</strong> y{" "}
               <strong>Dibujo Técnico</strong>. Estas materias les permiten
@@ -61,7 +61,7 @@ export default function CicloBasico() {
             </div>
           </div>
           <div className="flex flex-col items-center gap-2 py-4">
-            <p className="text-center">
+            <p className="text-justify">
               En el segundo año, el enfoque se centra en áreas más
               especializadas, como <strong>Electricidad</strong> y{" "}
               <strong>Dibujo Técnico avanzado</strong>. Los estudiantes exploran
@@ -85,7 +85,7 @@ export default function CicloBasico() {
             </div>
           </div>
           <div className="flex flex-col items-center gap-2 py-4">
-            <p className="text-center">
+            <p className="text-justify">
               En el tercer año, los estudiantes tienen la oportunidad de
               sumergirse en talleres introductorios a las especialidades
               técnicas disponibles en la escuela. Estos talleres les brindan una
@@ -122,7 +122,7 @@ export default function CicloBasico() {
           Turnos y horarios
         </h2>
         <article className="flex flex-col items-center gap-4">
-          <p className="text-center">
+          <p className="text-justify">
             La escuela opera en dos turnos, mañana y tarde. Los talleres se
             programan en el turno que no se utiliza para las clases teóricas.
             Además, se ofrece educación física una vez por semana para todos los
