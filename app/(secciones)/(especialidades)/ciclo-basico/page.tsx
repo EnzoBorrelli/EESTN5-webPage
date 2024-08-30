@@ -35,7 +35,7 @@ export default function CicloBasico() {
           </p>
         </article>
         <hr className="my-4 border-t-2 border-bg-200 dark:border-bg-500" />
-        <article className="flex flex-col gap-2 divide-y-2 indent-2 divide-bg-300">
+        <article className="flex flex-col gap-2 divide-y-2 indent-2 divide-bg-300 dark:divide-bg-500">
           <div className="flex flex-col items-center gap-2 mb-4">
             <p className="text-justify">
               Durante el primer año, los estudiantes se familiarizan con
