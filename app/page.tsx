@@ -2,6 +2,7 @@ import Banner from "@/components/home/banner";
 import { bannerData } from "@/components/home/bannerData";
 import { HomeCarousel } from "@/components/home/homeCarousel";
 import Testimonial from "@/components/home/testimonial";
+import { testimonialData } from "@/components/home/testimonialData";
 import UpcomingEvents from "@/components/home/upcomingEvents";
 import { RedesSociales } from "@/components/navLinks";
 import React from "react";
@@ -12,8 +13,9 @@ export default function Home() {
       <article className="size-full relative">
         <HomeCarousel />
         <h2 className="mt-2 absolute -top-2 w-full text-center py-2 text-text-500 dark:text-text-200 text-md lg:text-lg font-bold bg-bg-200 dark:bg-bg-500">
-          Bienvenido a la Escuela Técnica Industrial de Temperley &apos;2 de Abril&apos;,
-          donde la excelencia en la formación técnica es nuestra prioridad.
+          Bienvenido a la Escuela Técnica Industrial de Temperley &apos;2 de
+          Abril&apos;, donde la excelencia en la formación técnica es nuestra
+          prioridad.
         </h2>
         <section className="absolute flex flex-col items-center py-2 px-4 md:px-0 lg:py-4 gap-2 lg:gap-4 bottom-0 left-0 w-1/2 lg:w-2/5 bg-bg-200 dark:bg-bg-500">
           <h1 className="text-lg lg:text-3xl font-extrabold">
@@ -53,13 +55,13 @@ export default function Home() {
         </div>
       </article>
       <article className="w-full flex flex-col items-center py-6 gap-4">
-      <h2 className="text-text-600 dark:text-text-100 text-2xl font-bold">
+        <h2 className="text-text-600 dark:text-text-100 text-2xl font-bold">
           Testimonios
         </h2>
         <div className="flex flex-col md:flex-row gap-4">
-        <Testimonial/>
-        <Testimonial/>
-        <Testimonial/>
+          {testimonialData.map((data, index) => (
+            <Testimonial key={index} data={data} />
+          ))}
         </div>
       </article>
     </main>
