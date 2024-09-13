@@ -11,7 +11,7 @@ const dateSchema = z
     message: "formato incorrecto, la fecha se espera en YYYY-MM-DD",
   });
 
-  //se define un esquema para verificar el horario del evento
+//se define un esquema para verificar el horario del evento
 const timeSchema = z
   .string()
   .min(1, "el horario es necesario")
@@ -44,8 +44,7 @@ const erasedEventSchema = z.object({
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { title, date, startTime,finishTime } =
-      eventSchema.parse(body); // se obtiene esta informacion del body
+    const { title, date, startTime, finishTime } = eventSchema.parse(body); // se obtiene esta informacion del body
 
     // se crea un nuevo evento
     const newEvent = await db.event.create({
@@ -57,7 +56,9 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json({ success: true, event: newEvent });
+    const response = NextResponse.json({ success: true, event: newEvent });
+    response.headers.set("Cache-Control", "no-store"); // Add this line
+    return response;
   } catch (error) {
     console.error("Error creating event:", error);
     return NextResponse.json({
@@ -71,7 +72,7 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
   try {
     const body = await req.json();
-    const { id, title, date, startTime,finishTime } =
+    const { id, title, date, startTime, finishTime } =
       updatedEventSchema.parse(body);
 
     // se verifica si ya existe el evento
@@ -97,10 +98,12 @@ export async function PUT(req: Request) {
       },
     });
 
-    return NextResponse.json(
+    const response = NextResponse.json(
       { user: updatedEvent, message: "informacion de evento actualizada" },
       { status: 200 }
     );
+    response.headers.set("Cache-Control", "no-store"); // Add this line
+    return response;
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
@@ -135,10 +138,12 @@ export async function DELETE(req: Request) {
       where: { id: id },
     });
 
-    return NextResponse.json(
+    const response = NextResponse.json(
       { user: deletedEvent, message: "evento borrado existosamente" },
       { status: 200 }
     );
+    response.headers.set("Cache-Control", "no-store"); // Add this line
+    return response;
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
