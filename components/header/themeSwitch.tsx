@@ -1,9 +1,17 @@
 "use client";
 import { useTheme } from "next-themes";
+import { useEffect } from "react";
 import { FaSun, FaMoon } from "react-icons/fa6";
 
 export default function ThemeBtn() {
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []);
 
   return (
     <button
