@@ -6,7 +6,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 
-const fontType = Open_Sans({ weight: "400", subsets: ["latin"] });
+const fontType = Open_Sans({ weight: "400", subsets: ["latin"], display:"swap" });
 
 export const metadata: Metadata = {
   title:
