@@ -63,7 +63,7 @@ export default function MonthDays({
     const completeCalendar = [...days, ...daysFromNextMonth];
 
     setDaysInDisplay(completeCalendar);
-  }, [displayMonth, displayYear,daysInMonth,firstDayOfMonth]);
+  }, [displayMonth, displayYear, daysInMonth, firstDayOfMonth]);
 
   return (
     <div className="grid grid-cols-7 grid-rows-1 gap-1">
@@ -75,7 +75,15 @@ export default function MonthDays({
                 (event) =>
                   event.date === `${displayYear}-${displayMonth + 1}-${day}`
               )
-                ? "bg-amber-400 rounded-lg text-text-100 hover:scale-125 transition-transform duration-150 ease-in flex items-center justify-center gap-1"
+                ? `${
+                    !(day > 1 && index < firstDayOfMonth) &&
+                    !(
+                      day < daysInMonth &&
+                      index > firstDayOfMonth + daysInMonth - 1
+                    )
+                      ? "bg-amber-400 rounded-lg text-text-100 hover:scale-125 transition-transform duration-150 ease-in flex items-center justify-center gap-1"
+                      : ""
+                  }`
                 : "md:px-4"
             } w-12 md:w-16`}
             disabled={
@@ -104,7 +112,15 @@ export default function MonthDays({
                   (event) =>
                     event.date === `${displayYear}-${displayMonth + 1}-${day}`
                 )
-                  ? ""
+                  ? `${
+                      !(day > 1 && index < firstDayOfMonth) &&
+                      !(
+                        day < daysInMonth &&
+                        index > firstDayOfMonth + daysInMonth - 1
+                      )
+                        ? ""
+                        : "hidden"
+                    }`
                   : "hidden"
               }`}
             >
@@ -126,7 +142,12 @@ export default function MonthDays({
                     event.date === `${displayYear}-${displayMonth + 1}-${day}`
                 )
                 .map((event) => (
-                  <EventBadge key={event.id} event={event} reminders={reminders} showDate={false} />
+                  <EventBadge
+                    key={event.id}
+                    event={event}
+                    reminders={reminders}
+                    showDate={false}
+                  />
                 ))}
             </div>
           </SheetContent>
