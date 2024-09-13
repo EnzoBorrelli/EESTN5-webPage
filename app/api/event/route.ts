@@ -40,6 +40,19 @@ const erasedEventSchema = z.object({
   id: z.string().min(1, "ID es necesaria"),
 });
 
+export async function GET() {
+  try {
+    const events = await db.event.findMany(); // Fetch all events from the database
+    return NextResponse.json({ success: true, events }); // Return the events in the response
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return NextResponse.json({
+      success: false,
+      message: "Failed to fetch events",
+    });
+  }
+}
+
 //POST request, utilizada al agregar infromacion en la base de datos
 export async function POST(req: Request) {
   try {
