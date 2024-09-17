@@ -16,6 +16,7 @@ import { Button } from "../ui/button";
 import { useToast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { mutate } from "swr";
 
 // Define el esquema para la validación del rol
 const RoleUpdateSchema = z.object({
@@ -59,6 +60,7 @@ const UserRoleManager = ({ userID }: { userID: string }) => {
         variant: "success",
       });
       router.refresh();
+      mutate('/api/user');
     } catch (error) {
       toast({
         title: "Error",

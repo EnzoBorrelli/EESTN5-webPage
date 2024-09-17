@@ -1,7 +1,6 @@
-import React from "react";
+"use client";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { db } from "@/lib/db";
 import { FaGear } from "react-icons/fa6";
 import {
   Dialog,
@@ -13,9 +12,24 @@ import {
 } from "@/components/ui/dialog";
 
 import UserRoleManager from "./userRoleManager";
+import { UserType } from "@/types/usertype";
+import useSWR from "swr";
 
-export default async function UserSelector() {
-  const users = await db.user.findMany();
+const fetcher = async (url: string): Promise<{ users: UserType[] }> => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Error fetching data");
+  }
+  return response.json();
+};
+
+export default function UserSelector() {
+  const { data, error } = useSWR("/api/user", fetcher); // Use SWR to fetch events
+
+  if (error) return <div>No se pudieron cargar los usuarios.</div>; // Handle loading and error states
+  if (!data) return <div>Cargando usuarios...</div>;
+
+  const { users } = data;
   return (
     <section className="flex flex-col items-center gap-4">
       <p className="my-2 text-center">

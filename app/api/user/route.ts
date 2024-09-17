@@ -22,6 +22,19 @@ const updateUserRoleSchema = z.object({
   }), 
 });
 
+export async function GET() {
+  try {
+    const users = await db.user.findMany(); // Fetch all users from the database
+    return NextResponse.json({ success: true, users }); // Return the users in the response
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    return NextResponse.json({
+      success: false,
+      message: "Failed to fetch users",
+    });
+  }
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -31,7 +44,7 @@ export async function POST(req: Request) {
 
     const ExistingUserByEmail = await db.user.findUnique({
       where: { email: email },
-    });
+    }); 
 
     if (ExistingUserByEmail) {
       return NextResponse.json(
