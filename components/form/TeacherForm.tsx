@@ -15,6 +15,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useToast } from "../ui/use-toast";
 import { useState } from "react";
+import { mutate } from "swr";
 
 const FormSchema = z.object({
   name: z.string().min(1, "Este campo es necesario").max(25),
@@ -68,6 +69,7 @@ const TeacherForm = () => {
         description: "El nuevo perfil de profesor ha sido agregado existosamente",
         variant:"success"
       });
+      mutate('/api/teacher');
     } else {
       toast({
         title: "Error de registro",

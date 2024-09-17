@@ -3,12 +3,10 @@ import UserSelector from "@/components/dashboard/userSelector";
 import TeacherForm from "@/components/form/TeacherForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
-import { db } from "@/lib/db";
 import EventAdd from "@/components/dashboard/eventAdd";
 import EventList from "@/components/dashboard/eventList";
 
 export default async function dashboard() {
-  const teachers = await db.teacher.findMany();
   return (
     <main className="flex flex-col items-center w-full gap-4 p-5 md:p-10 md:px-20">
       <article className="flex flex-col items-center w-full gap-4">
@@ -34,7 +32,7 @@ export default async function dashboard() {
             <TeacherForm />
           </TabsContent>
           <TabsContent value="editTeachers">
-            <TeacherManager teachers={teachers}/>
+            <TeacherManager/>
           </TabsContent>
           <TabsContent value="addEvents">
             <EventAdd/>

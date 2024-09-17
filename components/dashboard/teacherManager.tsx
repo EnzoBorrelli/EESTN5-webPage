@@ -1,25 +1,55 @@
 'use client'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TeacherList from "./teacherList";
 import { Profesor } from "@/types/profesor";
+import useSWR from "swr";
 
-export default function TeacherManager({ teachers }: { teachers: Profesor[] }) {
-    const [filtro, setFiltro] = useState(teachers);
-  const [especialidad, setEspecialidad] = useState('todos');
+const fetcher = async (url: string): Promise<{ teachers: Profesor[] }> => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('Error fetching data');
+  }
+  return response.json();
+};
 
-  function filtroTeachers(especialidad: string) {
+export default function TeacherManager() {
+  const { data, error } = useSWR("/api/teacher", fetcher);
+
+// Define state and hooks before any conditional returns
+const [filtro, setFiltro] = useState<Profesor[]>([]); // Explicitly type as Profesor[]
+const [especialidad, setEspecialidad] = useState('todos');
+
+// Use useEffect to update the state when teachers data is available
+useEffect(() => {
+  if (data?.teachers) { // Ensure data and teachers exist before updating the state
+    setFiltro(data.teachers); // Populate filtro state when teachers are fetched
+  }
+}, [data]);
+
+function filtroTeachers(especialidad: string) {
+  if (data?.teachers) { // Ensure data.teachers is available before filtering
     if (especialidad !== "todos") {
       setFiltro(
-        teachers.filter(
+        data.teachers.filter(
           (teacher) => teacher.specialization === especialidad
         )
       );
-      setEspecialidad(especialidad);
     } else {
-      setFiltro(teachers);
-      setEspecialidad('todos');
+      setFiltro(data.teachers);
     }
+    setEspecialidad(especialidad);
   }
+}
+
+// Render logic (after hooks have executed)
+if (error) {
+  return <div>No se pudieron cargar los perfiles de profesor.</div>;
+}
+
+if (!data) {
+  return <div>Cargando perfiles de profesor...</div>;
+}
+
   return (
     <section className="flex flex-col items-center gap-4">
       <p className="max-w-md my-2 text-center">

@@ -17,6 +17,7 @@ import { useToast } from "../ui/use-toast";
 import { useState } from "react";
 import { Profesor } from "@/types/profesor";
 import { useRouter } from "next/navigation";
+import { mutate } from "swr";
 
 const FormSchema = z.object({
   name: z.string().min(1, "Este campo es necesario").max(25),
@@ -72,6 +73,7 @@ const TeacherUpdater = ({ teacher }: { teacher: Profesor }) => {
         description: "la informacion ha sido reescrita exitosamente",
         variant: "success",
       });
+      mutate('/api/teacher');
     } else {
       toast({
         title: "Error de registro",

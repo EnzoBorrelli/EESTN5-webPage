@@ -41,6 +41,19 @@ const erasedTeacherSchema = z.object({
   id: z.string().min(1, "ID es necesaria"),
 })
 
+export async function GET() {
+  try {
+    const teachers = await db.teacher.findMany(); // Fetch all teachers from the database
+    return NextResponse.json({ success: true, teachers }); // Return the teachers in the response
+  } catch (error) {
+    console.error("Error fetching teachers:", error);
+    return NextResponse.json({
+      success: false,
+      message: "Failed to fetch teachers",
+    });
+  }
+}
+
 //POST request, utilizada al agregar infromacion en la base de datos
 export async function POST(req: Request) {
   try {

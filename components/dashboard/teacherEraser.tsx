@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useRouter } from "next/navigation";
 import { useToast } from "../ui/use-toast";
+import { mutate } from "swr";
 
 export default function TeacherEraser({ teacherID }: { teacherID: string }) { //se recibe la id del profesor
   const router = useRouter();
@@ -33,6 +34,7 @@ export default function TeacherEraser({ teacherID }: { teacherID: string }) { //
         description: "el perfil de profesor se elimino exitosamente",
         variant: "success",
       });
+      mutate('/api/teacher');
     } else { //sino, ->
         const errorData = await response.json();
       toast({
