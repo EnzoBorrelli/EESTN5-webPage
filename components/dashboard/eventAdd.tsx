@@ -77,7 +77,7 @@ const EventAdd = () => {
         description: "El nuevo Evento ha sido agregado al calendario",
         variant:"success"
       });
-      mutate('/api/events');
+      mutate('/api/event');
     } else {
       toast({
         title: "Error Inesperado",

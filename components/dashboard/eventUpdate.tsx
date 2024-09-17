@@ -83,7 +83,7 @@ const EventUpdate = ({ event }: { event: Event }) => {
       });
 
       // Mutate the event list to reflect the updated data
-      mutate('/api/events'); // Adjust the endpoint as needed
+      mutate('/api/event'); // Adjust the endpoint as needed
     } else {
       setLoading(false);
       toast({

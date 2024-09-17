@@ -35,7 +35,7 @@ export default function EventDelete({ eventID }: { eventID: string }) { //se rec
         description: "el evento  se elimino exitosamente",
         variant: "success",
       });
-      mutate('/api/events');
+      mutate('/api/event');
     } else { //sino, ->
         const errorData = await response.json();
       toast({
