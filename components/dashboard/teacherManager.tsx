@@ -17,7 +17,7 @@ export default function TeacherManager() {
 
 // Define state and hooks before any conditional returns
 const [filtro, setFiltro] = useState<Profesor[]>([]); // Explicitly type as Profesor[]
-const [especialidad, setEspecialidad] = useState('todos');
+const [especialidad, setEspecialidad] = useState('todos'); 
 
 // Use useEffect to update the state when teachers data is available
 useEffect(() => {
