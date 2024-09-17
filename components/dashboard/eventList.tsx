@@ -29,8 +29,8 @@ const fetcher = async (url: string): Promise<{ events: Event[] }> => {
 export default function EventList() {
   const { data, error } = useSWR("/api/event", fetcher); // Use SWR to fetch events
 
-  if (error) return <div>Error loading events.</div>; // Handle loading and error states
-  if (!data) return <div>Loading...</div>;
+  if (error) return <div>No se pudieron cargar los eventos.</div>; // Handle loading and error states
+  if (!data) return <div>Cargando eventos...</div>;
 
   const { events } = data;
 

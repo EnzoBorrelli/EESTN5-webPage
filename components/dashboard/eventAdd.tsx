@@ -16,6 +16,7 @@ import { Button } from "../ui/button";
 import { useToast } from "../ui/use-toast";
 import { useState } from "react";
 import dayjs from "dayjs";
+import { mutate } from "swr";
 
 //se define un esquema para verificar la fecha del evento
 const dateSchema = z
@@ -52,7 +53,7 @@ const EventAdd = () => {
       startTime: "",
       finishTime: "",
     },
-  });
+  }); 
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
     setLoading(true)
@@ -76,6 +77,7 @@ const EventAdd = () => {
         description: "El nuevo Evento ha sido agregado al calendario",
         variant:"success"
       });
+      mutate('/api/events');
     } else {
       toast({
         title: "Error Inesperado",

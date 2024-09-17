@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useRouter } from "next/navigation";
 import { useToast } from "../ui/use-toast";
+import { mutate } from "swr";
 
 export default function EventDelete({ eventID }: { eventID: string }) { //se recibe la id del evento
   const router = useRouter();
@@ -34,6 +35,7 @@ export default function EventDelete({ eventID }: { eventID: string }) { //se rec
         description: "el evento  se elimino exitosamente",
         variant: "success",
       });
+      mutate('/api/events');
     } else { //sino, ->
         const errorData = await response.json();
       toast({

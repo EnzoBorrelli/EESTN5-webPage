@@ -17,7 +17,7 @@ import { useToast } from "../ui/use-toast";
 import { useState } from "react";
 import dayjs from "dayjs";
 import { Event } from "@/types/event";
-import useSWR, { mutate } from 'swr';
+import { mutate } from 'swr';
 
 //se define un esquema para verificar la fecha del evento
 const dateSchema = z
