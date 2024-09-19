@@ -30,8 +30,8 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex flex-col md:gap-2">
-        <CalendarLink/>
-        <ContactLink />
+          <CalendarLink />
+          <ContactLink />
         </div>
       </section>
 
@@ -72,8 +72,8 @@ export default function Footer() {
       {/* seccion bot | copyright | redes sociales */}
       <section className="flex items-center justify-center px-4 py-2 md:px-0">
         <h3 className="text-center">
-          © 2024 E.E.S.T Nº5 &quot;2 de Abril&quot; Todos los derechos
-          reservados
+          © 2024 E.E.S.T Nº5 &quot;2 de Abril&quot; , [diseñado por Enzo
+          Borrelli]
         </h3>
         <ul className="flex gap-2 px-4 size-fit">
           {RedesSociales.map((social) => (
