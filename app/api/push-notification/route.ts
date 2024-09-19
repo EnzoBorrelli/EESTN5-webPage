@@ -3,7 +3,7 @@ import { Message } from "firebase-admin/messaging";
 import { NextRequest, NextResponse } from "next/server";
 
 if (!admin.apps.length) {
-  const serviceAccount = require("@/service_key.json");
+  const serviceAccount = JSON.parse(`${process.env.SERVICE_KEY}`);
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   });
