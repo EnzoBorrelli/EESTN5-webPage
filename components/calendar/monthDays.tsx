@@ -97,11 +97,25 @@ export default function MonthDays({
               className={` text-center text-sm md:text-lg font-bold ${
                 day > 1 && index < firstDayOfMonth
                   ? "text-bg-300 dark:text-bg-400"
-                  : ""
+                  : `${
+                      `${displayYear}-${displayMonth + 1}-${day}` ===
+                      `${dayjs().year()}-${
+                        dayjs().month() + 1
+                      }-${dayjs().date()}`
+                        ? "text-blue-500 dark:text-amber-500"
+                        : ""
+                    }`
               } ${
                 day < daysInMonth && index > firstDayOfMonth + daysInMonth - 1
                   ? "text-bg-300 dark:text-bg-400"
-                  : ""
+                  : `${
+                      `${displayYear}-${displayMonth + 1}-${day}` ===
+                      `${dayjs().year()}-${
+                        dayjs().month() + 1
+                      }-${dayjs().date()}`
+                        ? "text-blue-500 dark:text-amber-500"
+                        : ""
+                    }`
               } `}
             >
               {day === 0 ? "" : day}
