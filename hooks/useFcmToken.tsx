@@ -6,7 +6,6 @@ import { fetchToken, messaging } from "@/firebase";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
-import { useSession } from "next-auth/react";
 
 //step 0, token to database functions
 

@@ -2,22 +2,19 @@ name: Send Reminders
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '* * * * *' # Change to '* * * * *' for testing every minute
 
 jobs:
-  send-reminders:
+  send_reminders:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '21'  # or whatever version you're using
+          node-version: '21.1' # Specify your Node.js version here
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run sendReminder script
-        run: node ./sendReminder.js  # Adjust this path as needed
+      - name: Run reminder script
+        run: node ./sendReminder.js
