@@ -1,4 +1,3 @@
-import useFcmToken from "./hooks/useFcmToken";
 import { db } from "./lib/db";
 import dayjs from "dayjs";
 
