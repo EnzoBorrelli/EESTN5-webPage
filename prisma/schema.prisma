@@ -20,6 +20,7 @@ model User {
   role     String
   password String
   Reminder Reminder[]
+  Token    Token?
 }
 
 model Teacher {
@@ -48,4 +49,11 @@ model Reminder {
   event   Event  @relation(fields: [eventId], references: [id])
 
   @@unique([userId, eventId])
+}
+
+model Token {
+  id     String @id @default(cuid())
+  token  String
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [email])
 }

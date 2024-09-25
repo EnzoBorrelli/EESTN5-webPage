@@ -6,6 +6,106 @@ import { fetchToken, messaging } from "@/firebase";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
+import { useSession } from "next-auth/react";
+
+//step 0, token to database functions
+
+// Save a new token to the database
+const saveNewToken = async ({
+  token,
+  userID,
+}: {
+  token: string;
+  userID: string | undefined;
+}) => {
+  console.log("savedtoken | not error:", userID);
+  try {
+    const response = await fetch("/api/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: userID,
+        token: token,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to save new token");
+    }
+  } catch (error) {
+    console.error("Error saving new token:", error);
+    console.error("savedtoken:", userID);
+  }
+};
+
+// Update the existing token in the database
+const updateToken = async ({
+  token,
+  userID,
+}: {
+  token: string;
+  userID: string | undefined;
+}) => {
+  console.log("updatetoken | not error:", userID);
+  try {
+    const response = await fetch("/api/token", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: userID,
+        token: token,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to update token");
+    }
+  } catch (error) {
+    console.error("Error updating token:", error);
+    console.error("updatetoken:", userID);
+  }
+};
+
+// Function to save or update token in the database
+async function tokenToDB({
+  token,
+  userID,
+}: {
+  token: string;
+  userID: string | undefined;
+}) {
+  console.log("tokenToDb | not error:", userID);
+  try {
+    // Check if a token already exists for this user
+    const response = await fetch("/api/token", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const { tokens } = await response.json();
+
+    const existingToken = tokens.find(
+      (t: { userId: string; token: string }) =>
+        t.userId === userID && t.token === token
+    );
+
+    if (!existingToken) {
+      // No existing token, save a new one
+      await saveNewToken({ userID: userID, token: token });
+    } else if (existingToken.token !== token) {
+      // If the token is different, update it
+      await updateToken({ userID: userID, token: token });
+    }
+  } catch (error) {
+    console.error("Error checking or saving token:", error);
+    console.error("tokenToDB:", userID);
+  }
+}
 
 async function getNotificationPermissionAndToken() {
   // Step 1: Check if Notifications are supported in the browser.
@@ -31,7 +131,8 @@ async function getNotificationPermissionAndToken() {
   return null;
 }
 
-const useFcmToken = () => {
+const useFcmToken = ({ userMail }: { userMail: string | undefined }) => {
+  console.log("fcmToken:", userMail);
   const { toast } = useToast();
   const router = useRouter(); // Initialize the router for navigation.
   const [notificationPermissionStatus, setNotificationPermissionStatus] =
@@ -81,6 +182,8 @@ const useFcmToken = () => {
     // Step 7: Set the fetched token and mark as fetched.
     setNotificationPermissionStatus(Notification.permission);
     setToken(token);
+    //@ts-ignore
+    await tokenToDB({ token: token, userID: userMail });
     isLoading.current = false;
   };
 
