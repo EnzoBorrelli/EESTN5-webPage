@@ -1,5 +1,5 @@
-import { db } from "./lib/db";
-import dayjs from "dayjs";
+const {db} = require('./lib/db')
+const dayjs = require('dayjs')
 
 const handleNotification = async (token) => {
   try {
