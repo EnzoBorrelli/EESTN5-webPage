@@ -2,8 +2,7 @@ name: Send Reminders
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # This triggers every minute for testing
-  workflow_dispatch:  # Manual trigger option
+    - cron: '0 0 * * *' # Runs every 24 hours
 
 jobs:
   send_reminders:
@@ -15,7 +14,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '21'  # Specify your Node.js version here
+          node-version: '21.1'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Next.js application
+        run: npm run build # This compiles TypeScript files automatically
 
       - name: Run sendReminders script
         run: node ./sendReminders.js
