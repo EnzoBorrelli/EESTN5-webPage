@@ -18,4 +18,4 @@ jobs:
           node-version: '21'  # Specify your Node.js version here
 
       - name: Run sendReminders script
-        run: node ./sendReminder.js
+        run: node ./sendReminders.js
