@@ -1,5 +1,5 @@
-const {db} = require('./lib/db')
-const dayjs = require('dayjs')
+const { db } = require("./lib/db");
+const dayjs = require("dayjs");
 
 const handleNotification = async (token) => {
   try {
@@ -24,8 +24,7 @@ const handleNotification = async (token) => {
   }
 };
 
-
-export async function sendReminders() {
+const sendReminders = async () => {
   const now = `${dayjs().year()}-${dayjs().month() + 1}-${dayjs().date()}`;
   const tomorrow = `${dayjs().year()}-${dayjs().month() + 1}-${
     dayjs().date() + 1
@@ -54,12 +53,16 @@ export async function sendReminders() {
 
   //envaimos notificaciones a cada usuario
   for (const userId in remindersByUser) {
-    const tokenRecord = await db.token.findUnique({ where: { userId: userId } });
+    const tokenRecord = await db.token.findUnique({
+      where: { userId: userId },
+    });
     if (tokenRecord && tokenRecord.token) {
       await handleNotification(tokenRecord.token);
     } else {
       console.warn(`No FCM token found for user ${userId}`);
     }
   }
-  
-}
+};
+module.exports = {
+  sendReminders,
+};
