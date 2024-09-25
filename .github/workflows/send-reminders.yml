@@ -3,6 +3,7 @@ name: Send Reminders
 on:
   schedule:
     - cron: '0 0 * * *' # Runs every 24 hours
+  workflow_dispatch:
 
 jobs:
   send_reminders:
@@ -14,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '21.1'
+          node-version: '21'
 
       - name: Install dependencies
         run: npm install
