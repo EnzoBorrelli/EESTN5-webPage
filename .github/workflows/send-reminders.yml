@@ -1,28 +1,23 @@
-name: Send Reminder Notifications
+name: Send Reminders
 
 on:
-  push:
-    branches:
-      - main
   schedule:
-    - cron: '0 0 * * *'  # This will run daily at midnight UTC
+    - cron: '*/5 * * * *'
 
 jobs:
   send-reminders:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # You can update this to a newer version if needed
+          node-version: '21'  # or whatever version you're using
 
       - name: Install dependencies
         run: npm install
 
-      - name: Send Reminders
-        run: |
-          node sendReminders.js # Make sure your function is exported correctly
+      - name: Run sendReminder script
+        run: node ./sendReminder.js  # Adjust this path as needed
