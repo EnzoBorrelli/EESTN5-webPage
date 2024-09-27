@@ -1,6 +1,7 @@
 import Banner from "@/components/home/banner";
 import React from "react";
 import { projectsData } from "@/components/secciones/comunidad/proyectos/projectsData";
+import ToNextPage from "@/components/ui/linkButtons/toNextPage";
 
 export default function Proyectos() {
   return (
@@ -11,6 +12,7 @@ export default function Proyectos() {
           <Banner key={index} data={data} moreBtn={false} />
         ))}
       </div>
+      <ToNextPage label="Ver Recursos" href="/recursos" />
     </main>
   );
 }
