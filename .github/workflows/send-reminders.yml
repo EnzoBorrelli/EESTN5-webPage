@@ -11,6 +11,7 @@ jobs:
     env:
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -27,4 +28,4 @@ jobs:
         run: npm run build # This compiles TypeScript files automatically
 
       - name: Run sendReminders script
-        run: npx ./sendReminders.js
+        run: node ./sendReminders.js

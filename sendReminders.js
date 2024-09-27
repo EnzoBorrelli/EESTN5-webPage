@@ -1,19 +1,7 @@
-const { db }=require( "./lib/db");
-const dayjs =require("dayjs");
+const { PrismaClient } = require("@prisma/client");
+const dayjs = require("dayjs");
 
-/*type Reminder = {
-  event: {
-      id: string;
-      title: string;
-      date: string;
-      startTime: string;
-      finishTime: string;
-  };
-} & {
-  id: string;
-  userId: string;
-  eventId: string;
-}*/
+const db = new PrismaClient();
 
 const handleNotification = async (token) => {
   try {
@@ -43,42 +31,47 @@ const sendReminders = async () => {
   const tomorrow = `${dayjs().year()}-${dayjs().month() + 1}-${
     dayjs().date() + 1
   }`;
-  const reminders = await db.reminder.findMany({
-    //traer todos los recordatorios de la db
-    where: {
-      event: {
-        date: {
-          gte: now,
-          lte: tomorrow,
+
+  try {
+    // Fetch reminders from the database
+    const reminders = await db.reminder.findMany({
+      where: {
+        event: {
+          date: {
+            gte: now,
+            lte: tomorrow,
+          },
         },
       },
-    },
-    include: { event: true },
-  });
-
-  //agrupar los recordatorios por usuario
-  const remindersByUser = reminders.reduce((acc, reminder) => {
-    if (!acc[reminder.userId]) {
-      acc[reminder.userId] = [];
-    }
-    acc[reminder.userId].push(reminder);
-    return acc;
-  }, {});
-
-  //envaimos notificaciones a cada usuario
-  for (const userId in remindersByUser) {
-    const tokenRecord = await db.token.findUnique({
-      where: { userId: userId },
+      include: { event: true },
     });
-    if (tokenRecord && tokenRecord.token) {
-      await handleNotification(tokenRecord.token);
-    } else {
-      console.warn(`No FCM token found for user ${userId}`);
+
+    // Group reminders by user
+    const remindersByUser = reminders.reduce((acc, reminder) => {
+      if (!acc[reminder.userId]) {
+        acc[reminder.userId] = [];
+      }
+      acc[reminder.userId].push(reminder);
+      return acc;
+    }, {});
+
+    // Send notifications to each user
+    for (const userId in remindersByUser) {
+      const tokenRecord = await db.token.findUnique({
+        where: { userId: userId },
+      });
+
+      if (tokenRecord && tokenRecord.token) {
+        await handleNotification(tokenRecord.token);
+      } else {
+        console.warn(`No FCM token found for user ${userId}`);
+      }
     }
+  } catch (error) {
+    console.error(`Error fetching reminders: ${error}`);
+  } finally {
+    await db.$disconnect();
   }
 };
 
-module.exports(
-  sendReminders
-)
-
+sendReminders();
