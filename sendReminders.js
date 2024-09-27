@@ -5,19 +5,23 @@ const db = new PrismaClient();
 
 const handleNotification = async (token) => {
   try {
-    const response = await fetch("https://eestn-5-web-page.vercel.app/api/push-notification", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        token: token,
-        title: "Se aproxima un evento!",
-        message:
-          "Revisa el calendario, tienes un recordatorio guardado para un evento próximo",
-        link: "/calendario",
-      }),
-    });
+    const response = await fetch(
+      "https://eestn-5-web-page.vercel.app/api/push-notification",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Origin: "https://eestn-5-web-page.vercel.app",
+        },
+        body: JSON.stringify({
+          token: token,
+          title: "Se aproxima un evento!",
+          message:
+            "Revisa el calendario, tienes un recordatorio guardado para un evento próximo",
+          link: "/calendario",
+        }),
+      }
+    );
     if (!response.ok) {
       throw new Error(`Notification failed: ${response.statusText}`);
     }
