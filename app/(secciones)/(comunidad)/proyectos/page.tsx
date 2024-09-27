@@ -1,7 +1,17 @@
-import React from 'react'
+import Banner from "@/components/home/banner";
+import basico from "../../../../components/home/bannerImgs/basico.jpg";
+import React from "react";
+import { projectsData } from "@/components/secciones/comunidad/proyectos/projectsData";
 
 export default function Proyectos() {
   return (
-    <div>Proyectos</div>
-  )
+    <main className="py-10 flex flex-col items-center gap-6 px-2 md:p-10">
+      <h1 className="text-4xl mb-12 font-bold text-center">Proyectos</h1>
+      <div className="grid grid-cols-4 gap-4">
+        {projectsData.map((data, index) => (
+          <Banner key={index} data={data} moreBtn={false} />
+        ))}
+      </div>
+    </main>
+  );
 }
