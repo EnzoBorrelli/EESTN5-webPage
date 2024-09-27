@@ -50,7 +50,7 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {bannerData.map((data, index) => (
-            <Banner key={index} data={data} />
+            <Banner key={index} data={data} moreBtn={true} />
           ))}
         </div>
       </article>
