@@ -1,7 +1,7 @@
-import { db } from "./lib/db";
-import dayjs from "dayjs";
+const { db }=require( "./lib/db");
+const dayjs =require("dayjs");
 
-type Reminder = {
+/*type Reminder = {
   event: {
       id: string;
       title: string;
@@ -13,9 +13,9 @@ type Reminder = {
   id: string;
   userId: string;
   eventId: string;
-}
+}*/
 
-const handleNotification = async (token: string) => {
+const handleNotification = async (token) => {
   try {
     const response = await fetch("/api/push-notification", {
       method: "POST",
@@ -38,7 +38,7 @@ const handleNotification = async (token: string) => {
   }
 };
 
-export const sendReminders = async () => {
+const sendReminders = async () => {
   const now = `${dayjs().year()}-${dayjs().month() + 1}-${dayjs().date()}`;
   const tomorrow = `${dayjs().year()}-${dayjs().month() + 1}-${
     dayjs().date() + 1
@@ -57,7 +57,7 @@ export const sendReminders = async () => {
   });
 
   //agrupar los recordatorios por usuario
-  const remindersByUser = reminders.reduce<Record<string, Reminder[]>>((acc, reminder) => {
+  const remindersByUser = reminders.reduce((acc, reminder) => {
     if (!acc[reminder.userId]) {
       acc[reminder.userId] = [];
     }
@@ -77,4 +77,8 @@ export const sendReminders = async () => {
     }
   }
 };
+
+module.exports(
+  sendReminders
+)
 

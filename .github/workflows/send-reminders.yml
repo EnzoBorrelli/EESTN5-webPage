@@ -27,4 +27,4 @@ jobs:
         run: npm run build # This compiles TypeScript files automatically
 
       - name: Run sendReminders script
-        run: npx ts-node ./sendReminders.ts
+        run: npx ./sendReminders.js
