@@ -5,7 +5,7 @@ const db = new PrismaClient();
 
 const handleNotification = async (token) => {
   try {
-    const response = await fetch("/api/push-notification", {
+    const response = await fetch("https://eestn-5-web-page.vercel.app/api/push-notification", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
