@@ -1,5 +1,4 @@
 import Banner from "@/components/home/banner";
-import basico from "../../../../components/home/bannerImgs/basico.jpg";
 import React from "react";
 import { projectsData } from "@/components/secciones/comunidad/proyectos/projectsData";
 
