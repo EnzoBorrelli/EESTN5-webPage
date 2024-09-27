@@ -44,8 +44,8 @@ export const Especialidades = [
 
 export const Comunidad = [
   {
-    name: "Actividades",
-    href: "/actividades",
+    name: "Cursos",
+    href: "/cursos",
   },
   {
     name: "Proyectos",

@@ -75,7 +75,7 @@ export default function SeccionStats() {
           Brindamos{" "}
           <Link
             className="font-semibold underline text-blue-500 hover:text-amber-500"
-            href="/actividades"
+            href="/cursos"
           >
             Cursos
           </Link>{" "}
