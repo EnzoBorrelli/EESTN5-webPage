@@ -4,7 +4,7 @@ import { BannerData } from "./bannerData";
 import Image from "next/image";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 
-export default function Banner({ data }: { data: BannerData }) {
+export default function Banner({ data,moreBtn }: { data: BannerData,moreBtn:boolean }) {
   return (
     <section className="bg-bg-200 dark:bg-bg-500 w-[268px] h-[22rem] rounded-md">
       <div className="py-1 px-2">
@@ -16,11 +16,11 @@ export default function Banner({ data }: { data: BannerData }) {
           src={data.img}
           width={300}
           height={300}
-          className="object-cover"
+          className="object-cover max-w-[268px] aspect-square"
           alt="20"
         />
         <Link
-          className="absolute w-full flex items-center gap-4 group justify-center py-1 text-lg bg-amber-400 dark:bg-amber-600 bottom-0 left-0"
+          className= {`${moreBtn?"flex":"hidden"} absolute w-full items-center gap-4 group justify-center py-1 text-lg bg-amber-400 dark:bg-amber-600 bottom-0 left-0`}
           href={data.href}
         >
           Conocer Más{" "}
