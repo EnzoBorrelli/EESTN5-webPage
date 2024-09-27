@@ -11,7 +11,6 @@ const handleNotification = async (token) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Origin: "https://eestn-5-web-page.vercel.app",
         },
         body: JSON.stringify({
           token: token,
