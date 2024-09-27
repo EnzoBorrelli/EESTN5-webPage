@@ -11,13 +11,14 @@ const handleNotification = async (token) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Origin: "https://eestn-5-web-page.vercel.app",
         },
         body: JSON.stringify({
           token: token,
           title: "Se aproxima un evento!",
           message:
             "Revisa el calendario, tienes un recordatorio guardado para un evento próximo",
-          link: "/calendario",
+          link: "https://eestn-5-web-page.vercel.app/calendario",
         }),
       }
     );
