@@ -11,7 +11,7 @@ export default function NotificationHeader({
     userMail: userID,
   });
   return (
-    <div className="text-lg text-center">
+    <div className="text-base md:text-lg text-center">
       <h2>
         Recibirá una notificación de los eventos que tengas guardados, 24hs
         antes del mismo
