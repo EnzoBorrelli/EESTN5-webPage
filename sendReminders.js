@@ -14,7 +14,7 @@ const handleNotification = async (token) => {
         },
         body: JSON.stringify({
           token: token,
-          title: "Se aproxima un evento!",
+          title: "Tecnica 5, Temperley",
           message:
             "Revisa el calendario, tienes un recordatorio guardado para un evento próximo",
           link: "https://eestn-5-web-page.vercel.app/calendario",
