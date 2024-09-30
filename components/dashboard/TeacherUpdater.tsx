@@ -18,6 +18,7 @@ import { useState } from "react";
 import { Profesor } from "@/types/profesor";
 import { useRouter } from "next/navigation";
 import { mutate } from "swr";
+import { supabase } from "../form/supabase";
 
 const FormSchema = z.object({
   name: z.string().min(1, "Este campo es necesario").max(25),
@@ -33,6 +34,7 @@ const FormSchema = z.object({
   asignature: z.string().min(1, "Este campo es necesario").max(100),
   description: z.string().min(1, "Este campo es necesario").max(350),
   contact: z.string().email("correo no valido").optional().or(z.literal("")),
+  image: z.any().optional(),
 });
 
 const TeacherUpdater = ({ teacher }: { teacher: Profesor }) => {
@@ -51,6 +53,59 @@ const TeacherUpdater = ({ teacher }: { teacher: Profesor }) => {
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
     setLoading(true);
+
+    // Handle image upload
+    let imageUrl = teacher.image; // Keep existing image URL by default
+
+    // If a new image is provided, handle the upload
+    if (values.image && values.image[0]) {
+      const file = values.image[0];
+      const sanitizedFileName = values.name
+        .replace(/[^a-z0-9]/gi, "_")
+        .toLowerCase();
+      const fileName = `${sanitizedFileName}.webp`;
+
+      // Check if there is an existing image to delete
+      if (teacher.image) {
+        // Delete the old image
+        const { error: deleteError } = await supabase.storage
+          .from("teacher_images")
+          .remove([`${teacher.image.split("/").pop()}`]);
+
+        if (deleteError) {
+          console.error(deleteError);
+          setLoading(false);
+          toast({
+            title: "Error al eliminar la imagen",
+            description:
+              "No se pudo eliminar la imagen anterior, intente nuevamente.",
+            variant: "destructive",
+          });
+          return;
+        }
+      }
+
+      // Upload the new image
+      const { data, error } = await supabase.storage
+        .from("teacher_images")
+        .upload(`${fileName}`, file);
+
+      if (error) {
+        console.error(error);
+        setLoading(false);
+        toast({
+          title: "Error de imagen",
+          description: "No se pudo subir la imagen, intente nuevamente",
+          variant: "destructive",
+        });
+        return;
+      }
+      if (data?.path) {
+        imageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/teacher_images/${data.path}`;
+      } else {
+        imageUrl = teacher.image;
+      }
+    }
     const response = await fetch("/api/teacher", {
       method: "PUT",
       headers: {
@@ -63,6 +118,7 @@ const TeacherUpdater = ({ teacher }: { teacher: Profesor }) => {
         asignature: values.asignature,
         description: values.description,
         contact: values.contact,
+        image: imageUrl,
       }),
     });
     if (response.ok) {
@@ -73,7 +129,7 @@ const TeacherUpdater = ({ teacher }: { teacher: Profesor }) => {
         description: "la informacion ha sido reescrita exitosamente",
         variant: "success",
       });
-      mutate('/api/teacher');
+      mutate("/api/teacher");
     } else {
       toast({
         title: "Error de registro",
@@ -97,6 +153,23 @@ const TeacherUpdater = ({ teacher }: { teacher: Profesor }) => {
           <div className="space-y-2">
             <FormField
               control={form.control}
+              name="image"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="font-bold">Subir Imagen</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => field.onChange(e.target.files)}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
@@ -115,7 +188,16 @@ const TeacherUpdater = ({ teacher }: { teacher: Profesor }) => {
                 <FormItem>
                   <FormLabel className="font-bold">Especialidad</FormLabel>
                   <FormControl>
-                    <Input placeholder="especialidad" {...field} />
+                    <select
+                      {...field}
+                      className="flex h-10 w-full rounded-md border border-input bg-bg-100 dark:bg-bg-600 px-3 py-2 text-sm ring-offset-bg-100 dark:ring-offset-bg-600 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      <option value="">Seleccione una especialidad</option>
+                      <option value="basico">Básico</option>
+                      <option value="electronica">Electrónica</option>
+                      <option value="electromecanica">Electromecánica</option>
+                      <option value="automotor">Automotor</option>
+                    </select>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -141,9 +223,14 @@ const TeacherUpdater = ({ teacher }: { teacher: Profesor }) => {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-bold">Descripcion</FormLabel>
+                  <FormLabel className="font-bold">Descripción</FormLabel>
                   <FormControl>
-                    <Input placeholder="Ingrese una descripcion" {...field} />
+                    <textarea
+                      {...field}
+                      rows={4}
+                      placeholder="Ingrese una descripción"
+                      className="flex h-10 w-full rounded-md border border-input bg-bg-100 dark:bg-bg-600 px-3 py-2 text-sm ring-offset-bg-100 dark:ring-offset-bg-600 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
