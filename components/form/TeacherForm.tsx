@@ -58,7 +58,7 @@ const TeacherForm = () => {
       const sanitizedFileName = values.name
         .replace(/[^a-z0-9]/gi, "_")
         .toLowerCase();
-      const fileName = `${sanitizedFileName}.${file.name.split(".").pop()}`;
+      const fileName = `${sanitizedFileName}.webp`;
 
       // Upload the file to the Supabase bucket under the public folder
       const { data, error } = await supabase.storage
