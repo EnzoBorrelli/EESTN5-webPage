@@ -101,7 +101,7 @@ export default function Automotor() {
         </article>
         <hr className="mt-4 border-t-2 border-bg-200 dark:border-bg-500" />
       </section>
-      <ToNextPage label="Ver Actividades" href="/actividades" />
+      <ToNextPage label="Ver Cursos" href="/cursos" />
     </main>
   );
 }
