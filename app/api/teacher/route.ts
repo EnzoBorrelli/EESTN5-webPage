@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { db } from "../../../lib/db";
 import * as z from "zod";
+import { supabase } from "@/components/form/supabase";
 
 // se define el esquema para validar los inputs al crear un profesor
 const teacherSchema = z.object({
@@ -16,7 +17,8 @@ const teacherSchema = z.object({
   ),
   asignature: z.string().min(1, "Este campo es necesario").max(100),
   description: z.string().min(1, "Este campo es necesario").max(350),
-  contact: z.string().email('correo no valido').optional().or(z.literal('')),
+  contact: z.string().email("correo no valido").optional().or(z.literal("")),
+  image: z.string().optional(),
 });
 
 // se define el esquema para validar los inputs al editar un profesor
@@ -34,12 +36,13 @@ const updatedTeacherSchema = z.object({
   ),
   asignature: z.string().min(1, "Este campo es necesario").max(100),
   description: z.string().min(1, "Este campo es necesario").max(350),
-  contact: z.string().email('correo no valido').optional().or(z.literal('')),
+  contact: z.string().email("correo no valido").optional().or(z.literal("")),
+  image: z.string().optional(),
 });
 
 const erasedTeacherSchema = z.object({
   id: z.string().min(1, "ID es necesaria"),
-})
+});
 
 export async function GET() {
   try {
@@ -58,7 +61,7 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, specialization, asignature, description, contact } =
+    const { name, specialization, asignature, description, contact, image } =
       teacherSchema.parse(body); // se obtiene esta informacion del body
 
     // se verifica si el profesor ya existe
@@ -81,6 +84,7 @@ export async function POST(req: Request) {
         asignature,
         description,
         contact,
+        image,
       },
     });
 
@@ -98,8 +102,15 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
   try {
     const body = await req.json();
-    const { id, name, specialization, asignature, description, contact } =
-      updatedTeacherSchema.parse(body);
+    const {
+      id,
+      name,
+      specialization,
+      asignature,
+      description,
+      contact,
+      image,
+    } = updatedTeacherSchema.parse(body);
 
     // se verifica si ya existe el profesor
     const existingTeacher = await db.teacher.findUnique({
@@ -116,7 +127,14 @@ export async function PUT(req: Request) {
     //actualiza la informacion del profesor
     const updatedTeacher = await db.teacher.update({
       where: { id: id },
-      data: { name, specialization, asignature, description, contact },
+      data: {
+        name,
+        specialization,
+        asignature,
+        description,
+        contact,
+        image,
+      },
     });
 
     return NextResponse.json(
@@ -130,10 +148,7 @@ export async function PUT(req: Request) {
         { status: 400 }
       );
     }
-    return NextResponse.json(
-      { message: "algo salio mal" },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: "algo salio mal" }, { status: 500 });
   }
 }
 
@@ -141,8 +156,7 @@ export async function PUT(req: Request) {
 export async function DELETE(req: Request) {
   try {
     const body = await req.json();
-    const { id} =
-      erasedTeacherSchema.parse(body);
+    const { id } = erasedTeacherSchema.parse(body);
 
     // se verifica ue exista ese profesor
     const existingTeacher = await db.teacher.findUnique({
@@ -154,6 +168,11 @@ export async function DELETE(req: Request) {
         { user: null, message: "profesor no encontrado" },
         { status: 404 }
       );
+    }
+
+    if (existingTeacher.image) {
+      const imageName = existingTeacher.image.split("/").pop(); // Extract the image name from the URL
+      await supabase.storage.from("teacher_images").remove([`${imageName}`]); // Remove the image
     }
 
     //borrar profesor
@@ -172,9 +191,6 @@ export async function DELETE(req: Request) {
         { status: 400 }
       );
     }
-    return NextResponse.json(
-      { message: "algo salio mal" },
-      { status: 500 }
-    ); 
+    return NextResponse.json({ message: "algo salio mal" }, { status: 500 });
   }
 }
