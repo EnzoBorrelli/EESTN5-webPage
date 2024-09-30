@@ -72,7 +72,7 @@ export default function Footer() {
       {/* seccion bot | copyright | redes sociales */}
       <section className="flex items-center justify-center px-4 py-2 md:px-0">
         <h3 className="text-center">
-          © 2024 E.E.S.T Nº5 &quot;2 de Abril&quot; , [diseñado por Enzo
+          © 2024 E.E.S.T Nº5 &quot;2 de Abril&quot; , [desarrollado por Enzo
           Borrelli]
         </h3>
         <ul className="flex gap-2 px-4 size-fit">
