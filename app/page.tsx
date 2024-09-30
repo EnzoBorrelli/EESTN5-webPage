@@ -5,6 +5,7 @@ import Testimonial from "@/components/home/testimonial";
 import { testimonialData } from "@/components/home/testimonialData";
 import UpcomingEvents from "@/components/home/upcomingEvents";
 import { RedesSociales } from "@/components/navLinks";
+import Link from "next/link";
 import React from "react";
 
 export default function Home() {
@@ -21,9 +22,9 @@ export default function Home() {
           <h1 className="text-lg lg:text-3xl font-extrabold">
             Formación para el Futuro
           </h1>
-          <button className="dark:bg-amber-600 bg-amber-400 ring-2 px-2 lg:px-8 dark:ring-amber-400 ring-amber-600 text-md lg:text-lg">
+          <Link href="/contacto" className="dark:bg-amber-600 bg-amber-400 ring-2 px-2 lg:px-8 dark:ring-amber-400 ring-amber-600 text-md lg:text-lg">
             Incribirse ahora
-          </button>
+          </Link>
         </section>
         <ul className="absolute right-0 bottom-0 py-2 bg-bg-200 dark:bg-bg-500 flex gap-3 lg:gap-6 px-4 size-fit">
           {RedesSociales.map((social) => (
