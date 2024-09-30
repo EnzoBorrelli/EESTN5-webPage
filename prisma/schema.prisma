@@ -30,6 +30,7 @@ model Teacher {
   asignature     String?
   description    String?
   contact        String?
+  image          String?
 }
 
 model Event {
