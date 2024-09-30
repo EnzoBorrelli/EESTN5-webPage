@@ -12,49 +12,49 @@ export default function Autoridades() {
       </h1>
       <section className="flex justify-center">
         <AutoridadCard
-          src="/imgs/autoridades/director.jpg"
-          nombre="Hector DeLuca"
+          src="/imgs/teacherDefault.jpg"
+          nombre="nombre apellido"
           cargo="director"
         />
       </section>
       <section className="flex flex-col items-center justify-center gap-8 my-4 md:flex-row">
         <AutoridadCard
-          src="/imgs/autoridades/vicedirector.jpg"
-          nombre="Sandro Amiel"
+          src="/imgs/teacherDefault.jpg"
+          nombre="nombre apellido"
           cargo="vicedirector"
         />
         <AutoridadCard
-          src="/imgs/autoridades/vicedirectora.jpg"
-          nombre="Clara Sack"
+           src="/imgs/teacherDefault.jpg"
+          nombre="nombre apellido"
           cargo="vicedirectora"
         />
       </section>
       <section className="flex flex-col items-center justify-center gap-8 my-4 md:flex-row">
         <AutoridadCard
-          src="/imgs/autoridades/jefeDeTaller.jpg"
-          nombre="Nombre Apellido"
+          src="/imgs/teacherDefault.jpg"
+          nombre="nombre apellido"
           cargo="jefe de taller"
         />
         <AutoridadCard
-          src="/imgs/autoridades/jefaSecretaria.jpg"
-          nombre="Nombre Apellido"
+         src="/imgs/teacherDefault.jpg"
+          nombre="nombre apellido"
           cargo="jefa de secretaria"
         />
       </section>
       <section className="flex flex-col items-center justify-center gap-8 my-4 md:flex-row">
         <AutoridadCard
-          src="/imgs/autoridades/jefeDeEspecialidad.jpg"
-          nombre="Nombre Apellido"
+           src="/imgs/teacherDefault.jpg"
+          nombre="nombre apellido"
           cargo="Electronica"
         />
         <AutoridadCard
-          src="/imgs/autoridades/jefeDeEspecialidad.jpg"
-          nombre="Nombre Apellido"
+           src="/imgs/teacherDefault.jpg"
+          nombre="nombre apellido"
           cargo="Electromecanica"
         />
         <AutoridadCard
-          src="/imgs/autoridades/jefeDeEspecialidad.jpg"
-          nombre="Nombre Apellido"
+          src="/imgs/teacherDefault.jpg"
+          nombre="nombre apellido"
           cargo="Automotor"
         />
       </section>
