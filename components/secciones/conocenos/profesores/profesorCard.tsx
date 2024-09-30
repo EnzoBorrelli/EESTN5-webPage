@@ -25,8 +25,10 @@ export default function ProfesorCard({
         >
           <>
             <Image
-              className="rounded-md"
-              src="/imgs/teacherDefault.jpg"
+              className="rounded-md max-w-[150px] aspect-square object-cover"
+              src={`${
+                profesor.image ? profesor.image : "/imgs/teacherDefault.jpg"
+              }`}
               alt={profesor.name}
               width={150}
               height={150}
