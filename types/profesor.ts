@@ -6,4 +6,5 @@ export interface Profesor {
   asignature: string | null;
   description: string | null;
   contact: string | null;
+  image: string | null;
 }
