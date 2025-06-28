@@ -1,16 +1,14 @@
 import React from "react";
 import { LuCalendarClock } from "react-icons/lu";
-import { Event } from "@/types/event";
 import EventReminder from "./eventReminder";
 import dayjs from "dayjs";
+import { iEvent } from "@/types/interfaces";
 
 export default function EventBadge({
   event,
-  reminders,
   showDate,
 }: {
-  event: Event;
-  reminders: Event[];
+  event: iEvent;
   showDate: boolean;
 }) {
   return (
@@ -31,10 +29,7 @@ export default function EventBadge({
             {event.finishTime.slice(0, 2) + ":" + event.finishTime.slice(2)}
           </h4>
         </span>
-        <EventReminder
-          eventId={event.id}
-          reminders={reminders}
-        />
+        <EventReminder />
       </div>
     </div>
   );

@@ -1,19 +1,9 @@
 import React from "react";
 import MonthDays from "./monthDays";
 import { days } from "./calendarConst";
-import { db } from "@/lib/db";
-import { getServerSession } from "next-auth";
-import { options } from "@/app/api/auth/[...nextauth]/options";
+import { exampleEvents } from "@/data/events";
 
 export default async function MonthView() {
-  const session = await getServerSession(options);
-  const user = session?.user
-  
-  const events = await db.event.findMany();
-  const reminders = await db.reminder.findMany({
-    where: { userId: user?.email },
-    include: { event: true },
-  });
   return (
     <section className="flex flex-col gap-1 items-center md:px-6 md:py-2 size-full">
       <div className="grid grid-cols-7 grid-rows-1 gap-1">
@@ -26,7 +16,7 @@ export default async function MonthView() {
           </h4>
         ))}
       </div>
-      <MonthDays events={events} reminders={reminders.map((reminder)=>reminder.event)} />
+      <MonthDays events={exampleEvents} />
     </section>
   );
 }

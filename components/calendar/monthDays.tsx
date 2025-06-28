@@ -13,15 +13,9 @@ import {
 import { MdAddAlert } from "react-icons/md";
 import { months } from "./calendarConst";
 import EventBadge from "./eventBadge";
-import { Event } from "@/types/event";
+import { iEvent } from "@/types/interfaces";
 
-export default function MonthDays({
-  events,
-  reminders,
-}: {
-  events: Event[];
-  reminders: Event[];
-}) {
+export default function MonthDays({ events }: { events: iEvent[] }) {
   const { displayMonth, displayYear } = useCalendar(); // se traen el mes y año del calendarProvider
   const [daysInDisplay, setDaysInDisplay] = useState<number[]>([]); // se guardan los dias a mostrar en el calendario
   const firstDayOfMonth = dayjs(`${displayYear}-${displayMonth + 1}`).day(); // se guarda un numero que equivale al dia de la semana que fue primero de ese mes
@@ -156,12 +150,7 @@ export default function MonthDays({
                     event.date === `${displayYear}-${displayMonth + 1}-${day}`
                 )
                 .map((event) => (
-                  <EventBadge
-                    key={event.id}
-                    event={event}
-                    reminders={reminders}
-                    showDate={false}
-                  />
+                  <EventBadge key={event.id} event={event} showDate={false} />
                 ))}
             </div>
           </SheetContent>
