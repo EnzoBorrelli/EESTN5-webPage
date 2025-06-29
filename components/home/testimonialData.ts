@@ -1,7 +1,6 @@
 import { StaticImageData } from "next/image";
 import icon1 from "./testimonialIcons/hombre.png";
 import icon2 from "./testimonialIcons/mujer.png";
-import icon3 from "./testimonialIcons/mujer(1).png";
 import icon4 from "./testimonialIcons/hombre(1).png";
 
 export type TestimonialType = {
