@@ -1,12 +1,12 @@
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 export default function AutoridadCard({
   src,
   nombre,
   cargo,
 }: {
-  src: string;
+  src: string | StaticImageData;
   nombre: string;
   cargo: string;
 }) {
