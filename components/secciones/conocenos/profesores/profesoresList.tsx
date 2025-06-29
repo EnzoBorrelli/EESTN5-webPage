@@ -1,63 +1,36 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ProfesorCard from "@/components/secciones/conocenos/profesores/profesorCard";
-import { Profesor } from "@/types/profesor";
-import useSWR from "swr";
-
-const fetcher = async (url: string): Promise<{ teachers: Profesor[] }> => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("Error fetching data");
-  }
-  return response.json();
-};
+import { iTeacher } from "@/types/interfaces";
+import { exampleTeachers } from "@/data/teachers";
 
 export default function ProfesoresList() {
-  const { data, error } = useSWR("/api/teacher", fetcher);
-
   // Define state and hooks before any conditional returns
-  const [filtro, setFiltro] = useState<Profesor[]>([]); // Explicitly type as Profesor[]
+  const [filtro, setFiltro] = useState<iTeacher[]>([]); // Explicitly type as Profesor[]
   const [especialidad, setEspecialidad] = useState("todos");
 
   // Use useEffect to update the state when profesores data is available
   useEffect(() => {
-    if (data?.teachers) {
+    if (exampleTeachers) {
       // Ensure data and teachers exist before updating the state
-      setFiltro(data.teachers); // Populate filtro state when teachers are fetched
+      setFiltro(exampleTeachers); // Populate filtro state when teachers are fetched
     }
-  }, [data]);
+  }, [exampleTeachers]);
 
   function filtroProfesores(especialidad: string) {
-    if (data?.teachers) {
-      // Ensure data.teachers is available before filtering
+    if (exampleTeachers) {
+      // Ensure exampleTeachers is available before filtering
       if (especialidad !== "todos") {
         setFiltro(
-          data.teachers.filter(
+          exampleTeachers.filter(
             (teacher) => teacher.specialization === especialidad
           )
         );
       } else {
-        setFiltro(data.teachers);
+        setFiltro(exampleTeachers);
       }
       setEspecialidad(especialidad);
     }
-  }
-
-  // Render logic (after hooks have executed)
-  if (error) {
-    return (
-      <div className="py-4 sm:px-4 lg:px-10 text-center size-full">
-        No se pudieron cargar los perfiles de profesor.
-      </div>
-    );
-  }
-
-  if (!data) {
-    return (
-      <div className="py-4 sm:px-4 lg:px-10 text-center size-full">
-        Cargando perfiles de profesor...
-      </div>
-    );
   }
   return (
     <>

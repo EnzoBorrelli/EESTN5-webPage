@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import { Profesor } from "@/types/profesor";
 import ProfesorExtra from "./profesorExtra";
 import {
   Tooltip,
@@ -8,13 +7,14 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { iTeacher } from "@/types/interfaces";
 
 //interfaz que recibe los datos del objeto profesor, proveniente del array pasado en profesoresList.tsx
 
 export default function ProfesorCard({
   profesores,
 }: {
-  profesores: Profesor[];
+  profesores: iTeacher[];
 }) {
   return (
     <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 xl:px-32 gap-y-2 sm:gap-y-6 justify-items-center">
