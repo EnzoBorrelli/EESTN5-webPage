@@ -1,6 +1,4 @@
-"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useSession } from "next-auth/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,48 +12,28 @@ import AuthBtn from "./authBtn";
 import Link from "next/link";
 
 export default function UserBtn() {
-  const { data: session } = useSession();
-  const user = session?.user;
-
   return (
     <div className="flex mr-4 -ml-4">
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <Avatar
-            className="ring-bg-400 bg-bg-200 dark:ring-bg-200 dark:bg-bg-500 ring-2 size-8"
-          >
-            <AvatarImage
-              src={user?.name || "/imgs/userDefault.png"}
-              alt={user?.name || "na"}
-            />
-            <AvatarFallback>
-              {user?.name ? user?.name.slice(0, 2) : "NA"}
-            </AvatarFallback>
+          <Avatar className="ring-bg-400 bg-bg-200 dark:ring-bg-200 dark:bg-bg-500 ring-2 size-8">
+            <AvatarImage src="/imgs/userDefault.png" alt="UD" />
+            <AvatarFallback>UD</AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="bg-bg-100 dark:bg-bg-600 text-text-600 dark:text-text-100">
-          <DropdownMenuLabel>
-            {user?.name ? user.name : "usuario"}
-          </DropdownMenuLabel>
-          {session ? (
-            <>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <Link href="/recordatorios">Recordatorios</Link>
-                </DropdownMenuItem>
-                {user?.role === "admin" ? (
-                  <DropdownMenuItem>
-                    <Link href="/dashboard">Panel de control</Link>
-                  </DropdownMenuItem>
-                ) : (
-                  ""
-                )}
-              </DropdownMenuGroup>
-            </>
-          ) : (
-            ""
-          )}
+          <DropdownMenuLabel>Usuario demo</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <Link href="/recordatorios">Recordatorios</Link>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem>
+              <Link href="/dashboard">Panel de control</Link>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <AuthBtn />
