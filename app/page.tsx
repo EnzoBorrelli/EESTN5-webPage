@@ -22,7 +22,10 @@ export default function Home() {
           <h1 className="text-lg lg:text-3xl font-extrabold">
             Formación para el Futuro
           </h1>
-          <Link href="/contacto" className="dark:bg-amber-600 bg-amber-400 ring-2 px-2 lg:px-8 dark:ring-amber-400 ring-amber-600 text-md lg:text-lg">
+          <Link
+            href="/contacto"
+            className="dark:bg-amber-600 bg-amber-400 ring-2 px-2 lg:px-8 dark:ring-amber-400 ring-amber-600 text-md lg:text-lg"
+          >
             Incribirse ahora
           </Link>
         </section>
@@ -38,6 +41,16 @@ export default function Home() {
             </li>
           ))}
         </ul>
+      </article>
+      <article className="w-full flex flex-col items-center py-8 gap-6">
+        <h2 className="text-yellow-600 dark:text-yellow-400 text-3xl font-bold">
+          Aviso Importante!
+        </h2>
+        <p className="text-text-500 dark:text-text-200 text-md lg:text-lg text-center max-w-2xl">
+          Esta es una versión demo <strong className="font-bold text-red-500">sin conexión a base de datos</strong>. Algunas
+          funcionalidades han sido deshabilitadas temporalmente para su
+          visualización pública.
+        </p>
       </article>
       <article className="w-full flex flex-col items-center py-8 gap-6">
         <h2 className="text-text-600 dark:text-text-100 text-2xl font-bold">
