@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import Image from "next/image";
-
+import Image from "next/image"
+import logo from "./logo.svg"
 
 export default function Logo({
   size
@@ -11,7 +11,7 @@ export default function Logo({
   return (
     <Image
       className="ml-8 -my-4"
-      src="./logo.svg"
+      src={logo}
       height={size}
       width={size}
       alt="LOGO"
