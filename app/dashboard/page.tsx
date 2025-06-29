@@ -20,9 +20,9 @@ export default async function dashboard() {
         <Tabs defaultValue="users" className="flex flex-col items-center w-full">
           <TabsList className="flex flex-col h-full md:flex-row md:h-10">
             <TabsTrigger value="users">Editar usuarios</TabsTrigger>
-            <TabsTrigger value="addTeachers">Agregar profesores</TabsTrigger>
+            <TabsTrigger disabled value="addTeachers">Agregar profesores</TabsTrigger>
             <TabsTrigger value="editTeachers">Editar profesores</TabsTrigger>
-            <TabsTrigger value="addEvents">Agregar eventos</TabsTrigger>
+            <TabsTrigger disabled value="addEvents">Agregar eventos</TabsTrigger>
             <TabsTrigger value="editEvents">Editar eventos</TabsTrigger>
           </TabsList>
           <TabsContent value="users">
