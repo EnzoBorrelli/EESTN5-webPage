@@ -1,4 +1,3 @@
-"use client";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { FaGear } from "react-icons/fa6";
@@ -12,24 +11,10 @@ import {
 } from "@/components/ui/dialog";
 
 import UserRoleManager from "./userRoleManager";
-import { UserType } from "@/types/usertype";
-import useSWR from "swr";
+import { exampleUsers } from "@/data/users";
 
-const fetcher = async (url: string): Promise<{ users: UserType[] }> => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("Error fetching data");
-  }
-  return response.json();
-};
 
 export default function UserSelector() {
-  const { data, error } = useSWR("/api/user", fetcher); // Use SWR to fetch events
-
-  if (error) return <div>No se pudieron cargar los usuarios.</div>; // Handle loading and error states
-  if (!data) return <div>Cargando usuarios...</div>;
-
-  const { users } = data;
   return (
     <section className="flex flex-col items-center gap-4">
       <p className="my-2 text-center">
@@ -37,7 +22,7 @@ export default function UserSelector() {
         una persona... o quitaselos.
       </p>
       <ScrollArea className="w-full p-2 rounded shadow-md h-60 md:w-1/2 bg-bg-100 dark:bg-bg-600 ring-1 ring-bg-200 dark:ring-bg-500 ring-opacity-50 shadow-bg-200 dark:shadow-bg-500">
-        {users
+        {exampleUsers
           .slice() //reordena los usuarios para colocar a los admin en la cima
           .sort((a, b) => {
             if (a.role === "admin" && b.role !== "admin") return -1;

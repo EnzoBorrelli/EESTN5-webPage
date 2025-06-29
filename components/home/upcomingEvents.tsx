@@ -1,20 +1,11 @@
 import React from "react";
 import EventBadge from "../calendar/eventBadge";
-import { options } from "@/app/api/auth/[...nextauth]/options";
-import { db } from "@/lib/db";
-import { getServerSession } from "next-auth";
 import dayjs from "dayjs";
+import { exampleEvents } from "@/data/events";
 
 export default async function UpcomingEvents() {
-  const session = await getServerSession(options);
-  const reminders = await db.reminder.findMany({
-    where: { userId: session?.user?.email },
-    include: { event: true },
-  });
-  const events = await db.event.findMany();
-
   const today = dayjs().startOf("day");
-  const upcomingEvents = events.filter(
+  const upcomingEvents = exampleEvents.filter(
     (event) =>
       dayjs(event.date).isSame(today) || dayjs(event.date).isAfter(today)
   );
@@ -23,13 +14,8 @@ export default async function UpcomingEvents() {
   );
   return (
     <div className="flex flex-col md:flex-row gap-4">
-      {sortedEvents.slice(0,3).map((event) => (
-        <EventBadge
-          key={event.id}
-          event={event}
-          reminders={reminders.map((reminder) => reminder.event)}
-          showDate={true}
-        />
+      {sortedEvents.slice(0, 3).map((event) => (
+        <EventBadge key={event.id} event={event} showDate={true} />
       ))}
     </div>
   );

@@ -15,10 +15,10 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useToast } from "../ui/use-toast";
 import { useState } from "react";
-import { Profesor } from "@/types/profesor";
 import { useRouter } from "next/navigation";
 import { mutate } from "swr";
 import { supabase } from "../form/supabase";
+import { iTeacher } from "@/types/interfaces";
 
 const FormSchema = z.object({
   name: z.string().min(1, "Este campo es necesario").max(25),
@@ -37,10 +37,8 @@ const FormSchema = z.object({
   image: z.any().optional(),
 });
 
-const TeacherUpdater = ({ teacher }: { teacher: Profesor }) => {
-  const router = useRouter();
+const TeacherUpdater = ({ teacher }: { teacher: iTeacher }) => {
   const [loading, setLoading] = useState(false);
-  const { toast } = useToast();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -55,88 +53,6 @@ const TeacherUpdater = ({ teacher }: { teacher: Profesor }) => {
     setLoading(true);
 
     // Handle image upload
-    let imageUrl = teacher.image; // Keep existing image URL by default
-
-    // If a new image is provided, handle the upload
-    if (values.image && values.image[0]) {
-      const file = values.image[0];
-      const sanitizedFileName = values.name
-        .replace(/[^a-z0-9]/gi, "_")
-        .toLowerCase();
-      const fileName = `${sanitizedFileName}.webp`;
-
-      // Check if there is an existing image to delete
-      if (teacher.image) {
-        // Delete the old image
-        const { error: deleteError } = await supabase.storage
-          .from("teacher_images")
-          .remove([`${teacher.image.split("/").pop()}`]);
-
-        if (deleteError) {
-          console.error(deleteError);
-          setLoading(false);
-          toast({
-            title: "Error al eliminar la imagen",
-            description:
-              "No se pudo eliminar la imagen anterior, intente nuevamente.",
-            variant: "destructive",
-          });
-          return;
-        }
-      }
-
-      // Upload the new image
-      const { data, error } = await supabase.storage
-        .from("teacher_images")
-        .upload(`${fileName}`, file);
-
-      if (error) {
-        console.error(error);
-        setLoading(false);
-        toast({
-          title: "Error de imagen",
-          description: "No se pudo subir la imagen, intente nuevamente",
-          variant: "destructive",
-        });
-        return;
-      }
-      if (data?.path) {
-        imageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/teacher_images/${data.path}`;
-      } else {
-        imageUrl = teacher.image;
-      }
-    }
-    const response = await fetch("/api/teacher", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/son",
-      },
-      body: JSON.stringify({
-        id: teacher.id,
-        name: values.name,
-        specialization: values.specialization,
-        asignature: values.asignature,
-        description: values.description,
-        contact: values.contact,
-        image: imageUrl,
-      }),
-    });
-    if (response.ok) {
-      setLoading(false);
-      router.refresh();
-      toast({
-        title: "perfil actualizado",
-        description: "la informacion ha sido reescrita exitosamente",
-        variant: "success",
-      });
-      mutate("/api/teacher");
-    } else {
-      toast({
-        title: "Error de registro",
-        description: "Ha ocurrido un error, intente nuevamente",
-        variant: "destructive",
-      });
-    }
   };
 
   return (

@@ -16,8 +16,8 @@ import { Button } from "../ui/button";
 import { useToast } from "../ui/use-toast";
 import { useState } from "react";
 import dayjs from "dayjs";
-import { Event } from "@/types/event";
 import { mutate } from 'swr';
+import { iEvent } from "@/types/interfaces";
 
 //se define un esquema para verificar la fecha del evento
 const dateSchema = z
@@ -43,7 +43,7 @@ const FormSchema = z.object({
   finishTime: timeSchema,
 });
 
-const EventUpdate = ({ event }: { event: Event }) => {
+const EventUpdate = ({ event }: { event: iEvent }) => {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
   const form = useForm<z.infer<typeof FormSchema>>({

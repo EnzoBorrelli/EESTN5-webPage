@@ -14,25 +14,13 @@ import {
 import useSWR from "swr"; // Make sure this import is correct
 import EventUpdate from "./eventUpdate";
 import EventDelete from "./eventDelete";
-import { Event } from "@/types/event";
+import { iEvent } from "@/types/interfaces";
+import { exampleEvents } from "@/data/events";
 
 
-// Define a fetcher function for SWR
-const fetcher = async (url: string): Promise<{ events: Event[] }> => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error('Error fetching data');
-  }
-  return response.json();
-};
+
 
 export default function EventList() {
-  const { data, error } = useSWR("/api/event", fetcher); // Use SWR to fetch events
-
-  if (error) return <div>No se pudieron cargar los eventos.</div>; // Handle loading and error states
-  if (!data) return <div>Cargando eventos...</div>;
-
-  const { events } = data;
 
   return (
     <section className="flex flex-col items-center gap-4">
@@ -41,7 +29,7 @@ export default function EventList() {
         {" (refrescar la pagina si no perciben los cambios aplicados)"}
       </p>
       <ScrollArea className="w-full p-2 rounded shadow-md h-60 bg-bg-100 dark:bg-bg-600 dark:ring-bg-500 ring-1 ring-bg-200 ring-opacity-50 shadow-bg-200 dark:shadow-bg-500">
-        {events.map((event: Event) => (
+        {exampleEvents.map((event: iEvent) => (
           <div className="my-2" key={event.id}>
             <span className="flex items-center justify-between gap-2 px-2">
               <h2>{event.title}</h2>

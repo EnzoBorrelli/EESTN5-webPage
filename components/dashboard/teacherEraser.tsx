@@ -16,34 +16,6 @@ import { useToast } from "../ui/use-toast";
 import { mutate } from "swr";
 
 export default function TeacherEraser({ teacherID }: { teacherID: string }) { //se recibe la id del profesor
-  const router = useRouter();
-  const { toast } = useToast();
-
-  const deleteTeacher = async (ID : string) => { //funcion para borrar el profesor
-    const response = await fetch("/api/teacher", { //se busca el metodo DELETE de la api
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id: ID }),
-    });
-    if (response.ok) { // si todo sale bien, ->
-      router.refresh(); //se refresca la pagina
-      toast({
-        title: "perfil eliminado",
-        description: "el perfil de profesor se elimino exitosamente",
-        variant: "success",
-      });
-      mutate('/api/teacher');
-    } else { //sino, ->
-        const errorData = await response.json();
-      toast({
-        title: "Error inesperado",
-        description: errorData.message || "Ha ocurrido un error, intente nuevamente",
-        variant: "destructive",
-      });
-    }
-  };
   return (
     <AlertDialog>
       <AlertDialogTrigger className="group">
@@ -62,7 +34,7 @@ export default function TeacherEraser({ teacherID }: { teacherID: string }) { //
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel className="hover:bg-amber-500">Cancelar</AlertDialogCancel>
-          <AlertDialogAction className="hover:text-amber-500 hover:underline" onClick={() => deleteTeacher(teacherID)}>
+          <AlertDialogAction className="hover:text-amber-500 hover:underline">
             Continuar
           </AlertDialogAction>
         </AlertDialogFooter>

@@ -10,11 +10,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Profesor } from "@/types/profesor";
 import TeacherUpdater from "./TeacherUpdater";
 import TeacherEraser from "./teacherEraser";
+import { iTeacher } from "@/types/interfaces";
 
-export default function TeacherList({ teachers }: { teachers: Profesor[] }) {
+export default function TeacherList({ teachers }: { teachers: iTeacher[] }) {
   return (
     <ScrollArea className="w-full p-2 rounded shadow-md h-60 bg-bg-100 dark:bg-bg-600 dark:ring-bg-500 ring-1 ring-bg-200 ring-opacity-50 shadow-bg-200 dark:shadow-bg-500">
       {teachers.map((teacher) => (
