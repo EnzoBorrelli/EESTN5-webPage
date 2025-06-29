@@ -97,26 +97,26 @@ export default function Pasantia() {
         </h2>
         <article className="flex flex-col items-center gap-4">
           <p>
-            Aqui encontrara una lista de las empresas afiliadas con la
+            Aquí encontrará una lista de las empresas afiliadas con la
             institución
           </p>
           <ul className="grid grid-cols-3 grid-rows-4 gap-4">
-            <li>nombre de empresa</li>
-            <li>nombre de empresa</li>
-            <li>nombre de empresa</li>
-            <li>nombre de empresa</li>
-            <li>nombre de empresa</li>
-            <li>nombre de empresa</li>
-            <li>nombre de empresa</li>
-            <li>nombre de empresa</li>
-            <li>nombre de empresa</li>
-            <li>nombre de empresa</li>
-            <li>nombre de empresa</li>
-            <li>nombre de empresa</li>
+            <li>TecnoMec S.A.</li>
+            <li>ElectroServ SRL</li>
+            <li>AutoSolutions</li>
+            <li>IngeTools</li>
+            <li>Industria Delta</li>
+            <li>MechaPro</li>
+            <li>Grupo Volt</li>
+            <li>Neumática Plus</li>
+            <li>Sistemas López</li>
+            <li>Fábrica NOVA</li>
+            <li>Taller Integral</li>
+            <li>Red Automatix</li>
           </ul>
         </article>
       </section>
-      <ToNextPage label="Conoce a nuestra Cooperadora" href="/cooperadora"/>
+      <ToNextPage label="Conoce a nuestra Cooperadora" href="/cooperadora" />
     </main>
   );
 }
